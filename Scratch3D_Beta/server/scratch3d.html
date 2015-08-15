@@ -1,0 +1,413 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-66361143-1', 'auto');
+		  ga('send', 'pageview');
+
+		</script>
+		<title>Scratch THREE.JS</title>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+		</style>
+	</head>
+	<body>
+		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/three.js"></script>
+		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/CameraControls.js"></script>
+		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/SceneComponents.js"></script>
+		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/TrackballControls.js"></script>
+		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/SceneStyles.js"></script>
+		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/OBJLoader.js"></script>
+		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/threex.grassground.js"></script>
+		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/BlendCharacter.js"></script>
+		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/CharecterControles.js"></script>
+		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/tween.min.js"></script>
+		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/FirstPersonControls.js"></script>
+		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/lookAtControls.js"></script>
+		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/fpvObjectControles.js"></script>
+		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/threex.planets-master/threex.planets.js"></script>
+		<script>
+		var RENDERER = null;
+		var SCENE = null;
+		var CAMERA = null;
+		var clock = new THREE.Clock();
+		var controls = null;
+		var TrackBallControls = false;
+		var objControls = null;
+		//Info needed to send data back to the parent window
+		var origin = null;
+		var messageSource = null;
+		//Set the alpha of the scene
+		//Important becuase when we switch between grass and grid 
+		//The aplph must change to make the scene look best
+		var alpha=false;
+		/*
+		*EVENT HANDELER BEGIN
+		*/
+		//The event handeler to deligate the message events
+		//To there proper corisponding function calles
+		var event;
+	
+		window.addEventListener("message", eventHandeler, false);
+		window.addEventListener( 'resize', onWindowResize, false );
+
+		function eventHandeler(){
+			//Gets the address from which the event came
+			console.log(event);
+			if(origin==null || messageSource==null){
+				origin = event.origin;
+				messageSource = event.source;
+			}
+
+			//Retrevies the command Key of the message denoting which function to call
+			var commandKey = event.data.split("_")[0];
+			//Retervies the paramiters of the message for the corasponding function call if message contains params
+			var paramsArray = null;
+			console.log("Event Called: ", commandKey);
+			if(event.data.split("_").length>1){
+			paramsArray = event.data.split("_")[1].split(",");
+			}
+			//INIT Commande is associated with the "New 3D World Block"
+			if(commandKey == "INIT"){
+				init_window(paramsArray);
+			}
+			//CAMERAROTATE command tag is associated with Rotate Camera Block
+			if(commandKey == "CAMERAROTATE"){
+				if(CAMERA!=null){
+				console.log("CAMERA ROTATE KEY CALLED");
+				CAMERACONTROLS.rotate(paramsArray[0], paramsArray[1], CAMERA);
+			}
+			}
+			//CAMERAORBIT command tag is associated with Orbit Camera Block
+			if(commandKey == "CAMERAORBIT"){
+				if(CAMERA!=null){
+				var orbitPoint = [3];
+				orbitPoint[0]= paramsArray[1];
+				orbitPoint[1]= paramsArray[2];
+				orbitPoint[2]= paramsArray[3];
+				CAMERACONTROLS.orbit(paramsArray[0], new THREE.Vector3(0,0,0), 1, CAMERA);
+			}
+			}
+			//CAMERAMOVE command tag is associated with Move Camera Block 
+			if(commandKey == "CAMERAMOVE"){
+				if(CAMERA!=null){
+					CAMERACONTROLS.move(paramsArray[0], parseFloat(paramsArray[1]),CAMERA);
+			}
+			}
+			//CAMERAFOLLOW command tag is associated with Move Camera Block 
+			if(commandKey == "CAMERAFOLLOW"){
+				if(CAMERA!=null){
+					TrackBallControls = false;
+					controls = new THREE.LookAtControls(CAMERA, SCENECOMPONENTS.getShape(paramsArray[0]));
+					if(paramsArray[1]=="Front"){
+						controls.lookAtFront = true;
+					}else if(paramsArray[1]=="Back"){
+						controls.lookAtBack = true;
+					}
+			}
+			}
+			//SETCAMERACONTROLS
+			if(commandKey == "SETCAMERACONTROLS"){
+				if(controls==null){
+					if(paramsArray[0]=='Mouse/Trackball'){
+						TrackBallControls = true;
+						controls = new THREE.TrackballControls(CAMERA);
+						controls.rotateSpeed = 1.0;
+						controls.zoomSpeed = 1.2;
+						controls.panSpeed = 0.8;
+						controls.noZoom = false;
+						controls.noPan = false;
+						controls.staticMoving = true;
+						controls.dynamicDampingFactor = 0.3;
+						controls.keys = [ 65, 83, 68 ];
+						controls.addEventListener( 'change', RENDERER );
+					}else if(paramsArray[0]=='First Person'){
+						controls = new THREE.FirstPersonControls(CAMERA);
+						controls.movementSpeed = paramsArray[1];
+						controls.lookSpeed = paramsArray[2];
+						CAMERA.fov = 15;
+						CAMERA.position.y = 1; 
+					}
+				}
+			}
+			//SETCAMERALOOKAT command tag is associated with the Look At Objecet block
+			if(commandKey == "SCALEOBJ"){
+				if(SCENE!=null){
+					var obj =SCENECOMPONENTS.getShape(paramsArray[0]); 
+					obj.scale.set(paramsArray[1],paramsArray[2],paramsArray[3]);
+			}
+			}
+
+			if(commandKey == "MOVESHAPE"){
+				if(SCENE!=null){
+					SCENECOMPONENTS.move(paramsArray[0],paramsArray[1], paramsArray[2]);
+				}
+			}
+
+			if(commandKey == "ROTATESHAPE"){
+				if(SCENE!=null){
+					SCENECOMPONENTS.rotate(paramsArray[0],paramsArray[1], paramsArray[2]);
+				}
+			}
+
+			//
+			if(commandKey == "ADDCHARECTER"){
+				SCENECOMPONENTS.addCharecter(paramsArray[0],paramsArray[1],paramsArray[2],paramsArray[3],paramsArray[4],SCENE);
+			}
+			if(commandKey == "ADDLIGHT"){
+				SCENECOMPONENTS.addLight(paramsArray[0],paramsArray[1],paramsArray[2],paramsArray[3],paramsArray[4],paramsArray[5],paramsArray[6],SCENE);
+			}
+			if(commandKey == "ADDPLANET"){
+				SCENECOMPONENTS.addPlanet(paramsArray[0],paramsArray[1],paramsArray[2],paramsArray[3],paramsArray[4],paramsArray[5],SCENE);
+			}
+			//CREATESHAPE command tag is associated with the Move block
+			if(commandKey == "CREATESHAPE"){
+				if(SCENE!=null){
+					SCENECOMPONENTS.addShape(paramsArray[0],paramsArray[1],paramsArray[2],paramsArray[3],paramsArray[4],paramsArray[5],paramsArray[6], 					paramsArray[7], SCENE);					
+					}
+				}
+			//CREATEMATERIAL command tag is associated with the New Material
+			if(commandKey == "CREATEMATERIAL"){
+				if(SCENE!=null){
+						SCENECOMPONENTS.newMaterial(paramsArray[0], paramsArray[1]);
+					}
+				}
+			//SETMATERIAL command tag is associated with the set materials block
+			//paramsArray[0] = materialID, paramsArray[1] = shapeID
+			if(commandKey == "SETMATERIAL"){
+				SCENECOMPONENTS.setMaterialTo(paramsArray[0], paramsArray[1]);
+			}
+			//SETMATERIALCOLOR command tag is associated with the Set Material Color
+			//paramsArray[0] = materialID, paramsArray[1] = color
+			if(commandKey == "SETMATERIALCOLOR"){
+				if(SCENE!=null){
+						SCENECOMPONENTS.setMaterialColor(paramsArray[0], paramsArray[1]);		
+					}
+			}
+			//SETMATERIALIMAGE command tag is associated with the Set Material Color
+			//paramsArray[0] = materialID, paramsArray[1] = image url path on server
+			if(commandKey == "SETMATERIALIMAGE"){
+				if(SCENE!=null){
+						SCENECOMPONENTS.setMaterialImage(paramsArray[0], paramsArray[1]);	
+					}
+			}
+			//APPLYMATERIAL command tag is associated with the Apply Material block
+			if(commandKey == "APPLYMATERIAL"){
+				if(SCENE!=null){
+					SCENECOMPONENTS.applyMaterial(paramsArray[0],paramsArray[1],paramsArray[2],paramsArray[3]); 			
+					}
+				}
+			//APPLYOBJCONTRLS command tag is asociated with the Apply FPV object controls 
+			//paramsArray[] = objectID paramsArray[1] = MoveSpeed paramsArray[2] = Look Speed
+			if(commandKey == "APPLYOBJCONTRLS"){
+				if(SCENE!=null){
+					var obj = SCENECOMPONENTS.getShape(paramsArray[0]);
+					if(obj!=null){
+						objControls = new THREE.fpvObjectControles(obj);
+						console.log("main Speed", paramsArray[1]);
+						objControls.moveSpeed = parseFloat(paramsArray[1]*100);
+ 						objControls.lookSpeed = parseFloat(paramsArray[2]*100);
+					}
+				}
+			}	
+			if(commandKey == "MOVESHAPE"){
+				if(SCENE!=null){
+					console.log("Move Charecter", paramsArray[0]);
+					SCENECOMPONENTS.move(paramsArray[0],paramsArray[1], paramsArray[2]);
+				}
+			}
+			if(commandKey == "LOADOBJ"){
+				if(SCENE!=null){
+					SCENECOMPONENTS.addOBJ(paramsArray[0], paramsArray[1], SCENE);
+					console.log("LOADOBJ KEY CALLED", paramsArray);
+					
+				}
+			}
+		}
+		/*
+		*EVENT HANDELER END
+		*/
+		
+
+		/*
+		*Detecs Key events in child window and passes them to the parent window to 
+		*Be proccesed by scratch.
+		*/
+
+		window.addEventListener("keydown", function(e){
+			messageSource.postMessage(e.keyCode,origin);
+		 });
+		
+		
+		/*
+		*THE MAIN INTI FUNCTIONS FOR PRE-SETUP OF THE RENDERER, SCENE AND CAMERA
+		*/
+		
+		function init_window(sceneStyle){
+			console.log("Init Window");
+			
+			init_Scene(sceneStyle);
+			init_Render();
+			init_Camera(6,8,5.6);
+			
+			if(RENDERER==null || SCENE==null || CAMERA==null){
+				return false;
+			}else {firstRender(SCENE, CAMERA); animate(); console.log("RUNN CALLED"); return true;}
+			
+		}
+		
+		//INITIALIZES THE RENDERER OBJECT
+		function init_Render(){
+			console.log("init_Render");
+			RENDERER = new THREE.WebGLRenderer({ alpha: alpha });
+			RENDERER.setSize(window.innerWidth, window.innerHeight);
+			document.body.appendChild(RENDERER.domElement);
+		}
+		//INITIALIZES THE CAMERA OBJECT
+		//@params Y postion, Z postion, X rotation 
+		function init_Camera(posY, posZ, rotaX){
+			console.log("init_Camera");
+			CAMERA = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 1000);
+			CAMERA.position.y = posY; 
+			CAMERA.position.z = posZ;
+			CAMERA.rotation.x = rotaX;
+		}
+		//INITIALIZES THE SCENE OBJECT
+
+		function init_Scene(sceneStyle){
+			console.log("init_Scene called", sceneStyle[0]);
+			SCENE = new THREE.Scene();
+
+			//Creates a basic grid scene
+			if(sceneStyle[0]=="Grid"){
+			var light	= new THREE.AmbientLight( 0x020202 );
+			SCENE.add( light );
+			SCENESTYLES.gridSize = parseInt(sceneStyle[1])*parseInt(sceneStyle[2]);
+			var plane = SCENESTYLES.GRID();
+			SCENE.add(plane);
+			}
+
+			else if(sceneStyle[0]=="Space"){
+			var light	= new THREE.AmbientLight( 0x020202 );
+			SCENE.add( light );
+
+			var starFeild = THREEx.Planets.createStarfield(parseInt(sceneStyle[1]));
+			SCENE.add(starFeild);
+			}
+
+			////////////////////////////
+			//Creates a Flat grass scene
+			///////////////////////////
+			else if(sceneStyle[0]=="Grass"){
+			alpha = true;
+			//Straight from https://github.com/jeromeetienne/threex.grassground
+			//Thanks jeromeetienne for all the amazing game extentions!!!
+			/////////////////////////////////////////////////////////////
+			//////////////////////ADD Light//////////////////////////////
+			var light	= new THREE.AmbientLight( 0x020202 );
+			SCENE.add( light );
+			// add a light in front
+			var light	= new THREE.DirectionalLight('white', 1);
+			light.position.set(0.5, 0.5, 2);
+			SCENE.add( light );
+			// add a light behind
+			var light	= new THREE.DirectionalLight('white', 0.75);
+			light.position.set(-0.5, 2.5, -2);
+			SCENE.add( light );
+
+			/////////////////////////////////////////////////////////////
+			////////////////////////Adds Sky/////////////////////////////
+			/////////////////////////////////////////////////////////////
+			// directly from @mrdoob in http://mrdoob.com/lab/javascript/webgl/clouds/
+			var canvas	= document.createElement( 'canvas' );
+			var context	= canvas.getContext( '2d' );
+			canvas.width	= 32;
+			canvas.height	= window.innerHeight;
+
+			var gradient	= context.createLinearGradient( 0, 0, 0, canvas.height );
+			gradient.addColorStop(0  , "#1e4877");
+			gradient.addColorStop(0.5, "#4584b4");
+
+			context.fillStyle	= gradient;
+			context.fillRect(0, 0, canvas.width, canvas.height);
+
+			var url		= canvas.toDataURL('image/png');
+			document.body.style.background	= 'url(' + url + ')';
+
+			/////////////////////////////////////////////////////////////
+			////////////////////////Adds Ground//////////////////////////
+			/////////////////////////////////////////////////////////////
+			var groundMesh  = new THREEx.GrassGround({
+			width       : 10,    // the width of the mesh, default to 1
+    		height      : 10,    // the height of the mesh, default to 1
+    		repeatX     : sceneStyle[1],    // the number of time the texture is repeated in X, default to 1
+    		repeatY     : sceneStyle[2],    // the number of time the texture is repeated in Y, default to 1
+			});
+			//Scales Mesh resulting in a smother grass look gets the average between width and height (((parseInt(sceneStyle[1])+(parseInt(sceneStyle[1]))/2)
+			groundMesh.scale.multiplyScalar((parseInt(sceneStyle[1])+parseInt(sceneStyle[1]))/2);
+			SCENE.add(groundMesh);
+			}
+			
+		}
+
+		//-----------------------------------------------------------------------------
+		function onWindowResize() {
+
+	        CAMERA.aspect = window.innerWidth / window.innerHeight;
+	        CAMERA.updateProjectionMatrix();
+
+	        RENDERER.setSize( window.innerWidth, window.innerHeight );
+
+	      }
+		
+		//RENDERS THE THE RENDER OBJECT FOR THE FIRST TIME ONCE THE WINDOW IS CREATED
+		function firstRender(scene, camera){
+			RENDERER.render(scene, camera);
+		} 
+		function render(){
+			var delta = 0.75*clock.getDelta();
+
+
+			if(TrackBallControls){
+				RENDERER.render(SCENE, CAMERA);
+
+				if(controls!=null){
+				controls.update(delta);
+				}
+			}else{
+				if(controls!=null){
+				controls.update(delta);
+				}
+				RENDERER.render(SCENE, CAMERA);
+			}
+			
+			//THREE.AnimationHandler.update( delta );
+		} 
+		//Gloabal variables for hadeling camera updates
+		var INV_MAX_FPS = 1/60;
+		var frameDelta = 0;
+		function animate(){
+			
+			//THREE.AnimationHandler.update( delta );
+			//TWEEN.update();
+		
+			
+
+			if(objControls!=null){
+				objControls.update(clock.getDelta());
+			}
+			requestAnimationFrame(animate);
+			render();
+		}
+		/*
+		*
+		*/
+		</script>
+	</body>
+</html>
