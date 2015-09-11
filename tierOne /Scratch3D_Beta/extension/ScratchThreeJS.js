@@ -700,9 +700,9 @@
       // Block type, block name, function name, param1 default value, param2 default value
       ['w', 'New 3D World %m.Scenes Gravity: %m.Toggle Width: %n Height: %n %m.Camera', 'initWorld', "Grass", "On" , 10, 10 , "Camera Type",ext],
       //['', 'Set Camera Controls  Up: %m.Keys Down: %m.Keys Left: %m.Keys Right: %m.Keys ', 'camControlsMove', 'w', 's','a','d'],
-      ['', 'Add Camera Controls %m.CameraControls Move Speed: %n Look Speed: %n ', 'camControls','First Person', '200', '50'],
+      //__TEIR TWO__  ['', 'Add Camera Controls %m.CameraControls Move Speed: %n Look Speed: %n ', 'camControls','First Person', '200', '50'],
 			//The camera orbit block to allow users to orbit the camera around a given point
-			['', " Camera Look At: %s  %m.Sides","cameraFallow", "Variable", "Back"],
+			//__TEIR TWO__  ['', " Camera Look At: %s  %m.Sides","cameraFallow", "Variable", "Back"],
 			     //The camera move block allows a user to move the camera in both the positive and negative direction of the X,Y, and Z axis.
       ['', " Move Camera  %m.Move  %n steeps ","moveCamera", "Direction", "1"],
       //The camera rotate block to allow users to rotate the view of the camra "Left", "Right", "Up" and "Down"
@@ -714,39 +714,39 @@
 
 
 			['r', 'New Shape %m.Shapes Size: %n %n %n Location: X: %n Y: %n Z: %n', 'createShape', 'Cube', '1','1','1','0','0','0'],
-      ['r', 'New Light %m.Lights  Color: %s Intensity: %n X: %s Y: %s Z: %s','addLight','Ambient','white','0.7','0','0','0'],
+      //__TEIR THREE__ ['r', 'New Light %m.Lights  Color: %s Intensity: %n X: %s Y: %s Z: %s','addLight','Ambient','white','0.7','0','0','0'],
       ['r', "New %m.Charecters Location: X: %n Y: %n Z: %n" , "add_Charecter", "Marine", '0','0','0'],
-      ['r', 'New Planet %m.Planets X: %n Y: %n Z: %n Diameter: %n' ,'addPlanet','Earth','0','0','0','1'],
+      //__TEIR TWO__  ['r', 'New Planet %m.Planets X: %n Y: %n Z: %n Diameter: %n' ,'addPlanet','Earth','0','0','0','1'],
 		        //Creates a new empty matrial and returns its object ID
-      ['r', 'New Material %m.Materials', 'createMaterial','MeshBasicMaterial'],
-      ['', 'Change Material %s to Color %s', 'materialColor', 'Variable','Random'],
-      ['', 'Set %s Image %m.Images', 'setImage', 'Material', 'Crate'],
+      //__TEIR THREE__  ['r', 'New Material %m.Materials', 'createMaterial','MeshBasicMaterial'],
+      //__TEIR THREE__  ['', 'Change Material %s to Color %s', 'materialColor', 'Variable','Random'],
+      //__TEIR THREE__  ['', 'Set %s Image %m.Images', 'setImage', 'Material', 'Crate'],
 
       ['', "Move %s %m.Move %n Steps" , 'moveShape', "Variable", "Left", 1],
 
       ['', "Rotate %s %m.Axis3 Degrees: %n " , 'rotateShape', "Variable", "Y", 1],
       
 			//Adds a smothe movment control to any given object
-			['', "Apply FPV Controls to Object: %s Move Speed: %n Turn Speed: %n" , 'applyObjControls', "Variable", "1", "2"],
+			//__TEIR THREE__ ['', "Apply FPV Controls to Object: %s Move Speed: %n Turn Speed: %n" , 'applyObjControls', "Variable", "1", "2"],
 			
 			//Sets a given material to a given object
-			['', 'Apply %s to %s', 'setObjectMaterial', 'Material', 'Shape'],
+			//__TEIR THREE__ ['', 'Apply %s to %s', 'setObjectMaterial', 'Material', 'Shape'],
 
-			['', 'Scale %s X: %n Y: %n Z: %n', 'scaleObj',"Variable", "1.0", "1.0", "1.0"],
+			//__TEIR THREE__ ['', 'Scale %s X: %n Y: %n Z: %n', 'scaleObj',"Variable", "1.0", "1.0", "1.0"],
 			['h', "When %m.Keys  Pressed" , 'key_Pressed', "space"],
-      ['h', "When Mouse %m.MouseOptions", 'mouseEvent', 'Click'],
-      ['r', "Mouse %m.Axis2", "mousePostion","X"], 
+      //__TEIR TWO__ ['h', "When Mouse %m.MouseOptions", 'mouseEvent', 'Click'],
+      //__TEIR TWO__ ['r', "Mouse %m.Axis2", "mousePostion","X"], 
       ['r', "On Clicked Get Object", "getObjectOnClick"], 
 
-			['r', "Load Object URL: %s", "loadOBJ","http://goodwinj14.github.io/ThreeJS/server/threeJScontrols/shiptriangle.obj"],
-      ['', "Set Scene Gravity X: %n Y: %n Z: %n", "setGravity","0","-50","0"],
-      ['r', "New Physics Material %m.Materials Friction: %n Restitution %n", 'createPhysicsMaterial','MeshBasicMaterial','0.8','0.3'],
-      ['', "Physics, Set Friction Of: %s To: %n", "setFriction","Variable","0.8"],
-      ['', "Physics, Set Restitution Of: %s To: %n", "setRestitution","Variable","0.8"],
-      ['', "Physics, Set Weight Of: %s To: %n", "setWeight","Variable","2"],
-      ['', "Physics, Set Linear Velocity Of: %s To X: %n Y: %n Z: %n", "setLinearVelocity","Variable","0","0","0"],
-      ['', "Physics, Set Angular Velocity Of: %s To X: %n Y: %n Z: %n", "setAngularVelocity","Variable","0","0","0"],
-      ['b', "%s Touching %s", "isTouching","Variable","Variable"],
+			//__TEIR THREE__  ['r', "Load Object URL: %s", "loadOBJ","http://goodwinj14.github.io/ThreeJS/server/threeJScontrols/shiptriangle.obj"],
+      //__TEIR THREE__  ['', "Set Scene Gravity X: %n Y: %n Z: %n", "setGravity","0","-50","0"],
+      //__TEIR THREE__  ['r', "New Physics Material %m.Materials Friction: %n Restitution %n", 'createPhysicsMaterial','MeshBasicMaterial','0.8','0.3'],
+      //__TEIR THREE__  ['', "Physics, Set Friction Of: %s To: %n", "setFriction","Variable","0.8"],
+      //__TEIR THREE__  ['', "Physics, Set Restitution Of: %s To: %n", "setRestitution","Variable","0.8"],
+      //__TEIR THREE__  ['', "Physics, Set Weight Of: %s To: %n", "setWeight","Variable","2"],
+      //__TEIR THREE__  ['', "Physics, Set Linear Velocity Of: %s To X: %n Y: %n Z: %n", "setLinearVelocity","Variable","0","0","0"],
+      //__TEIR THREE__  ['', "Physics, Set Angular Velocity Of: %s To X: %n Y: %n Z: %n", "setAngularVelocity","Variable","0","0","0"],
+      //__TEIR TWO__  ['b', "%s Touching %s", "isTouching","Variable","Variable"],
        
         ],
 		
