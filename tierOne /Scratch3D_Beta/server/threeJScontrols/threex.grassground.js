@@ -12,7 +12,7 @@ THREEx.GrassGround	= function(opts){
 	var anisotropy	= opts.anisotropy !== undefined ? opts.anisotropy : 16
 
 	// create the textureDiffuse	http://scratch3d.github.io/Scratch3D_Beta/extension/ScratchThreeJS.js
-	var textureDiffuseUrl	= 'http://goodwinj14.github.io/tierOne /Scratch3D_Beta/server/threeJScontrols/sceneImages/grasslight-small.jpg'
+	var textureDiffuseUrl	= 'http://http://scratch3d.github.io/tierOne%20/Scratch3D_Beta/server/threeJScontrols/sceneImages/grasslight-small.jpg'
 	var textureDiffuse	= THREE.ImageUtils.loadTexture(textureDiffuseUrl);
 	textureDiffuse.wrapS	= THREE.RepeatWrapping;
 	textureDiffuse.wrapT	= THREE.RepeatWrapping;
@@ -21,7 +21,7 @@ THREEx.GrassGround	= function(opts){
 	textureDiffuse.anisotropy = anisotropy;
 
 	// create the textureNormal	
-	var textureNormalUrl	='http://goodwinj14.github.io/tierOne /Scratch3D_Beta/server/threeJScontrols/sceneImages/grasslight-small-nm.jpg'
+	var textureNormalUrl	='http://scratch3d.github.io/tierOne%20/Scratch3D_Beta/server/threeJScontrols/sceneImages/grasslight-small.jpg'
 	var textureNormal	= THREE.ImageUtils.loadTexture(textureNormalUrl);
 	textureNormal.wrapS	= THREE.RepeatWrapping;
 	textureNormal.wrapT	= THREE.RepeatWrapping;
