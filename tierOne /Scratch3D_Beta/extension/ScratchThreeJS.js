@@ -698,7 +698,7 @@
     var descriptor = {
         blocks: [
       // Block type, block name, function name, param1 default value, param2 default value
-      ['w', 'New 3D World %m.Scenes Gravity: %m.Toggle Width: %n Height: %n %m.Camera', 'initWorld', "Grass", "On" , 10, 10 , "Camera Type",ext],
+      ['w', 'New 3D World %m.Scenes Gravity: %m.Toggle Width: %n Height: %n %m.Camera', 'initWorld', "Grass", "Off" , 10, 10 , "Camera Type",ext],
       //['', 'Set Camera Controls  Up: %m.Keys Down: %m.Keys Left: %m.Keys Right: %m.Keys ', 'camControlsMove', 'w', 's','a','d'],
       ['', 'Add Camera Controls %m.CameraControls Move Speed: %n Look Speed: %n ', 'camControls','First Person', '200', '50'],
 			//The camera orbit block to allow users to orbit the camera around a given point
@@ -752,7 +752,7 @@
 		
 		menus: {
 		        Scenes: ['Grid','Grass','Space','Blank'],
-        Toggle: ['On','Off'],
+        Toggle: ['Off'],
 				Camera: ['Perspective'],
 				CameraRotation: ['Left', 'Right', 'Up', 'Down', 'Roll Left', 'Roll Right'],
 				CameraOrbit: ['Orbit Left', 'Orbit Right', 'Orbit Up', 'Orbit Down'],
