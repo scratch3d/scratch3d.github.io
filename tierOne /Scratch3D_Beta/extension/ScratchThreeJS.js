@@ -700,7 +700,7 @@
       // Block type, block name, function name, param1 default value, param2 default value
       ['w', 'New 3D World %m.Scenes Gravity: %m.Toggle Width: %n Height: %n %m.Camera', 'initWorld', "Grass", "On" , 10, 10 , "Camera Type",ext],
       //['', 'Set Camera Controls  Up: %m.Keys Down: %m.Keys Left: %m.Keys Right: %m.Keys ', 'camControlsMove', 'w', 's','a','d'],
-      //__TEIR TWO__  ['', 'Add Camera Controls %m.CameraControls Move Speed: %n Look Speed: %n ', 'camControls','First Person', '200', '50'],
+      ['', 'Add Camera Controls %m.CameraControls Move Speed: %n Look Speed: %n ', 'camControls','First Person', '200', '50'],
 			//The camera orbit block to allow users to orbit the camera around a given point
 			//__TEIR TWO__  ['', " Camera Look At: %s  %m.Sides","cameraFallow", "Variable", "Back"],
 			     //The camera move block allows a user to move the camera in both the positive and negative direction of the X,Y, and Z axis.
@@ -736,7 +736,7 @@
 			['h', "When %m.Keys  Pressed" , 'key_Pressed', "space"],
       //__TEIR TWO__ ['h', "When Mouse %m.MouseOptions", 'mouseEvent', 'Click'],
       //__TEIR TWO__ ['r', "Mouse %m.Axis2", "mousePostion","X"], 
-      ['r', "On Clicked Get Object", "getObjectOnClick"], 
+      //__TEIR TWO__ ['r', "On Clicked Get Object", "getObjectOnClick"], 
 
 			//__TEIR THREE__  ['r', "Load Object URL: %s", "loadOBJ","http://goodwinj14.github.io/ThreeJS/server/threeJScontrols/shiptriangle.obj"],
       //__TEIR THREE__  ['', "Set Scene Gravity X: %n Y: %n Z: %n", "setGravity","0","-50","0"],
