@@ -47,8 +47,8 @@
 	var materials = [];
 	var charecters = [];
 	//var liveURL = "http://033ae09.netsolhost.com//gsd2014team5/Localhost/main.html";
-	var liveURL = "http://goodwinj14.github.io/Scratch3D_Beta/server/scratch3d.html";
-  //var liveURL = "http://scratch3d.github.io/Scratch3D_Beta/server/scratch3d.html";
+	//var liveURL = "http://goodwinj14.github.io/Scratch3D_Beta/server/scratch3d.html";
+  var liveURL = "http://scratch3d.github.io/tierOne%20/Scratch3D_Beta/server/scratch3d.html";
     // Cleanup function when the extension is unloaded
     ext._shutdown = function() {};
 
