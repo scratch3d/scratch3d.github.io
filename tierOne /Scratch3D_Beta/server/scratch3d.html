@@ -435,7 +435,7 @@
 
 			init_Scene(sceneStyle);
 			init_Render();
-			init_Camera(6,8,5.6);
+			init_Camera(0,0,0);
 			
 			if(RENDERER==null || SCENE==null || CAMERA==null){
 				return false;
@@ -456,8 +456,11 @@
 			console.log("init_Camera");
 			CAMERA = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 1000);
 			CAMERA.position.y = posY; 
+			CAMERA.position.x = 0;
 			CAMERA.position.z = posZ;
-			CAMERA.rotation.x = rotaX;
+			CAMERA.rotation.x = 0;
+			CAMERA.rotation.y = 0;
+			CAMERA.rotation.z = 0;
 		}
 		//INITIALIZES THE SCENE OBJECT
 
