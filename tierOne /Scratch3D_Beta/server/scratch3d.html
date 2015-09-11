@@ -454,7 +454,7 @@
 		//@params Y postion, Z postion, X rotation 
 		function init_Camera(posY, posZ, rotaX){
 			console.log("init_Camera");
-			CAMERA = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 1000);
+			CAMERA = new THREE.PerspectiveCamera(0, window.innerWidth / window.innerHeight, 1, 1000);
 			CAMERA.position.y = posY; 
 			CAMERA.position.x = 0;
 			CAMERA.position.z = posZ;
