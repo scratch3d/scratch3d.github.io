@@ -455,12 +455,12 @@
 		function init_Camera(posY, posZ, rotaX){
 			console.log("init_Camera");
 			CAMERA = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 1000);
-			CAMERA.position.y = posY; 
-			CAMERA.position.x = 0;
-			CAMERA.position.z = posZ;
-			CAMERA.rotation.x = 0;
-			CAMERA.rotation.y = 0;
-			CAMERA.rotation.z = 0;
+			CAMERA.position.y = 1; 
+			CAMERA.position.x = 1;
+			CAMERA.position.z = 1;
+			CAMERA.rotation.x = 1;
+			CAMERA.rotation.y = 1;
+			CAMERA.rotation.z = 1;
 			console.log("Camera Postion: ", CAMERA.position);
 			console.log("CAMERA.rotation: ", CAMERA.rotation);
 		}
