@@ -12,7 +12,7 @@ THREEx.GrassGround	= function(opts){
 	var anisotropy	= opts.anisotropy !== undefined ? opts.anisotropy : 16
 
 	// create the textureDiffuse	http://scratch3d.github.io/Scratch3D_Beta/extension/ScratchThreeJS.js
-	var textureDiffuseUrl	= 'http://goodwinj14.github.io/Scratch3D_Beta/server/threeJScontrols/sceneImages/grasslight-small.jpg'
+	var textureDiffuseUrl	= 'http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/sceneImages/grasslight-small.jpg'
 	var textureDiffuse	= THREE.ImageUtils.loadTexture(textureDiffuseUrl);
 	textureDiffuse.wrapS	= THREE.RepeatWrapping;
 	textureDiffuse.wrapT	= THREE.RepeatWrapping;
@@ -21,7 +21,7 @@ THREEx.GrassGround	= function(opts){
 	textureDiffuse.anisotropy = anisotropy;
 
 	// create the textureNormal	
-	var textureNormalUrl	='http://goodwinj14.github.io/Scratch3D_Beta/server/threeJScontrols/sceneImages/grasslight-small-nm.jpg'
+	var textureNormalUrl	='http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/sceneImages/grasslight-small-nm.jpg'
 	var textureNormal	= THREE.ImageUtils.loadTexture(textureNormalUrl);
 	textureNormal.wrapS	= THREE.RepeatWrapping;
 	textureNormal.wrapT	= THREE.RepeatWrapping;
@@ -38,18 +38,14 @@ THREEx.GrassGround	= function(opts){
 		color		: 0x44FF44,
 	})
 	var object3D	= new THREE.Mesh(geometry, material)*/
-	var object3D = new Physijs.PlaneMesh(
+	var object3D = new THREE.Mesh(
            		geometry,
-            	Physijs.createMaterial( // Physijs material
       			new THREE.MeshPhongMaterial({ // Three.js material
       			map		: textureDiffuse,
       			normalMap	: textureNormal,
       			normalScale	: new THREE.Vector2(1,1).multiplyScalar(0.5),
         		color		: 0x44FF44,
-      			}),
-      			.6, // friction
-      			.1 // restitution
-    			), 0);
+      			}));
 	object3D.rotateX(-Math.PI/2)
 	// return the just-built object3d
 	return object3D;
