@@ -18,23 +18,23 @@
 		</style>
 	</head>
 	<body>
-		<!--
-		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/three.js"></script>
-		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/CameraControls.js"></script>
-		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/SceneComponents.js"></script>
-		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/TrackballControls.js"></script>
-		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/SceneStyles.js"></script>
-		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/OBJLoader.js"></script>
-		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/threex.grassground.js"></script>
-		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/BlendCharacter.js"></script>
-		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/CharecterControles.js"></script>
-		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/tween.min.js"></script>
-		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/FirstPersonControls.js"></script>
-		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/lookAtControls.js"></script>
-		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/fpvObjectControles.js"></script>
-		<script src="http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/threex.planets-master/threex.planets.js"></script>
-		<script>
-		-->
+		
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/three.js"></script>
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/CameraControls.js"></script>
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/SceneComponents.js"></script>
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/TrackballControls.js"></script>
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/SceneStyles.js"></script>
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/OBJLoader.js"></script>
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/threex.grassground.js"></script>
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/BlendCharacter.js"></script>
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/CharecterControles.js"></script>
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/tween.min.js"></script>
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/FirstPersonControls.js"></script>
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/lookAtControls.js"></script>
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/fpvObjectControles.js"></script>
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/threex.planets-master/threex.planets.js"></script>
+		<!--<script>
+		
 		<script src="http://goodwinj14.github.io/Scratch3D_Beta/server/threeJScontrols/three.min.js"></script>
 		<script src="http://goodwinj14.github.io/Scratch3D_Beta/server/threeJScontrols/CameraControls.js"></script>
 		<script src="http://goodwinj14.github.io/Scratch3D_Beta/server/threeJScontrols/SceneComponents.js"></script>
@@ -50,15 +50,15 @@
 		<script src="http://goodwinj14.github.io/Scratch3D_Beta/server/threeJScontrols/fpvObjectControles.js"></script>
 		<script src="http://goodwinj14.github.io/Scratch3D_Beta/server/threeJScontrols/threex.planets-master/threex.planets.js"></script>
 
-		<!--NEWLY ADDED -->
+	
 		<script type="text/javascript" src="http://goodwinj14.github.io/Scratch3D_Beta/server/Physics/Physijs/physi.js"></script>
 		<script type="text/javascript" src="http://goodwinj14.github.io/Scratch3D_Beta/server/Physics/CollisionRayCaster.js"></script>
-		<script type="text/javascript" src="http://goodwinj14.github.io/Scratch3D_Beta/server/threeJScontrols/Projector.js"></script>
+		<script type="text/javascript" src="http://goodwinj14.github.io/Scratch3D_Beta/server/threeJScontrols/Projector.js"></script>-->
 		<script>
-
+			
 		//Physics Add In
-		Physijs.scripts.worker = 'Physics/Physijs/physijs_worker.js';
-    	Physijs.scripts.ammo = 'ammo.js';
+		//Physijs.scripts.worker = 'Physics/Physijs/physijs_worker.js';
+    	//Physijs.scripts.ammo = 'ammo.js';
     	//////////////////
 
     	//Mouse Controle Data
@@ -461,7 +461,7 @@
 		function init_Scene(sceneStyle){
 			
 
-			SCENE = new Physijs.Scene;
+			SCENE = new THREE.Scene;
 			//Turns the gravity of the scene on to a defualt of -50 along the y axis
 			if(sceneStyle[1]=="On"){
 				console.log("gravity: ", sceneStyle[1]);

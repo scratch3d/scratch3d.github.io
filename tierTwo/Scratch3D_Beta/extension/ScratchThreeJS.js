@@ -47,7 +47,7 @@
 	var materials = [];
 	var charecters = [];
 	//var liveURL = "http://033ae09.netsolhost.com//gsd2014team5/Localhost/main.html";
-	var liveURL = "http://goodwinj14.github.io/Scratch3D_Beta/server/scratch3d.html";
+	var liveURL = "http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/scratch3d.html";
   //var liveURL = "http://scratch3d.github.io/Scratch3D_Beta/server/scratch3d.html";
     // Cleanup function when the extension is unloaded
     ext._shutdown = function() {};
@@ -698,7 +698,7 @@
     var descriptor = {
         blocks: [
       // Block type, block name, function name, param1 default value, param2 default value
-      ['w', 'New 3D World %m.Scenes Gravity: %m.Toggle Width: %n Height: %n %m.Camera', 'initWorld', "Grass", "On" , 10, 10 , "Camera Type",ext],
+      ['w', 'New 3D World %m.Scenes Gravity: %m.Toggle Width: %n Height: %n %m.Camera', 'initWorld', "Grass", "Off" , 10, 10 , "Camera Type",ext],
       //['', 'Set Camera Controls  Up: %m.Keys Down: %m.Keys Left: %m.Keys Right: %m.Keys ', 'camControlsMove', 'w', 's','a','d'],
       ['', 'Add Camera Controls %m.CameraControls Move Speed: %n Look Speed: %n ', 'camControls','First Person', '200', '50'],
 			//The camera orbit block to allow users to orbit the camera around a given point
@@ -714,13 +714,13 @@
 
 
 			['r', 'New Shape %m.Shapes Size: %n %n %n Location: X: %n Y: %n Z: %n', 'createShape', 'Cube', '1','1','1','0','0','0'],
-      ['r', 'New Light %m.Lights  Color: %s Intensity: %n X: %s Y: %s Z: %s','addLight','Ambient','white','0.7','0','0','0'],
+      //__TIER_THREE__  ['r', 'New Light %m.Lights  Color: %s Intensity: %n X: %s Y: %s Z: %s','addLight','Ambient','white','0.7','0','0','0'],
       ['r', "New %m.Charecters Location: X: %n Y: %n Z: %n" , "add_Charecter", "Marine", '0','0','0'],
       ['r', 'New Planet %m.Planets X: %n Y: %n Z: %n Diameter: %n' ,'addPlanet','Earth','0','0','0','1'],
 		        //Creates a new empty matrial and returns its object ID
-      ['r', 'New Material %m.Materials', 'createMaterial','MeshBasicMaterial'],
-      ['', 'Change Material %s to Color %s', 'materialColor', 'Variable','Random'],
-      ['', 'Set %s Image %m.Images', 'setImage', 'Material', 'Crate'],
+      //__TIER_THREE__  ['r', 'New Material %m.Materials', 'createMaterial','MeshBasicMaterial'],
+      //__TIER_THREE__  ['', 'Change Material %s to Color %s', 'materialColor', 'Variable','Random'],
+      //__TIER_THREE__  ['', 'Set %s Image %m.Images', 'setImage', 'Material', 'Crate'],
 
       ['', "Move %s %m.Move %n Steps" , 'moveShape', "Variable", "Left", 1],
 
@@ -730,29 +730,29 @@
 			['', "Apply FPV Controls to Object: %s Move Speed: %n Turn Speed: %n" , 'applyObjControls', "Variable", "1", "2"],
 			
 			//Sets a given material to a given object
-			['', 'Apply %s to %s', 'setObjectMaterial', 'Material', 'Shape'],
+			//__TIER_THREE__  ['', 'Apply %s to %s', 'setObjectMaterial', 'Material', 'Shape'],
 
-			['', 'Scale %s X: %n Y: %n Z: %n', 'scaleObj',"Variable", "1.0", "1.0", "1.0"],
+			//__TIER_THREE__  ['', 'Scale %s X: %n Y: %n Z: %n', 'scaleObj',"Variable", "1.0", "1.0", "1.0"],
 			['h', "When %m.Keys  Pressed" , 'key_Pressed', "space"],
-      ['h', "When Mouse %m.MouseOptions", 'mouseEvent', 'Click'],
-      ['r', "Mouse %m.Axis2", "mousePostion","X"], 
-      ['r', "On Clicked Get Object", "getObjectOnClick"], 
+      //__TIER_THREE__  ['h', "When Mouse %m.MouseOptions", 'mouseEvent', 'Click'],
+      //__TIER_THREE__  ['r', "Mouse %m.Axis2", "mousePostion","X"], 
+      //__TIER_THREE__  ['r', "On Clicked Get Object", "getObjectOnClick"], 
 
-			['r', "Load Object URL: %s", "loadOBJ","http://goodwinj14.github.io/ThreeJS/server/threeJScontrols/shiptriangle.obj"],
-      ['', "Set Scene Gravity X: %n Y: %n Z: %n", "setGravity","0","-50","0"],
-      ['r', "New Physics Material %m.Materials Friction: %n Restitution %n", 'createPhysicsMaterial','MeshBasicMaterial','0.8','0.3'],
-      ['', "Physics, Set Friction Of: %s To: %n", "setFriction","Variable","0.8"],
-      ['', "Physics, Set Restitution Of: %s To: %n", "setRestitution","Variable","0.8"],
-      ['', "Physics, Set Weight Of: %s To: %n", "setWeight","Variable","2"],
-      ['', "Physics, Set Linear Velocity Of: %s To X: %n Y: %n Z: %n", "setLinearVelocity","Variable","0","0","0"],
-      ['', "Physics, Set Angular Velocity Of: %s To X: %n Y: %n Z: %n", "setAngularVelocity","Variable","0","0","0"],
+			//__TIER_THREE__  ['r', "Load Object URL: %s", "loadOBJ","http://goodwinj14.github.io/ThreeJS/server/threeJScontrols/shiptriangle.obj"],
+      //__TIER_THREE__  ['', "Set Scene Gravity X: %n Y: %n Z: %n", "setGravity","0","-50","0"],
+      //__TIER_THREE__  ['r', "New Physics Material %m.Materials Friction: %n Restitution %n", 'createPhysicsMaterial','MeshBasicMaterial','0.8','0.3'],
+      //__TIER_THREE__  ['', "Physics, Set Friction Of: %s To: %n", "setFriction","Variable","0.8"],
+      //__TIER_THREE__  ['', "Physics, Set Restitution Of: %s To: %n", "setRestitution","Variable","0.8"],
+      //__TIER_THREE__  ['', "Physics, Set Weight Of: %s To: %n", "setWeight","Variable","2"],
+      //__TIER_THREE__  ['', "Physics, Set Linear Velocity Of: %s To X: %n Y: %n Z: %n", "setLinearVelocity","Variable","0","0","0"],
+      //__TIER_THREE__  ['', "Physics, Set Angular Velocity Of: %s To X: %n Y: %n Z: %n", "setAngularVelocity","Variable","0","0","0"],
       ['b', "%s Touching %s", "isTouching","Variable","Variable"],
        
         ],
 		
 		menus: {
 		        Scenes: ['Grid','Grass','Space','Blank'],
-        Toggle: ['On','Off'],
+        Toggle: ['Off'],
 				Camera: ['Perspective'],
 				CameraRotation: ['Left', 'Right', 'Up', 'Down', 'Roll Left', 'Roll Right'],
 				CameraOrbit: ['Orbit Left', 'Orbit Right', 'Orbit Up', 'Orbit Down'],
