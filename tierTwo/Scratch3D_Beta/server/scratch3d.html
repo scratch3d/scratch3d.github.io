@@ -33,6 +33,7 @@
 		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/lookAtControls.js"></script>
 		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/fpvObjectControles.js"></script>
 		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/threex.planets-master/threex.planets.js"></script>
+		<script type="text/javascript" src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/Physics/CollisionRayCaster.js"></script>
 		<!--<script>
 		
 		<script src="http://goodwinj14.github.io/Scratch3D_Beta/server/threeJScontrols/three.min.js"></script>
@@ -581,7 +582,7 @@
 			//TWEEN.update();
 		
 			
-			SCENE.simulate(); // run physics
+			//SCENE.simulate(); // run physics
 			if(objControls!=null){
 				objControls.update(clock.getDelta());
 			}
