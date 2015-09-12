@@ -341,15 +341,19 @@
 					}
 					var objOne = SCENECOMPONENTS.getShape(paramsArray[0]); //The object that will have a ray caster attached to it
 					var objTwo = SCENECOMPONENTS.getShape(paramsArray[1]); //The object that will
+					if(objOne!=null && objTwo!=null){
 					CollisionDetection.appendCasterTo(objOne, objTwo, paramsArray[0], paramsArray[1]);
+					}
 				}
 			}
 			if(commandKey == "ADDOBJECTTOCASTER"){
 				//If the object already has a caster attached to it 
 				//We add the object we wish to check for collisons with to that 
 				//Objects list in its collison object
-				console.log("ADDOBJECTTOCASTER CALLED");
-				CollisionDetection.addObjectToCaster(paramsArray[0], SCENECOMPONENTS.getShape(paramsArray[1]), paramsArray[1]);
+				var objOne = SCENECOMPONENTS.getShape(paramsArray[1]); //The object that will be adding to a already existing ray caster touch list
+				if(objOne!=null){
+				CollisionDetection.addObjectToCaster(paramsArray[0], objOne, paramsArray[1]);
+				}
 			}
 			if(commandKey == "BEGINCLICKRAYCASTIN"){
 			console.log("BEGINCLICKRAYCASTIN");

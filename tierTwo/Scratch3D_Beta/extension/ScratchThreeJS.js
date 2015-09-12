@@ -320,10 +320,12 @@
   }
 
   ext.isTouching = function(objectIdOne, ObjectIdTwo){
+
+    //Checks to see if the object has been created yet
+    if((charecters.indexOf(objectIdOne)>=0||shapes.indexOf(objectIdOne)>=0)&&(charecters.indexOf(ObjectIdTwo)>=0||shapes.indexOf(ObjectIdTwo)>=0)){
       if(raycasters[objectIdOne]!=null){
         if(raycasters[objectIdOne].indexOf(ObjectIdTwo)>=0){
           if(collisions.data[objectIdOne].indexOf(ObjectIdTwo)>=0){
-            console.log("WE HAVE COLLIDED");
            return true;
           }else{
             return false;
@@ -346,7 +348,11 @@
         raycasters[objectIdOne].push(ObjectIdTwo);
         return false;
       }
+  }else{
+    //returns false with if the object hasnt been created
+    return false;
   }
+}
 
 
 
