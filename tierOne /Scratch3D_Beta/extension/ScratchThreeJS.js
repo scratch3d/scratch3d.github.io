@@ -62,10 +62,19 @@
 	//Opens the window and 
 	//A wait block is required for this function do to the fact that we must wait for the entire 
 	//three.js file to load befor we can countinue exicuting our program.
-	ext.initWorld = function(scene, gravityBool, width, height, cameraType, callback) {
+	ext.initWorld = function(scene, width, height, callback) {
 		//Opens the three.js window
 		//win = window.open (liveURL, "", "width=window.width, height=window.height");
 		//Test URLS
+
+    //Clear data from past runs
+    collisions = null;
+    charecters = new Array();
+    materials = new Array();
+    shapes = new Array();
+    raycaster = new Array();
+    //--------------------------
+
 		window.addEventListener("message", receiveMessage, false);
 		
 		function receiveMessage()
@@ -113,7 +122,7 @@
 		//**//
 		
         setTimeout(function (){
-			var message = "INIT_"+scene+","+gravityBool+","+width+","+height;
+			var message = "INIT_"+scene+","+"Off"+","+width+","+height;
 			win.postMessage(message,liveURL);
 			callback(); //Calls back to Scaratch proggram to allow exicution flow to reStart once the page has been loaded
         }, 1000);
@@ -698,7 +707,7 @@
     var descriptor = {
         blocks: [
       // Block type, block name, function name, param1 default value, param2 default value
-      ['w', 'New 3D World %m.Scenes Gravity: %m.Toggle Width: %n Height: %n %m.Camera', 'initWorld', "Grass", "Off" , 10, 10 , "Camera Type",ext],
+      ['w', 'New 3D World %m.Scenes %n Height: ', 'initWorld', "Grass", 10, 10 ,ext],
       //['', 'Set Camera Controls  Up: %m.Keys Down: %m.Keys Left: %m.Keys Right: %m.Keys ', 'camControlsMove', 'w', 's','a','d'],
       ['', 'Add Camera Controls %m.CameraControls Move Speed: %n Look Speed: %n ', 'camControls','First Person', '200', '50'],
 			//The camera orbit block to allow users to orbit the camera around a given point
