@@ -707,7 +707,7 @@
     var descriptor = {
         blocks: [
       // Block type, block name, function name, param1 default value, param2 default value
-      ['w', 'New 3D World %m.Scenes %n Height: ', 'initWorld', "Grass", 10, 10 ,ext],
+      ['w', 'New 3D World %m.Scenes %n Height: %n Width: ', 'initWorld', "Grass", 10, 10 ,ext],
       //['', 'Set Camera Controls  Up: %m.Keys Down: %m.Keys Left: %m.Keys Right: %m.Keys ', 'camControlsMove', 'w', 's','a','d'],
       ['', 'Add Camera Controls %m.CameraControls Move Speed: %n Look Speed: %n ', 'camControls','First Person', '200', '50'],
 			//The camera orbit block to allow users to orbit the camera around a given point
