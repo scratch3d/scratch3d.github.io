@@ -12,16 +12,16 @@ CollisionDetection.lastTouching = "";
 
 CollisionDetection.appendCasterTo = function(casterObject, touchObject, casterID, touchID){
 	var casterObj = new CollisionDetection.RayCaster(casterObject, casterID, touchObject, touchID);
+	console.log("Add item to: ", raycasters);
 	raycasters[casterID] = casterObj;
 	raycastersIDS.push(casterID);
-	console.log("Append caster to: ",casterObject);
+
 }
 
 //Add a new object to a existering Ray Caster
 //Takes in the id of the caster object and the actual object to be added to it
 CollisionDetection.addObjectToCaster = function(casterObject, addObject, addObjectID){
 	addObject.name = addObjectID;
-	console.log("Add item to: ", raycasters);
 	if(raycasters[casterObject]!=null){
 		raycasters[casterObject].conntactObjects.push(addObject);
 		console.log("Ray Caster Added new ", raycasters[casterObject].conntactObjects);
@@ -58,6 +58,11 @@ CollisionDetection.RayCaster = function(caster, casterID, touch, touchID){
 	touch.name = touchID;
 	console.log("Caster Name: ", caster);
 	caster.name = casterID;
+
+	//NewlyAdded
+	caster.geometry.computeBoundingSphere();
+	//
+
 	//Boolean value to check if object was touching on last update
 	this.wasTouchingLast = false;
 	this.isTouching = [];
@@ -70,15 +75,36 @@ CollisionDetection.RayCaster = function(caster, casterID, touch, touchID){
 	this.name = casterID;
 	//The actual ray caster for this object
 	this.caster = new THREE.Raycaster();
-	this.caster.far = 32;
+	this.caster.far = .21;
 	//The rays that will be projected from the origin point when we test for colisions
-	this.rays = this.mesh.geometry.vertices;
+	this.rays = [
+	  new THREE.Vector3(1, 0, 0),
+      new THREE.Vector3(-1, 0, 0),
+      new THREE.Vector3(0, 1, 0),
+      new THREE.Vector3(0, -1, 0),
+      new THREE.Vector3(0, 0, 1),
+      new THREE.Vector3(0, 0, -1)
+      ];
+
+      this.raysPosition = [];
+      if(caster.geometry.vertices.length>100){
+      for (var i = caster.geometry.vertices.length - 1; i-4 >= 0; i-=4) {
+      	this.raysPosition.push(caster.geometry.vertices[i]);
+      };
+  	}else{
+  		this.raysPosition = caster.geometry.vertices;
+  		console.log("Rays Postion: Else was called ");
+  	}
+
+      
 	//Sets the rays to the caster
 
 	this.CollisionCheck = function(){
 		this.isTouching = [];
-		for (var i = this.rays.length - 1; i >= 0; i--) {
-			this.caster.set(this.mesh.position, this.rays[i]);
+		for (var i = this.raysPosition.length - 1; i >= 0; i--) {
+			for(var g = this.rays.length - 1; g >= 0; g--){
+			this.caster.set(this.raysPosition[i], this.rays[g]);
+
 			var touching = this.caster.intersectObjects(this.conntactObjects);
 			//console.log("Ray castre return values",touching);
 			for (var j = touching.length - 1; j >= 0; j--) {
@@ -87,6 +113,8 @@ CollisionDetection.RayCaster = function(caster, casterID, touch, touchID){
 					this.isTouching.push(touching[j].object.name);
 				}
 			};
+			}
+			
 		};
 			
 	}
