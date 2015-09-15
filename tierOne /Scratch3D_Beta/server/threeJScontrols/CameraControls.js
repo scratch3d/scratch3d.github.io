@@ -61,11 +61,11 @@ CAMERACONTROLS.move = function(direction, steps, camera){
 		camera.position.x = (camera.position.x + steps);
 	}if(direction=="Up"){
 	camera.position.y = (camera.position.y + steps);
-	console.log(camera.position.y);
 	}if(direction=="Down"){
 	camera.position.y = (camera.position.y - steps);
 	}if(direction=="Forward"){
 	camera.position.z = (camera.position.z - steps);
+	console.log(camera.position.z);
 	}if(direction=="Back"){
 	camera.position.z = (camera.position.z + steps);
 	}
