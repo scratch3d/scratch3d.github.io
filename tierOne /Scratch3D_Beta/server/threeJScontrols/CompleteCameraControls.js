@@ -531,6 +531,7 @@ THREE.CompleteCameraControls = function ( object, domElement ) {
 		document.removeEventListener( 'mouseup', mouseup );
 		_this.dispatchEvent( endEvent );
 	}else if(_this.FirstPersonControls){
+		console.log("Mouse Up Called");
 		event.preventDefault();
 		event.stopPropagation();
 
