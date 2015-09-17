@@ -518,7 +518,7 @@ THREE.CompleteCameraControls = function ( object, domElement ) {
 	}
 
 	function mouseup( event ) {
-
+		console.log("Mouse Up Called");
 	if(_this.TrackballControls){
 		if ( _this.enabled === false ) return;
 
@@ -531,7 +531,7 @@ THREE.CompleteCameraControls = function ( object, domElement ) {
 		document.removeEventListener( 'mouseup', mouseup );
 		_this.dispatchEvent( endEvent );
 	}else if(_this.FirstPersonControls){
-		console.log("Mouse Up Called");
+		console.log("Mouse Up Called First Call");
 		event.preventDefault();
 		event.stopPropagation();
 
