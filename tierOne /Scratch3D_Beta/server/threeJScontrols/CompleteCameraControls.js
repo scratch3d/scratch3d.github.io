@@ -805,5 +805,5 @@ THREE.CompleteCameraControls = function ( object, domElement ) {
 
 };
 
-THREE.TrackballControls.prototype = Object.create( THREE.EventDispatcher.prototype );
+THREE.CompleteCameraControls.prototype = Object.create( THREE.EventDispatcher.prototype );
 
