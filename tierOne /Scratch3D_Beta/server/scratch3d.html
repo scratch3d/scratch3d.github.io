@@ -168,7 +168,19 @@
 			//CAMERAMOVE command tag is associated with Move Camera Block 
 			if(commandKey == "CAMERAMOVE"){
 				if(CAMERA!=null){
-					CAMERACONTROLS.move(paramsArray[0], parseFloat(paramsArray[1]),CAMERA);
+					if(paramsArray[0]=="Left"){
+					controls.move_X_Distance = -parseFloat(paramsArray[1]);
+					} else if(paramsArray[0]=="Right"){
+					controls.move_X_Distance = parseFloat(paramsArray[1]);
+					} else if(paramsArray[0]=="Up"){
+					controls.move_Y_Distance = parseFloat(paramsArray[1]);
+					} else if(paramsArray[0]=="Down"){
+					controls.move_Y_Distance = -parseFloat(paramsArray[1]);
+					} else if(paramsArray[0]=="Forward"){
+					controls.move_Z_Distance = -parseFloat(paramsArray[1]);
+					} else if(paramsArray[0]=="Back"){
+					controls.move_Z_Distance = parseFloat(paramsArray[1]);
+					}
 			}
 			}
 			//CAMERAFOLLOW command tag is associated with Move Camera Block 
