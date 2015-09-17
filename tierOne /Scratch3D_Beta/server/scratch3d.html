@@ -213,7 +213,7 @@
 						controls.keys = [ 65, 83, 68 ];
 						controls.addEventListener( 'change', RENDERER );
 					}else if(paramsArray[0]=='First Person'){
-						controls = new THREE.CompleteCameraControls(CAMERA,this);
+						controls = new THREE.CompleteCameraControls(CAMERA);
 						controls.movementSpeed = paramsArray[1];
 						controls.FirstPersonControls = true;
 						controls.TrackballControls = false;
