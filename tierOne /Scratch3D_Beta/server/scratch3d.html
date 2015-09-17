@@ -200,7 +200,7 @@
 				if(controls==null){
 					if(paramsArray[0]=='Mouse/Trackball'){
 						TrackBallControls = true;
-						controls = new THREE.CompleteCameraControls(CAMERA);
+						controls = new THREE.CompleteCameraControls(CAMERA,this);
 						controls.TrackballControls = true;
 						controls.FirstPersonControls = false;
 						controls.rotateSpeed = 1.0;
@@ -213,7 +213,7 @@
 						controls.keys = [ 65, 83, 68 ];
 						controls.addEventListener( 'change', RENDERER );
 					}else if(paramsArray[0]=='First Person'){
-						controls = new THREE.CompleteCameraControls(CAMERA);
+						controls = new THREE.CompleteCameraControls(CAMERA,this);
 						controls.movementSpeed = paramsArray[1];
 						controls.FirstPersonControls = true;
 						controls.TrackballControls = false;
