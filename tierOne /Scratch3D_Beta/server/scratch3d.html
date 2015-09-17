@@ -188,7 +188,9 @@
 				if(controls==null){
 					if(paramsArray[0]=='Mouse/Trackball'){
 						TrackBallControls = true;
-						controls = new THREE.TrackballControls(CAMERA);
+						controls = new THREE.CompleteCameraControls(CAMERA);
+						controls.TrackballControls = true;
+						controls.FirstPersonControls = false;
 						controls.rotateSpeed = 1.0;
 						controls.zoomSpeed = 1.2;
 						controls.panSpeed = 0.8;
@@ -199,11 +201,13 @@
 						controls.keys = [ 65, 83, 68 ];
 						controls.addEventListener( 'change', RENDERER );
 					}else if(paramsArray[0]=='First Person'){
-						controls = new THREE.FirstPersonControls(CAMERA);
+						controls = new THREE.CompleteCameraControls(CAMERA);
+						controls.movementSpeed = paramsArray[1];
+						ccontrols.FirstPersonControls = true;
+						controls.TrackballControls = false;
 						controls.movementSpeed = paramsArray[1];
 						controls.lookSpeed = paramsArray[2];
 						CAMERA.fov = 15;
-						CAMERA.position.y = 1; 
 					}
 				}
 			}
