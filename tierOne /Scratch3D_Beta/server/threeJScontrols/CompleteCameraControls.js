@@ -531,7 +531,21 @@ THREE.CompleteCameraControls = function ( object, domElement ) {
 		document.removeEventListener( 'mouseup', mouseup );
 		_this.dispatchEvent( endEvent );
 	}else if(_this.FirstPersonControls){
+		event.preventDefault();
+		event.stopPropagation();
 
+		if ( this.activeLook ) {
+
+			switch ( event.button ) {
+
+				case 0: this.moveForward = false; break;
+				case 2: this.moveBackward = false; break;
+
+			}
+
+		}
+
+		this.mouseDragOn = false;
 	}
 
 	}
