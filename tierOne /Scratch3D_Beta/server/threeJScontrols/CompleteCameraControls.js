@@ -457,7 +457,7 @@ THREE.CompleteCameraControls = function ( object, domElement ) {
 		//First Person On Mouse Down
 		if ( this.domElement !== document ) {
 
-			_this.domElement.focus();
+			//_this.domElement.focus();
 
 		}
 
