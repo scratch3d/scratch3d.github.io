@@ -6,7 +6,7 @@
  
  */
 
-THREE.FirstPersonControls = function ( object, domElement ) {
+THREE.CompleteCameraControls = function ( object, domElement ) {
 
 	this.object = object;
 	this.target = new THREE.Vector3( 0, 0, 0 );
