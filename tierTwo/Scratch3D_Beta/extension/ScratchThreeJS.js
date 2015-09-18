@@ -13,7 +13,7 @@
 	var ctx = null;
 	var lastKeyEvent = null;
   // Lets us know if we are opening a new window and a new sesion has begon
-  var newSession = true;
+  var newSession = false;
 
   //This obect will hold all of the collisons data returned from the raycaster
   //it holds objects that where previously touch on the last update of the raycaster
