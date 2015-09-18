@@ -518,7 +518,7 @@ THREE.CompleteCameraControls = function ( object, domElement ) {
 	}
 
 	function mouseup( event ) {
-		console.log("Mouse Up Called");
+		//console.log("Mouse Up Called");
 	if(_this.TrackballControls){
 		if ( _this.enabled === false ) return;
 
@@ -770,7 +770,7 @@ THREE.CompleteCameraControls = function ( object, domElement ) {
 		targetPosition.y = position.y + 100 * Math.cos( this.phi );
 		targetPosition.z = position.z + 100 * Math.sin( this.phi ) * Math.sin( this.theta );
 
-		this.object.lookAt( targetPosition );
+		_this.object.lookAt( targetPosition );
 	}
 
 	};
