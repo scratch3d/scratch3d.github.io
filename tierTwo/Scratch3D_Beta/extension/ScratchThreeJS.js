@@ -13,7 +13,7 @@
 	var ctx = null;
 	var lastKeyEvent = null;
   // Lets us know if we are opening a new window and a new sesion has begon
-  var newSession = false;
+  var newSession = true;
 
   //This obect will hold all of the collisons data returned from the raycaster
   //it holds objects that where previously touch on the last update of the raycaster
@@ -27,7 +27,7 @@
 
 
   //Tells if the user has succesfully logged in yetor not
-  var loggedIN = false;
+  var loggedIN = true;
   /*
   **Mouse Controles
   */
