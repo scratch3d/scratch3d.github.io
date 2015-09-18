@@ -792,9 +792,9 @@ THREE.CompleteCameraControls = function ( object, domElement ) {
 	this.domElement.addEventListener( 'contextmenu', function ( event ) { event.preventDefault(); }, false );
 
 	this.domElement.addEventListener( 'mousedown', mousedown, false );
-	this.domElement.addEventListener( 'mouseup', bind( this, this.onMouseUp ), false );
-	this.domElement.addEventListener( 'mousemove', bind( this, this.onMouseMove ), false );
-	
+	this.domElement.addEventListener( 'mouseup', onMouseUp, false );
+	this.domElement.addEventListener( 'mousemove', onMouseMove, false );
+
 	this.domElement.addEventListener( 'mousewheel', mousewheel, false );
 	this.domElement.addEventListener( 'DOMMouseScroll', mousewheel, false ); // firefox
 
