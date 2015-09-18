@@ -213,13 +213,11 @@
 						controls.keys = [ 65, 83, 68 ];
 						controls.addEventListener( 'change', RENDERER );
 					}else if(paramsArray[0]=='First Person'){
-						controls = new THREE.CompleteCameraControls(CAMERA);
-						controls.movementSpeed = paramsArray[1];
-						controls.FirstPersonControls = true;
-						controls.TrackballControls = false;
+						controls = new THREE.FirstPersonControls(CAMERA);
 						controls.movementSpeed = paramsArray[1];
 						controls.lookSpeed = paramsArray[2];
 						CAMERA.fov = 15;
+						CAMERA.position.y = 1; 
 					}
 				}
 			}
