@@ -660,6 +660,7 @@ THREE.CompleteCameraControls = function ( object, domElement ) {
 
 	}
 
+	var count = 0;
 	//Called When the code is first run
 	this.update = function (delta ) {
 
@@ -766,15 +767,12 @@ THREE.CompleteCameraControls = function ( object, domElement ) {
 			_this.phi = THREE.Math.mapLinear( _this.phi, 0, Math.PI, _this.verticalMin, _this.verticalMax );
 		}
 
-		targetPosition.x = position.x + 100 * Math.sin( this.phi ) * Math.cos( this.theta );
-		targetPosition.y = position.y + 100 * Math.cos( this.phi );
-		targetPosition.z = position.z + 100 * Math.sin( this.phi ) * Math.sin( this.theta );
+		targetPosition.x = position.x + 100 * Math.sin( _this.phi ) * Math.cos( _this.theta );
+		targetPosition.y = position.y + 100 * Math.cos( _this.phi );
+		targetPosition.z = position.z + 100 * Math.sin( _this.phi ) * Math.sin( _this.theta );
 
-		targetPosition.x =  0.0;
-		_this.object.rotation.y = _this.object.rotation.y + 0.1;
-		targetPosition.z = 0.0;
-		console.log("targetPosition", targetPosition);
-		//_this.object.lookAt( targetPosition );
+		//console.log("targetPosition", targetPosition);
+		_this.object.lookAt( targetPosition );
 		//console.log("targetPosition", targetPosition);
 		//console.log("Object", _this.object);
 	}
