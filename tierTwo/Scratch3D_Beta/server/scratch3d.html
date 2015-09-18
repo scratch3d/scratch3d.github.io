@@ -479,7 +479,7 @@
 			if(sceneStyle[0]=="Grid"){
 			var light	= new THREE.AmbientLight( 0x020202 );
 			SCENE.add( light );
-			SCENESTYLES.gridSize = parseInt(sceneStyle[2])*parseInt(sceneStyle[3]);
+			SCENESTYLES.gridSize = parseInt(sceneStyle[1])*parseInt(sceneStyle[2]);
 			var plane = SCENESTYLES.GRID();
 			SCENE.add(plane);
 			}
@@ -488,7 +488,7 @@
 			var light	= new THREE.AmbientLight( 0x020202 );
 			SCENE.add( light );
 
-			var starFeild = THREEx.Planets.createStarfield(parseInt(sceneStyle[2]));
+			var starFeild = THREEx.Planets.createStarfield(parseInt(sceneStyle[1]));
 			SCENE.add(starFeild);
 			}
 
@@ -542,7 +542,7 @@
     		repeatY     : sceneStyle[2],    // the number of time the texture is repeated in Y, default to 1
 			});
 			//Scales Mesh resulting in a smother grass look gets the average between width and height (((parseInt(sceneStyle[1])+(parseInt(sceneStyle[1]))/2)
-			groundMesh.scale.multiplyScalar((parseInt(sceneStyle[2])+parseInt(sceneStyle[2]))/2);
+			groundMesh.scale.multiplyScalar((parseInt(sceneStyle[1])+parseInt(sceneStyle[2]))/2);
 			SCENE.add(groundMesh);
 			}
 			
