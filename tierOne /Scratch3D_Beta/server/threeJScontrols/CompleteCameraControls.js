@@ -501,9 +501,9 @@ THREE.CompleteCameraControls = function ( object, domElement ) {
 
 		} 
 	}else if(_this.FirstPersonControls){
-		console.log("Mouse Move Called");
+		
 		if ( _this.domElement === document ) {
-
+			console.log("Mouse Move Called");
 			_this.mouseX = event.pageX - _this.viewHalfX;
 			_this.mouseY = event.pageY - _this.viewHalfY;
 
