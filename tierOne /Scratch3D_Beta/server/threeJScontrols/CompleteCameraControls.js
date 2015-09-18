@@ -771,7 +771,7 @@ THREE.CompleteCameraControls = function ( object, domElement ) {
 		targetPosition.z = position.z + 100 * Math.sin( this.phi ) * Math.sin( this.theta );
 
 		targetPosition.x =  0.0;
-		targetPosition.y = targetPosition.y + 0.01;
+		targetPosition.y = targetPosition.y + 0.1;
 		targetPosition.z = 0.0;
 		_this.object.lookAt( targetPosition );
 		//console.log("targetPosition", targetPosition);
