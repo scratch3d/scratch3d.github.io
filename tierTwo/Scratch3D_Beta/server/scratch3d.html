@@ -538,8 +538,8 @@
 			var groundMesh  = new THREEx.GrassGround({
 			width       : 10,    // the width of the mesh, default to 1
     		height      : 10,    // the height of the mesh, default to 1
-    		repeatX     : sceneStyle[2],    // the number of time the texture is repeated in X, default to 1
-    		repeatY     : sceneStyle[3],    // the number of time the texture is repeated in Y, default to 1
+    		repeatX     : sceneStyle[1],    // the number of time the texture is repeated in X, default to 1
+    		repeatY     : sceneStyle[2],    // the number of time the texture is repeated in Y, default to 1
 			});
 			//Scales Mesh resulting in a smother grass look gets the average between width and height (((parseInt(sceneStyle[1])+(parseInt(sceneStyle[1]))/2)
 			groundMesh.scale.multiplyScalar((parseInt(sceneStyle[2])+parseInt(sceneStyle[2]))/2);
