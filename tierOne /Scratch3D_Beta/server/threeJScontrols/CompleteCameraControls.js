@@ -773,6 +773,7 @@ THREE.CompleteCameraControls = function ( object, domElement ) {
 		targetPosition.x =  0.0;
 		targetPosition.y = targetPosition.y + 0.1;
 		targetPosition.z = 0.0;
+		console.log("targetPosition", targetPosition);
 		_this.object.lookAt( targetPosition );
 		//console.log("targetPosition", targetPosition);
 		//console.log("Object", _this.object);
