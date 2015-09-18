@@ -25,6 +25,9 @@
   //and all the objects that raycaster is checking
   var raycasters = [];
 
+
+  //Tells if the user has succesfully logged in yetor not
+  var loggedIN = false;
   /*
   **Mouse Controles
   */
@@ -67,6 +70,10 @@
 		//win = window.open (liveURL, "", "width=window.width, height=window.height");
 		//Test URLS
 
+    if(!loggedIN){
+      logginWindow = window.open ("http://scratch3d.github.io/tierTwo/Scratch3D_Beta/Scratch3d%20Login%20Window/index.html");  
+    }
+    else{
     //Clear data from past runs
     collisions = null;
     charecters = new Array();
@@ -126,6 +133,8 @@
 			win.postMessage(message,liveURL);
 			callback(); //Calls back to Scaratch proggram to allow exicution flow to reStart once the page has been loaded
         }, 1000);
+
+    }
 	};
 
 	
