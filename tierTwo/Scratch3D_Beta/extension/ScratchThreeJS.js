@@ -797,7 +797,6 @@
     };
 
     // Register the extension
-   var myWindow = window.open("", "myWindow", "width=200, height=100");
    ScratchExtensions.register('Scratch Three JS', descriptor, ext);
 })({});
 
