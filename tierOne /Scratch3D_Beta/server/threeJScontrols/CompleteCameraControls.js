@@ -535,12 +535,12 @@ THREE.CompleteCameraControls = function ( object, domElement ) {
 		event.preventDefault();
 		event.stopPropagation();
 
-		if ( this.activeLook ) {
+		if ( _this.activeLook ) {
 
 			switch ( event.button ) {
 
-				case 0: this.moveForward = false; break;
-				case 2: this.moveBackward = false; break;
+				case 0: _this.moveForward = false; break;
+				case 2: _this.moveBackward = false; break;
 
 			}
 
