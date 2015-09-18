@@ -501,7 +501,7 @@ THREE.CompleteCameraControls = function ( object, domElement ) {
 
 		} 
 	}else if(_this.FirstPersonControls){
-
+		console.log("Mouse Move Called");
 		if ( _this.domElement === document ) {
 
 			_this.mouseX = event.pageX - _this.viewHalfX;
@@ -531,7 +531,6 @@ THREE.CompleteCameraControls = function ( object, domElement ) {
 		document.removeEventListener( 'mouseup', mouseup );
 		_this.dispatchEvent( endEvent );
 	}else if(_this.FirstPersonControls){
-		console.log("Mouse Up Called First Call");
 		event.preventDefault();
 		event.stopPropagation();
 
