@@ -150,9 +150,11 @@
         setTimeout(function (){
 			var message = "INIT_"+scene+","+width+","+height;
       console.log("message init: ", message);
+      if(!loggedIN){
       logginWindow.postMessage("message", "http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html");
-      console.log("message Sent");
+    }else{
 			win.postMessage(message,liveURL);
+    }
 			callback(); //Calls back to Scaratch proggram to allow exicution flow to reStart once the page has been loaded
         }, 1000);
 
