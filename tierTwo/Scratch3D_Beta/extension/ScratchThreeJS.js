@@ -152,7 +152,6 @@ window.addEventListener("message", receiveMessage, false);
 			var message = "INIT_"+scene+","+width+","+height;
       console.log("message init: ", message);
       if(!loggedIN){
-      logginWindow.postMessage("message", "http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html");
     }else{
 			win.postMessage(message,liveURL);
     }
@@ -822,6 +821,16 @@ window.addEventListener("message", receiveMessage, false);
 
     // Register the extension
    logginWindow = window.open ("http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html", "", "width=window.width, height=window.height");  
+   function startTimer () {
+    timer.start();
+    setTimeout(stopTimer,1000);
+}
+
+function stopTimer () {
+    console.log("message set via setTimeout");
+    logginWindow.postMessage("message", "http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html");
+    timer.stop();
+}
    ScratchExtensions.register('Scratch Three JS', descriptor, ext);
 })({});
 
