@@ -113,21 +113,28 @@
     	}
     if(!loggedIN){
       logginWindow = window.open ("http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html#");  
+      if(logginWindow==null){
+      var browserData = navigator.userAgent;
+      if(browserData.indexOf("Safari")>-1){
+      alert("This extension must open in a separate window. \rTo run please enable pop-ups from this site. \rTo enable PopUps: \rClick Safari, \rClick Preferences, \rClick security, \rUncheck Block pop-up windows, \rThen refresh page. ");
+      }
+    }
     }
     else{
 		win = window.open (liveURL, "", "width=window.width, height=window.height");
+    if(win==null){
+      var browserData = navigator.userAgent;
+      if(browserData.indexOf("Safari")>-1){
+      alert("This extension must open in a separate window. \rTo run please enable pop-ups from this site. \rTo enable PopUps: \rClick Safari, \rClick Preferences, \rClick security, \rUncheck Block pop-up windows, \rThen refresh page. ");
+      }
+    }
   }
     //newSession = false;
 		/*
 		**Checks Browser Version in win returns null
 		**
 		*/
-		if(win==null){
-			var browserData = navigator.userAgent;
-			if(browserData.indexOf("Safari")>-1){
-			alert("This extension must open in a separate window. \rTo run please enable pop-ups from this site. \rTo enable PopUps: \rClick Safari, \rClick Preferences, \rClick security, \rUncheck Block pop-up windows, \rThen refresh page. ");
-			}
-		}
+		
 		//**//
 		
         setTimeout(function (){
