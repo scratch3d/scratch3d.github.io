@@ -119,7 +119,7 @@
         //Sends message to login window.
         logginWindow.focus()
         logginWindow.onload = function() {
-          var div = win.document.createElement('div')
+          var div = logginWindow.document.createElement('div')
           div.innerHTML = 'Welcome into the future!'
           div.style.fontSize = '30px'
           logginWindow.document.body.insertBefore( div, logginWindow.document.body.firstChild )
