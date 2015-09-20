@@ -117,7 +117,7 @@
     if(!loggedIN){
       logginWindow = window.open ("http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html");  
         //Sends message to login window.
-        logginWindow.focus()
+        logginWindow.focus();
         logginWindow.onload = function() {
           var div = logginWindow.document.createElement('div')
           div.innerHTML = 'Welcome into the future!'
