@@ -108,11 +108,16 @@
           };
           collisions = new Object({data: collisionData});
           console.log("collisions",collisions);
+        }else if(commandKey=="LOGGEDIN"){
+          loggedIN = true;
+          console.log("Logged In");
         }
         }
     	}
     if(!loggedIN){
       logginWindow = window.open ("http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html#");  
+        //Sends message to login window.
+      win.postMessage(message, "http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html#");
       if(logginWindow==null){
       var browserData = navigator.userAgent;
       if(browserData.indexOf("Safari")>-1){
