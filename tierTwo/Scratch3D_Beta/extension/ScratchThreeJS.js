@@ -8,7 +8,18 @@
   //ga('send', 'pageview');
 
 window.addEventListener("message", receiveMessage, false);
-    
+      //Tells if the user has succesfully logged in yetor not
+  var loggedIN = false;
+  var mouseData = null;
+  var lastKeyEvent = null;
+
+  //This obect will hold all of the collisons data returned from the raycaster
+  //it holds objects that where previously touch on the last update of the raycaster
+  //Every time the raycaster updates it will send a new object holding the information
+  //of which objects our touching. If the scene elements are not in this object then 
+  //they are not touching.
+  var collisions = null;
+  
     function receiveMessage()
     {
       //The command key is experes by KEYNAME_ the key name allows use to know what the message 
@@ -47,27 +58,21 @@ window.addEventListener("message", receiveMessage, false);
 	var win = null;
 	var canvas = null;
 	var ctx = null;
-	var lastKeyEvent = null;
+
   // Lets us know if we are opening a new window and a new sesion has begon
   var newSession = true;
 
-  //This obect will hold all of the collisons data returned from the raycaster
-  //it holds objects that where previously touch on the last update of the raycaster
-  //Every time the raycaster updates it will send a new object holding the information
-  //of which objects our touching. If the scene elements are not in this object then 
-  //they are not touching.
-  var collisions = null;
+
   //A list of all the objects that currently have raycasters connected to them
   //and all the objects that raycaster is checking
   var raycasters = [];
 
 
-  //Tells if the user has succesfully logged in yetor not
-  var loggedIN = false;
+
   /*
   **Mouse Controles
   */
-  var mouseData = null;
+
   var getMouseData = false;
   var getMousePostion = false;
   var getMouseClicked = false;
