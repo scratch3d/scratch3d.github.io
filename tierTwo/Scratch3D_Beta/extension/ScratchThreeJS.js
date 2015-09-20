@@ -118,7 +118,8 @@
     if(!loggedIN){
       logginWindow = window.open ("http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html", "", "width=window.width, height=window.height");  
         //Sends message to login window.
-        
+        logginWindow.postMessage("message", "http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html");
+        console.log("message Sent");
 
         logginWindow.focus();
         logginWindow.onload = function() {
