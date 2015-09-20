@@ -27,7 +27,7 @@
 
 
   //Tells if the user has succesfully logged in yetor not
-  var loggedIN = true;
+  var loggedIN = false;
   /*
   **Mouse Controles
   */
@@ -70,10 +70,7 @@
 		//win = window.open (liveURL, "", "width=window.width, height=window.height");
 		//Test URLS
 
-    if(!loggedIN){
-      logginWindow = window.open ("http://scratch3d.github.io/tierTwo/Scratch3D_Beta/Scratch3d%20Login%20Window/index.html");  
-    }
-    else{
+    
     //Clear data from past runs
     collisions = null;
     charecters = new Array();
@@ -114,7 +111,12 @@
         }
         }
     	}
+    if(!loggedIN){
+      logginWindow = window.open ("http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html#");  
+    }
+    else{
 		win = window.open (liveURL, "", "width=window.width, height=window.height");
+  }
     //newSession = false;
 		/*
 		**Checks Browser Version in win returns null
@@ -135,7 +137,6 @@
 			callback(); //Calls back to Scaratch proggram to allow exicution flow to reStart once the page has been loaded
         }, 1000);
 
-    }
 	};
 
 	
@@ -723,7 +724,7 @@
     var descriptor = {
         blocks: [
       // Block type, block name, function name, param1 default value, param2 default value
-      ['w', 'New 3D World %m.Scenes Width: %n Height: %n', 'initWorld', "Grass", 10, 10 ,ext],
+      ['w', 'New 3D World %m.Scenes Width: %n Height: %n', 'initWorld', "Grass", 10, 10,ext],
       //['', 'Set Camera Controls  Up: %m.Keys Down: %m.Keys Left: %m.Keys Right: %m.Keys ', 'camControlsMove', 'w', 's','a','d'],
       ['', 'Add Camera Controls %m.CameraControls Move Speed: %n Look Speed: %n ', 'camControls','First Person', '10', '2'],
 			//The camera orbit block to allow users to orbit the camera around a given point
