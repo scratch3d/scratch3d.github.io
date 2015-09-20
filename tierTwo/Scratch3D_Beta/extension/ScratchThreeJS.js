@@ -7,6 +7,42 @@
   //ga('create', 'UA-66361143-1', 'auto');
   //ga('send', 'pageview');
 
+window.addEventListener("message", receiveMessage, false);
+    
+    function receiveMessage()
+    {
+      //The command key is experes by KEYNAME_ the key name allows use to know what the message 
+      //Type is.
+      //Retrevies the command Key of the message denoting which function to call
+      var commandKey = null;
+
+      if(event.data.eventType!=null){
+     if(event.data.eventType=="MOUSEEVENT"){
+         mouseData = event.data;
+        }
+      }else{
+      commandKey = event.data.split("_")[0];
+      //the actual data to be procesed by the extention
+      var data = event.data.split("_")[1];
+        if(commandKey=="KEYSTROKE"){
+        lastKeyEvent = data;
+        }else if(commandKey=="RAYCASTTOUCH"){
+          var collisionData = [];
+          var objSpilt = data.split(";");
+          console.log("objSpilt ;", objSpilt);
+          for (var i = objSpilt.length - 2; i >= 0; i--) {
+            temp = objSpilt[i].split(":");
+            collisionData[temp[0]] = temp[1].split(",");
+          };
+          collisions = new Object({data: collisionData});
+          console.log("collisions",collisions);
+        }else if(commandKey=="LOGGEDIN"){
+          loggedIN = true;
+          console.log("Logged In");
+        }
+        }
+      }
+
 (function(ext) {
 	var win = null;
 	var canvas = null;
@@ -80,41 +116,7 @@
     raycaster = new Array();
     //--------------------------
     
-		window.addEventListener("message", receiveMessage, false);
 		
-		function receiveMessage()
-		{
-      //The command key is experes by KEYNAME_ the key name allows use to know what the message 
-      //Type is.
-      //Retrevies the command Key of the message denoting which function to call
-      var commandKey = null;
-
-      if(event.data.eventType!=null){
-     if(event.data.eventType=="MOUSEEVENT"){
-         mouseData = event.data;
-        }
-      }else{
-      commandKey = event.data.split("_")[0];
-      //the actual data to be procesed by the extention
-      var data = event.data.split("_")[1];
-        if(commandKey=="KEYSTROKE"){
-  			lastKeyEvent = data;
-        }else if(commandKey=="RAYCASTTOUCH"){
-          var collisionData = [];
-          var objSpilt = data.split(";");
-          console.log("objSpilt ;", objSpilt);
-          for (var i = objSpilt.length - 2; i >= 0; i--) {
-            temp = objSpilt[i].split(":");
-            collisionData[temp[0]] = temp[1].split(",");
-          };
-          collisions = new Object({data: collisionData});
-          console.log("collisions",collisions);
-        }else if(commandKey=="LOGGEDIN"){
-          loggedIN = true;
-          console.log("Logged In");
-        }
-        }
-    	}
     if(!loggedIN){
       logginWindow = window.open ("http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html", "", "width=window.width, height=window.height");  
         //Sends message to login window.
