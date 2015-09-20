@@ -72,6 +72,7 @@
 
     
     //Clear data from past runs
+    var logginWindow = null;
     collisions = null;
     charecters = new Array();
     materials = new Array();
@@ -115,14 +116,15 @@
         }
     	}
     if(!loggedIN){
-      logginWindow = window.open ("http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html");  
+      logginWindow = window.open ("http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html", "", "width=window.width, height=window.height");  
         //Sends message to login window.
+        
+
         logginWindow.focus();
         logginWindow.onload = function() {
-          var div = logginWindow.document.createElement('div')
-          div.innerHTML = 'Welcome into the future!'
-          div.style.fontSize = '30px'
-          logginWindow.document.body.insertBefore( div, logginWindow.document.body.firstChild )
+        var message = "windowInit";
+        logginWindow.postMessage(message, "http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html");
+          console.log("message Sent");
         }
         /*logginWindow.onload = function() {
           logginWindow.postMessage("windowInit", "http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html");
