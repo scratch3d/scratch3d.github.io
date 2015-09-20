@@ -117,10 +117,17 @@
     if(!loggedIN){
       logginWindow = window.open ("http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html");  
         //Sends message to login window.
+        logginWindow.focus()
         logginWindow.onload = function() {
+          var div = win.document.createElement('div')
+          div.innerHTML = 'Welcome into the future!'
+          div.style.fontSize = '30px'
+          logginWindow.document.body.insertBefore( div, logginWindow.document.body.firstChild )
+        }
+        /*logginWindow.onload = function() {
           logginWindow.postMessage("windowInit", "http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html");
           console.log("message Sent");
-        };
+        };*/
       if(logginWindow==null){
       var browserData = navigator.userAgent;
       if(browserData.indexOf("Safari")>-1){
