@@ -19,7 +19,7 @@ window.addEventListener("message", receiveMessage, false);
   //of which objects our touching. If the scene elements are not in this object then 
   //they are not touching.
   var collisions = null;
-  
+
     function receiveMessage()
     {
       //The command key is experes by KEYNAME_ the key name allows use to know what the message 
@@ -123,13 +123,7 @@ window.addEventListener("message", receiveMessage, false);
     
 		
     if(!loggedIN){
-      logginWindow = window.open ("http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html", "", "width=window.width, height=window.height");  
-        //Sends message to login window.
-        
-        /*logginWindow.onload = function() {
-          logginWindow.postMessage("windowInit", "http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html");
-          console.log("message Sent");
-        };*/
+
       if(logginWindow==null){
       var browserData = navigator.userAgent;
       if(browserData.indexOf("Safari")>-1){
@@ -827,6 +821,7 @@ window.addEventListener("message", receiveMessage, false);
     };
 
     // Register the extension
+   logginWindow = window.open ("http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html", "", "width=window.width, height=window.height");  
    ScratchExtensions.register('Scratch Three JS', descriptor, ext);
 })({});
 
