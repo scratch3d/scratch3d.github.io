@@ -115,9 +115,12 @@
         }
     	}
     if(!loggedIN){
-      logginWindow = window.open ("http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html#");  
+      logginWindow = window.open ("http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html");  
         //Sends message to login window.
-      logginWindow.postMessage("windowInit", "http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html#");
+        logginWindow.onload = function() {
+          logginWindow.postMessage("windowInit", "http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html");
+          console.log("message Sent");
+        };
       if(logginWindow==null){
       var browserData = navigator.userAgent;
       if(browserData.indexOf("Safari")>-1){
