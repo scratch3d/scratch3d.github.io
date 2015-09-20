@@ -123,7 +123,7 @@
         logginWindow.focus();
         logginWindow.onload = function() {
         var message = "windowInit";
-        logginWindow.postMessage(message, "http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html");
+        //logginWindow.postMessage(message, "http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html");
           console.log("message Sent");
         }
         /*logginWindow.onload = function() {
