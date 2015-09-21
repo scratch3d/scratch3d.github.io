@@ -12,7 +12,8 @@ window.addEventListener("message", receiveMessage, false);
   var loggedIN = false;
   var mouseData = null;
   var lastKeyEvent = null;
-
+  var descriptor = null;
+  var extention = null;
   //This obect will hold all of the collisons data returned from the raycaster
   //it holds objects that where previously touch on the last update of the raycaster
   //Every time the raycaster updates it will send a new object holding the information
@@ -49,6 +50,7 @@ window.addEventListener("message", receiveMessage, false);
           console.log("collisions",collisions);
         }else if(commandKey=="LOGGEDIN"){
           loggedIN = true;
+          ScratchExtensions.register('Scratch Three JS', descriptor, ext);
           console.log("Logged In");
         }
         }
@@ -742,7 +744,7 @@ window.addEventListener("message", receiveMessage, false);
       }
     }
 	// Block and block menu descriptions
-    var descriptor = {
+    descriptor = {
         blocks: [
       // Block type, block name, function name, param1 default value, param2 default value
       ['w', 'New 3D World %m.Scenes Width: %n Height: %n', 'initWorld', "Grass", 10, 10,ext],
@@ -827,7 +829,7 @@ window.addEventListener("message", receiveMessage, false);
     window.clearTimeout(timeoutVariable);
     }
 
-   //ScratchExtensions.register('Scratch Three JS', descriptor, ext);
+  extention = ext; 
 })({});
 
 //Generates A random id key to go with a newly created object
