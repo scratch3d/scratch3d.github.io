@@ -831,7 +831,7 @@ window.addEventListener("message", receiveMessage, false);
     //logginWindow.postMessage("message", "http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html");
     window.clearTimeout(timeoutVariable);
   }
-}
+
 
   extention = ext; 
 })({});
