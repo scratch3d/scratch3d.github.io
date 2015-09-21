@@ -181,6 +181,8 @@ SCENECOMPONENTS.addText = function(text,size,font,x,y,z, SCENE){
         color: 0xdddddd
     });
     var textGeom = new THREE.TextGeometry( 'Hello World!', {
+    	size: size,
+		//height: height,
         font: 'gentilis', // Must be lowercase!
         weight: 'bold'
     });
