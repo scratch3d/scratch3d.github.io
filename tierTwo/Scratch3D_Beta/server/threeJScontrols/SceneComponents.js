@@ -177,32 +177,20 @@ SCENECOMPONENTS.addShape = function(shape, length, width, height, LocationX, Loc
 
 
 SCENECOMPONENTS.addText = function(text,size,font,x,y,z, SCENE){
-	textGeo = new THREE.TextGeometry( text, {
+	    var material = new THREE.MeshPhongMaterial({
+        color: 0xdddddd
+    });
+    var textGeom = new THREE.TextGeometry( 'Hello World!', {
+        font: 'your font name' // Must be lowercase!
+    });
+    var textMesh = new THREE.Mesh( textGeom, material );
 
-					size: size,
-					font: 'helvetiker_regular',
-					material: 0,
-					extrudeMaterial: 1
+    SCENE.add( textMesh );
 
-				});
-	material = new THREE.MeshFaceMaterial( [
-					new THREE.MeshPhongMaterial( { color: 0xffffff, shading: THREE.FlatShading } ), // front
-					new THREE.MeshPhongMaterial( { color: 0xffffff, shading: THREE.SmoothShading } ) // side
-				] );
-
-				textGeo.computeBoundingBox();
-				textGeo.computeVertexNormals();
-
-	textMesh1 = new THREE.Mesh( textGeo, material );
-
-				textMesh1.position.x = 0;
-				textMesh1.position.y = 0;
-				textMesh1.position.z = 0;
-
-				textMesh1.rotation.x = 0;
-				textMesh1.rotation.y = Math.PI * 2;
-
-				SCENE.add( textMesh1 );
+    // Do some optional calculations. This is only if you need to get the
+    // width of the generated text
+    textGeom.computeBoundingBox();
+    textGeom.textWidth = textGeom.boundingBox.max.x - textGeom.boundingBox.min.x;
 
 
 }
