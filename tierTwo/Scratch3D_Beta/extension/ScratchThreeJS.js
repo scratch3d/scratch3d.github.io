@@ -821,17 +821,13 @@ window.addEventListener("message", receiveMessage, false);
 
     // Register the extension
     login();
-   function login() {
     logginWindow = window.open ("http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html", "", "width=window.width, height=window.height");  
-    timer.start();
-    setTimeout(stopTimer,1000);
-}
-
-function stopTimer () {
-    console.log("message set via setTimeout");
+    var timeoutVariable = window.setTimeout(endTimer, 1000);
+    function endTimer() {
     logginWindow.postMessage("message", "http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html");
-    timer.stop();
-}
+    window.clearTimeout(timeoutVariable);
+    }
+
    ScratchExtensions.register('Scratch Three JS', descriptor, ext);
 })({});
 
