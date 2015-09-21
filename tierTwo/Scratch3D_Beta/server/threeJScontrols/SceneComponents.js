@@ -174,6 +174,48 @@ SCENECOMPONENTS.addShape = function(shape, length, width, height, LocationX, Loc
 
 }
 
+
+
+SCENECOMPONENTS.addText = function(text,size,font,x,y,z, SCENE){
+	textGeo = new THREE.TextGeometry( text, {
+
+					size: size,
+					height: height,
+					curveSegments: curveSegments,
+
+					font: font,
+					weight: weight,
+					style: style,
+
+					bevelThickness: bevelThickness,
+					bevelSize: bevelSize,
+					bevelEnabled: bevelEnabled,
+
+					material: 0,
+					extrudeMaterial: 1
+
+				});
+	material = new THREE.MeshFaceMaterial( [
+					new THREE.MeshPhongMaterial( { color: 0xffffff, shading: THREE.FlatShading } ), // front
+					new THREE.MeshPhongMaterial( { color: 0xffffff, shading: THREE.SmoothShading } ) // side
+				] );
+
+				textGeo.computeBoundingBox();
+				textGeo.computeVertexNormals();
+
+	textMesh1 = new THREE.Mesh( textGeo, material );
+
+				textMesh1.position.x = 0;
+				textMesh1.position.y = 0;
+				textMesh1.position.z = 0;
+
+				textMesh1.rotation.x = 0;
+				textMesh1.rotation.y = Math.PI * 2;
+
+				SCENE.add( textMesh1 );
+
+
+}
 /*
 **Adds a new object to the scene loaded from an outside source
 */
