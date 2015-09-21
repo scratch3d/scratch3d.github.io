@@ -176,7 +176,7 @@ SCENECOMPONENTS.addShape = function(shape, length, width, height, LocationX, Loc
 
 
 
-SCENECOMPONENTS.addText = function(text,size,font,x,y,z, SCENE){
+SCENECOMPONENTS.addText = function(text,size,x,y,z, SCENE){
 	    var material = new THREE.MeshPhongMaterial({
         color: 0xdddddd
     });
