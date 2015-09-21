@@ -759,6 +759,8 @@ window.addEventListener("message", receiveMessage, false);
 
 
 			['r', 'New Shape %m.Shapes Size: %n %n %n Location: X: %n Y: %n Z: %n', 'createShape', 'Cube', '1','1','1','0','0','0'],
+      
+      ['r', 'New 3d Text: %s Size: %n %m.Fonts  Location: X: %n Y: %n Z: %n', 'createText', 'Hello World', '12', 'helvetiker','0','0','0'],
       //__TIER_THREE__  ['r', 'New Light %m.Lights  Color: %s Intensity: %n X: %s Y: %s Z: %s','addLight','Ambient','white','0.7','0','0','0'],
       ['r', "New %m.Charecters Location: X: %n Y: %n Z: %n" , "add_Charecter", "Marine", '0','0','0'],
       ['r', 'New Planet %m.Planets X: %n Y: %n Z: %n Diameter: %n' ,'addPlanet','Earth','0','0','0','1'],
@@ -796,7 +798,8 @@ window.addEventListener("message", receiveMessage, false);
         ],
 		
 		menus: {
-		        Scenes: ['Grid','Grass','Space','Blank'],
+		    Scenes: ['Grid','Grass','Space','Blank'],
+        Fonts:['helvetiker'],
         Toggle: ['Off'],
 				Camera: ['Perspective'],
 				CameraRotation: ['Left', 'Right', 'Up', 'Down', 'Roll Left', 'Roll Right'],
