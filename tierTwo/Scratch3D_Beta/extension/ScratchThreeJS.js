@@ -203,6 +203,11 @@ window.addEventListener("message", receiveMessage, false);
 		win.postMessage(message, liveURL);
 		return shapeID;
 	}
+
+  ext.createText = function(text, size, font, x, y, z){
+    var message = "CREATETEXT_"+text+','+size+','+font+','+x+','+y+','+z;
+    win.postMessage(message, liveURL);
+  }
 	
 	//Applies a given material to a given mesh and map a inage if supplied
 	ext.applyMaterial = function(Material, shape_id, color, imageURL){
