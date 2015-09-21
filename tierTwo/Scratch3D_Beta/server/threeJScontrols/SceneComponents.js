@@ -180,7 +180,7 @@ SCENECOMPONENTS.addText = function(text,size,font,x,y,z, SCENE){
 	    var material = new THREE.MeshPhongMaterial({
         color: 0xdddddd
     });
-    var textGeom = new THREE.TextGeometry( 'Hello World!', {
+    var textGeom = new THREE.TextGeometry( text, {
     	size: size,
 		height: (size/2),
         font: 'gentilis', // Must be lowercase!
