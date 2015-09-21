@@ -50,7 +50,9 @@ window.addEventListener("message", receiveMessage, false);
           console.log("collisions",collisions);
         }else if(commandKey=="LOGGEDIN"){
           loggedIN = true;
-          ScratchExtensions.register('Scratch Three JS', descriptor, ext);
+          if(descriptor!=null&&extention!=null){
+          ScratchExtensions.register('Scratch Three JS', descriptor, extention);
+          }
           console.log("Logged In");
         }
         }
