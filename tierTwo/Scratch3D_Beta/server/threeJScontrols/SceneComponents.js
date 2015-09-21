@@ -180,17 +180,7 @@ SCENECOMPONENTS.addText = function(text,size,font,x,y,z, SCENE){
 	textGeo = new THREE.TextGeometry( text, {
 
 					size: size,
-					height: height,
-					curveSegments: curveSegments,
-
 					font: font,
-					weight: weight,
-					style: style,
-
-					bevelThickness: bevelThickness,
-					bevelSize: bevelSize,
-					bevelEnabled: bevelEnabled,
-
 					material: 0,
 					extrudeMaterial: 1
 
