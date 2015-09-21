@@ -836,8 +836,8 @@ window.addEventListener("message", receiveMessage, false);
     window.clearTimeout(timeoutVariable);
     }
   }
+}
 
-  
   extention = ext; 
 })({});
 
