@@ -821,7 +821,8 @@ window.addEventListener("message", receiveMessage, false);
     };
 
     // Register the extension
-    logginWindow = window.open ("http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html", "", "width=window.width, height=window.height");  
+   // logginWindow = window.open ("http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html", "", "width=window.width, height=window.height");  
+    ScratchExtensions.register('Scratch Three JS', descriptor, ext);
     if(logginWindow==null){
       var browserData = navigator.userAgent;
       if(browserData.indexOf("Safari")>-1){
@@ -829,7 +830,7 @@ window.addEventListener("message", receiveMessage, false);
       }else{
     var timeoutVariable = window.setTimeout(endTimer, 1000);
     function endTimer() {
-    ScratchExtensions.register('Scratch Three JS', descriptor, extention);
+
     //logginWindow.postMessage("message", "http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html");
     window.clearTimeout(timeoutVariable);
     }
