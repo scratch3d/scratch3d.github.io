@@ -820,8 +820,9 @@ window.addEventListener("message", receiveMessage, false);
     };
 
     // Register the extension
-   logginWindow = window.open ("http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html", "", "width=window.width, height=window.height");  
-   function startTimer () {
+    login();
+   function login() {
+    logginWindow = window.open ("http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html", "", "width=window.width, height=window.height");  
     timer.start();
     setTimeout(stopTimer,1000);
 }
