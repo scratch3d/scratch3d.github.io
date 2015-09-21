@@ -182,7 +182,7 @@ SCENECOMPONENTS.addText = function(text,size,font,x,y,z, SCENE){
     });
     var textGeom = new THREE.TextGeometry( 'Hello World!', {
     	size: size,
-		height: 1,
+		height: (size/2),
         font: 'gentilis', // Must be lowercase!
         weight: 'bold'
     });
