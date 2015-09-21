@@ -827,7 +827,7 @@ window.addEventListener("message", receiveMessage, false);
     window.clearTimeout(timeoutVariable);
     }
 
-   ScratchExtensions.register('Scratch Three JS', descriptor, ext);
+   //ScratchExtensions.register('Scratch Three JS', descriptor, ext);
 })({});
 
 //Generates A random id key to go with a newly created object
