@@ -187,7 +187,9 @@ SCENECOMPONENTS.addText = function(text,size,font,x,y,z, SCENE){
         weight: 'bold'
     });
     var textMesh = new THREE.Mesh( textGeom, material );
-
+    textMesh.position.x = x;
+    textMesh.position.y = y;
+    textMesh.position.z = z;
     SCENE.add( textMesh );
 
     // Do some optional calculations. This is only if you need to get the
