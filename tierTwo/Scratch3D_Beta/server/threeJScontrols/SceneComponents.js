@@ -190,6 +190,7 @@ SCENECOMPONENTS.addText = function(text,size,x,y,z,textID, SCENE){
         bevelEnabled: true,
         curveSegments: 4,
         style: 'normal',
+        material: 0,
         extrudeMaterial: 1
 
     });
