@@ -182,11 +182,11 @@ SCENECOMPONENTS.addText = function(text,size,x,y,z,textID, SCENE){
     });
     var textGeom = new THREE.TextGeometry( text, {
     	size: size,
-		height: z,
+		height: 0,
         font: 'droid serif', // Must be lowercase!
         weight: 'bold',
-        bevelThickness: x,
-        bevelSize: y,
+        bevelThickness: 0.05,
+        bevelSize: 0.01,
         bevelEnabled: true,
         curveSegments: 10,
         style: 'normal',
