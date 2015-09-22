@@ -334,7 +334,7 @@ SCENECOMPONENTS.addPlanet = function(Planet, LocationX, LocationY, LocationZ, di
 				mesh.position.x = LocationX;
 				mesh.position.y = LocationY;
 				mesh.position.z = LocationZ;
-				var cloud	= THREEx.Planets.createEarthCloud();
+				var cloud	= THREEx.Planets.createEarthCloud(diameter);
 				mesh.add(cloud);
 				Scene.add( mesh );
 				mesh.name = planetID;
