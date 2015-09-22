@@ -515,11 +515,11 @@
 			SCENE.add( light );
 			// add a light in front
 			var light	= new THREE.DirectionalLight('white', 0.5);
-			light.position.set(0.5, 0.5, 2);
+			light.position.set(0.5, 0.5, 5);
 			SCENE.add( light );
 			// add a light behind
 			var light	= new THREE.DirectionalLight('white', 0.5);
-			light.position.set(-0.5, 2.5, -2);
+			light.position.set(-0.5, 2.5, -5);
 			SCENE.add( light );
 			var starFeild = THREEx.Planets.createStarfield(parseInt(sceneStyle[1]));
 			SCENE.add(starFeild);
