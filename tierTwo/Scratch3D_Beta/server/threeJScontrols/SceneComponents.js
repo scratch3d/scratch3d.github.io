@@ -191,7 +191,7 @@ SCENECOMPONENTS.addText = function(text,size,x,y,z,textID, SCENE){
     textMesh.position.y = y;
     textMesh.position.z = z;
     SCENE.add( textMesh );
-    textMesh.name = "textID";
+    //textMesh.name = "textID";
     SHAPES[textID] = textMesh;
     // Do some optional calculations. This is only if you need to get the
     // width of the generated text
