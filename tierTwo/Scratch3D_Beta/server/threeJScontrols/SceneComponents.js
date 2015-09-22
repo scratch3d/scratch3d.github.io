@@ -176,7 +176,7 @@ SCENECOMPONENTS.addShape = function(shape, length, width, height, LocationX, Loc
 
 
 
-SCENECOMPONENTS.addText = function(text,size,x,y,z, SCENE){
+SCENECOMPONENTS.addText = function(text,size,x,y,z,textID, SCENE){
 	    var material = new THREE.MeshPhongMaterial({
         color: 0xdddddd
     });
@@ -191,7 +191,8 @@ SCENECOMPONENTS.addText = function(text,size,x,y,z, SCENE){
     textMesh.position.y = y;
     textMesh.position.z = z;
     SCENE.add( textMesh );
-
+    textMesh.name = "textID";
+    SHAPES[textID] = textMesh;
     // Do some optional calculations. This is only if you need to get the
     // width of the generated text
     textGeom.computeBoundingBox();
