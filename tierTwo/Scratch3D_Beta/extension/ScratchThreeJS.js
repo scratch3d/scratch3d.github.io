@@ -207,7 +207,7 @@ window.addEventListener("message", receiveMessage, false);
   ext.createText = function(text, size, x, y, z){
     var textID = generatID("text");
     shapes.push(textID);
-    var message = "CREATETEXT_"+text+','+size+','+x+','+y+','+z+textID;
+    var message = "CREATETEXT_"+text+','+size+','+x+','+y+','+z+','+textID;
     win.postMessage(message, liveURL);
     return textID;
   }
