@@ -183,8 +183,15 @@ SCENECOMPONENTS.addText = function(text,size,x,y,z,textID, SCENE){
     var textGeom = new THREE.TextGeometry( text, {
     	size: size,
 		height: (size/2),
-        font: 'gentilis', // Must be lowercase!
+        font: 'droid serif', // Must be lowercase!
         weight: 'bold'
+        bevelThickness: 2,
+        bevelSize: 1.5,
+        bevelEnabled: true,
+        curveSegments: 4,
+        style: normal,
+        extrudeMaterial: 1
+
     });
     var textMesh = new THREE.Mesh( textGeom, material );
     textMesh.position.x = x;
