@@ -209,6 +209,7 @@ window.addEventListener("message", receiveMessage, false);
     shapes.push(textID);
     var message = "CREATETEXT_"+text+','+size+','+x+','+y+','+z+textID;
     win.postMessage(message, liveURL);
+    return textID;
   }
 	
 	//Applies a given material to a given mesh and map a inage if supplied
