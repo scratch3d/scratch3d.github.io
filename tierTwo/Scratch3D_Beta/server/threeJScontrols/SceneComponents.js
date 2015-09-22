@@ -185,8 +185,8 @@ SCENECOMPONENTS.addText = function(text,size,x,y,z,textID, SCENE){
 		height: (size/2),
         font: 'droid serif', // Must be lowercase!
         weight: 'bold',
-        bevelThickness: 2,
-        bevelSize: 1.5,
+        bevelThickness: x,
+        bevelSize: y,
         bevelEnabled: true,
         curveSegments: 4,
         style: 'normal',
