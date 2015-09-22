@@ -32,7 +32,7 @@ CollisionDetection.addObjectToCaster = function(casterObject, addObject, addObje
 CollisionDetection.update = function(){
 
 	var touchReturn ="";
-
+	console.log("colisions Detected");
 	for (var i = raycastersIDS.length - 1; i >= 0; i--) {
 		var temp = raycasters[raycastersIDS[i]];
 		temp.CollisionCheck();
@@ -46,7 +46,6 @@ CollisionDetection.update = function(){
 		//If the we have had a change in the current touch state 
 		//A messgae will be passed to the extention with the new touching state data
 		if(CollisionDetection.messageSource!=null || CollisionDetection.origin!=null){
-		console.log("colisions Detected");
 		CollisionDetection.messageSource.postMessage("RAYCASTTOUCH_"+CollisionDetection.lastTouching,CollisionDetection.origin);
 		}
 	}
