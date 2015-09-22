@@ -184,12 +184,12 @@ SCENECOMPONENTS.addText = function(text,size,x,y,z,textID, SCENE){
     	size: size,
 		height: (size/2),
         font: 'droid serif', // Must be lowercase!
-        weight: 'bold'
+        weight: 'bold',
         bevelThickness: 2,
         bevelSize: 1.5,
         bevelEnabled: true,
         curveSegments: 4,
-        style: "normal",
+        style: 'normal',
         extrudeMaterial: 1
 
     });
