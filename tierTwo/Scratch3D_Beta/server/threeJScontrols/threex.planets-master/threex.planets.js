@@ -99,8 +99,9 @@ THREEx.Planets.createEarthCloud	= function(diameter){
 		imageTrans.src	= THREEx.Planets.baseURL+'images/earthcloudmaptrans.jpg';
 	}, false);
 	imageMap.src	= THREEx.Planets.baseURL+'images/earthcloudmap.jpg';
-
-	var geometry	= new THREE.SphereGeometry((diameter+0.1), 32, 32)
+	
+	var cloudDiamiter = parseFloat(diameter) + 0.1;
+	var geometry	= new THREE.SphereGeometry(cloudDiamiter, 32, 32)
 	var material	= new THREE.MeshPhongMaterial({
 		map		: new THREE.Texture(canvasResult),
 		side		: THREE.DoubleSide,
