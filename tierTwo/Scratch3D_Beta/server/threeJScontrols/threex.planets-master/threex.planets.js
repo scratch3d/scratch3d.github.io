@@ -53,7 +53,7 @@ THREEx.Planets.createEarth	= function(diameter){
 	return mesh	
 }
 
-THREEx.Planets.createEarthCloud	= function(){
+THREEx.Planets.createEarthCloud	= function(diameter){
 	// create destination canvas
 	var canvasResult	= document.createElement('canvas')
 	canvasResult.width	= 1024
@@ -100,7 +100,7 @@ THREEx.Planets.createEarthCloud	= function(){
 	}, false);
 	imageMap.src	= THREEx.Planets.baseURL+'images/earthcloudmap.jpg';
 
-	var geometry	= new THREE.SphereGeometry(0.51, 32, 32)
+	var geometry	= new THREE.SphereGeometry(diameter, 32, 32)
 	var material	= new THREE.MeshPhongMaterial({
 		map		: new THREE.Texture(canvasResult),
 		side		: THREE.DoubleSide,
