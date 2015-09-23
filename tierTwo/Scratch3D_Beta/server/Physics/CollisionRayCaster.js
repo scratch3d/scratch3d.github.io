@@ -106,7 +106,7 @@ CollisionDetection.RayCaster = function(caster, casterID, touch, touchID){
 			this.caster.set(this.raysPosition[i], this.rays[g]);
 
 			var touching = this.caster.intersectObjects(this.conntactObjects);
-			console.log("CollisionCheck Touching", touching);
+			console.log("CollisionCheck", touching);
 			//console.log("Ray castre return values",touching);
 			for (var j = touching.length - 1; j >= 0; j--) {
 				//Checks to see if the touch object has already been detected by another array
