@@ -372,7 +372,7 @@ window.addEventListener("message", receiveMessage, false);
     if((charecters.indexOf(objectIdOne)>=0||shapes.indexOf(objectIdOne)>=0)&&(charecters.indexOf(ObjectIdTwo)>=0||shapes.indexOf(ObjectIdTwo)>=0)){
       if(raycasters[objectIdOne]!=null){
         if(raycasters[objectIdOne].indexOf(ObjectIdTwo)>=0){
-          console.log("--ADDOBJECTTOCASTER11111--",raycasters);
+
           if(collisions.data[objectIdOne].indexOf(ObjectIdTwo)>=0){
            return true;
           }else{
@@ -392,8 +392,8 @@ window.addEventListener("message", receiveMessage, false);
         var message = "APPENDRAYCASTER_"+objectIdOne+','+ObjectIdTwo;
         win.postMessage(message, liveURL);
         raycasters[objectIdOne] = [];
-        raycasters[objectIdOne].push(ObjectIdTwo);
-        raycasters[objectIdOne].push(ObjectIdTwo);
+        //raycasters[objectIdOne].push(ObjectIdTwo);
+        console.log("--ADDOBJECTTOCASTER11111--",raycasters);
         return false;
       }
   }else{
