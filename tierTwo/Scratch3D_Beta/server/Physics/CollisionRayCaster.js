@@ -37,12 +37,12 @@ CollisionDetection.update = function(){
 		var temp = raycasters[raycastersIDS[i]];
 		temp.CollisionCheck();
 		if(temp.isTouching.length>0){
-					console.log("colisions Detected");
 		touchReturn = touchReturn+temp.name+":"+temp.isTouching+";";
 		}
 	};
 
 	if(CollisionDetection.lastTouching != touchReturn){
+		console.log("colisions Detected");
 		CollisionDetection.lastTouching = touchReturn;
 		//If the we have had a change in the current touch state 
 		//A messgae will be passed to the extention with the new touching state data
