@@ -739,7 +739,7 @@
       //__TEIR THREE__  ['', 'Set %s Image %m.Images', 'setImage', 'Material', 'Crate'],
 
       ['', "Move %s %m.Move %n Steps" , 'moveShape', "Variable", "Left", 1],
-      ['', "Object %s Go To: X: %n Y: %n Z: %n" , 'goto', "Variable", 0, 0,0],
+      ['', "Object: %s Go To X: %n Y: %n Z: %n" , 'goto', "Variable", 0, 0, 0],
 
       ['', "Rotate %s %m.Axis3 Degrees: %n " , 'rotateShape', "Variable", "Y", 1],
       
