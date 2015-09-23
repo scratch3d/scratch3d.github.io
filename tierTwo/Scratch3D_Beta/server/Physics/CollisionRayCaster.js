@@ -100,6 +100,7 @@ CollisionDetection.RayCaster = function(caster, casterID, touch, touchID){
 	//Sets the rays to the caster
 
 	this.CollisionCheck = function(){
+		console.log("CollisionCheck Touching", this.caster);
 		this.isTouching = [];
 		for (var i = this.raysPosition.length - 1; i >= 0; i--) {
 			for(var g = this.rays.length - 1; g >= 0; g--){
