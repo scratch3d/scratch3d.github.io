@@ -373,7 +373,7 @@ window.addEventListener("message", receiveMessage, false);
     if((charecters.indexOf(objectIdOne)>=0||shapes.indexOf(objectIdOne)>=0)&&(charecters.indexOf(ObjectIdTwo)>=0||shapes.indexOf(ObjectIdTwo)>=0)){
       if(raycasters[objectIdOne]!=null){
         if(raycasters[objectIdOne].indexOf(ObjectIdTwo)>=0){
-          console.log("--ADDOBJECTTOCASTER11111--",collisions);
+          
           if(collisions.data[objectIdOne].indexOf(ObjectIdTwo)>=0){
             console.log("Colided!!!");
            return true;
