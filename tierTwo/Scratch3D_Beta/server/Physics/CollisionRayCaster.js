@@ -102,12 +102,15 @@ CollisionDetection.RayCaster = function(caster, casterID, touch, touchID){
 	this.CollisionCheck = function(){
 		this.isTouching = [];
 		console.log("Rays Postion: Else was called ", this.mesh.name);
+		object.updateMatrixWorld();
 		if(this.mesh.position.y<5){
 		this.mesh.position.y = 6;
 	}
 		for (var i = this.mesh.geometry.vertices.length - 1; i >= 0; i--) {
+			var vector = this.mesh.geometry.vertices[i].clone();
+			vector.applyMatrix4( this.mesh.matrixWorld );
 			for(var g = this.rays.length - 1; g >= 0; g--){
-			this.caster.set(this.mesh.geometry.vertices[i], this.rays[g]);
+			this.caster.set(vector, this.rays[g]);
 			var touching = this.caster.intersectObjects(this.conntactObjects);
 
 			//console.log("Ray castre return values",touching);
