@@ -373,6 +373,7 @@
 				//If the object already has a caster attached to it 
 				//We add the object we wish to check for collisons with to that 
 				//Objects list in its collison object
+				console.log("--ADDOBJECTTOCASTER--", paramsArray[1]);
 				var objOne = SCENECOMPONENTS.getShape(paramsArray[1]); //The object that will be adding to a already existing ray caster touch list
 				if(objOne!=null){
 				CollisionDetection.addObjectToCaster(paramsArray[0], objOne, paramsArray[1]);
