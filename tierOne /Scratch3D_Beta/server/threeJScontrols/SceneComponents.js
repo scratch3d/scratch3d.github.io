@@ -690,7 +690,10 @@ SCENECOMPONENTS.goto = function(shape_ID, x,y,z){
 var shape = null;
 	shape = SHAPES[shape_ID];
 	if(shape!=null){
-		shape.position = new THREE.Vector3( x, y, z );
+		shape.position.x = x;
+		shape.position.y = y;
+		shape.position.z = z;
+		console.log(shape);
 		shape.__dirtyPosition = true;
 	}
 }
