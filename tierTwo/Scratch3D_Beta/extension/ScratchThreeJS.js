@@ -380,6 +380,7 @@ window.addEventListener("message", receiveMessage, false);
 
         }else{
           //add ObjectIdTwo to ObjectIdOne's raycaster checking
+          console.log("--ADDOBJECTTOCASTER11111--");
           raycasters[objectIdOne].push(ObjectIdTwo);
           var message = "ADDOBJECTTOCASTER_"+objectIdOne+','+ObjectIdTwo;
           win.postMessage(message, liveURL);
