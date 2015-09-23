@@ -34,10 +34,10 @@ CollisionDetection.update = function(){
 	var touchReturn ="";
 
 	for (var i = raycastersIDS.length - 1; i >= 0; i--) {
-		console.log("colisions Detected");
 		var temp = raycasters[raycastersIDS[i]];
 		temp.CollisionCheck();
 		if(temp.isTouching.length>0){
+					console.log("colisions Detected");
 		touchReturn = touchReturn+temp.name+":"+temp.isTouching+";";
 		}
 	};
