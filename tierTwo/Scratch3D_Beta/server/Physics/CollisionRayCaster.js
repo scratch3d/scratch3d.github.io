@@ -105,7 +105,7 @@ CollisionDetection.RayCaster = function(caster, casterID, touch, touchID){
 		for (var i = this.mesh.geometry.vertices.length - 1; i >= 0; i--) {
 			for(var g = this.rays.length - 1; g >= 0; g--){
 			this.caster.set(this.mesh.geometry.vertices[i], this.rays[g]);
-			if(this.mesh.geometry.vertices[1].x<=.4){
+			if(this.mesh.geometry.vertices[1].x<=.5){
 				//if(this.mesh.geometry.vertices.x<40){
 				console.log("Rays Postion: Else was called ", this.mesh.geometry.vertices);
 				//}
