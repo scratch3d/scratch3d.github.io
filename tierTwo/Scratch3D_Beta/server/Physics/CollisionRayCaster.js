@@ -105,14 +105,16 @@ CollisionDetection.RayCaster = function(caster, casterID, touch, touchID){
 		for (var i = this.mesh.geometry.vertices.length - 1; i >= 0; i--) {
 			for(var g = this.rays.length - 1; g >= 0; g--){
 			this.caster.set(this.mesh.geometry.vertices[i], this.rays[g]);
-
+			if(i==5){
+				console.log("Rays Postion: Else was called ", this.mesh.geometry.vertices);
+			}
 			var touching = this.caster.intersectObjects(this.conntactObjects);
 
 			//console.log("Ray castre return values",touching);
 			for (var j = touching.length - 1; j >= 0; j--) {
 				//Checks to see if the touch object has already been detected by another array
 				if(this.isTouching.indexOf(touching[j].object.name)<0){
-					console.log("Rays Postion: Else was called ", this.mesh.geometry.vertices);
+					
 					this.isTouching.push(touching[j].object.name);
 				}
 			};
