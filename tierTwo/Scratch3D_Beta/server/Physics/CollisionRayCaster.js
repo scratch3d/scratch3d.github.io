@@ -102,7 +102,11 @@ CollisionDetection.RayCaster = function(caster, casterID, touch, touchID){
 	this.CollisionCheck = function(){
 		this.isTouching = [];
 		console.log("Rays Postion: Else was called ", this.mesh.name);
-		this.mesh.position.y = this.mesh.position.y + 0.001;
+		if(this.mesh.position.y>0&&this.mesh.position.y<5){
+		this.mesh.position.y = this.mesh.position.y + 0.00001;
+	}else{
+		this.mesh.position.y = this.mesh.position.y - 0.00001;
+	}
 		for (var i = this.mesh.geometry.vertices.length - 1; i >= 0; i--) {
 			for(var g = this.rays.length - 1; g >= 0; g--){
 			this.caster.set(this.mesh.geometry.vertices[i], this.rays[g]);
