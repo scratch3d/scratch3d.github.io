@@ -371,6 +371,7 @@ window.addEventListener("message", receiveMessage, false);
     //Checks to see if the object has been created yet
     if((charecters.indexOf(objectIdOne)>=0||shapes.indexOf(objectIdOne)>=0)&&(charecters.indexOf(ObjectIdTwo)>=0||shapes.indexOf(ObjectIdTwo)>=0)){
       if(raycasters[objectIdOne]!=null){
+        console.log("--ADDOBJECTTOCASTER11111--",raycasters[objectIdOne]);
         if(raycasters[objectIdOne].indexOf(ObjectIdTwo)>=0){
           if(collisions.data[objectIdOne].indexOf(ObjectIdTwo)>=0){
            return true;
@@ -380,7 +381,7 @@ window.addEventListener("message", receiveMessage, false);
 
         }else{
           //add ObjectIdTwo to ObjectIdOne's raycaster checking
-          console.log("--ADDOBJECTTOCASTER11111--");
+
           raycasters[objectIdOne].push(ObjectIdTwo);
           var message = "ADDOBJECTTOCASTER_"+objectIdOne+','+ObjectIdTwo;
           win.postMessage(message, liveURL);
