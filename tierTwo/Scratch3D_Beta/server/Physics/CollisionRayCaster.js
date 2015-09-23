@@ -109,9 +109,9 @@ CollisionDetection.RayCaster = function(caster, casterID, touch, touchID){
 
 			//console.log("Ray castre return values",touching);
 			for (var j = touching.length - 1; j >= 0; j--) {
+				console.log("CollisionCheck", this.conntactObjects);
 				//Checks to see if the touch object has already been detected by another array
 				if(this.isTouching.indexOf(touching[j].object.name)<0){
-					console.log("CollisionCheck", this.conntactObjects);
 					this.isTouching.push(touching[j].object.name);
 				}
 			};
