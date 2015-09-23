@@ -75,7 +75,7 @@ CollisionDetection.RayCaster = function(caster, casterID, touch, touchID){
 	this.name = casterID;
 	//The actual ray caster for this object
 	this.caster = new THREE.Raycaster();
-	this.caster.far = .3;
+	this.caster.far = 10;
 	//The rays that will be projected from the origin point when we test for colisions
 	this.rays = [
 	  new THREE.Vector3(1, 0, 0),
@@ -93,7 +93,7 @@ CollisionDetection.RayCaster = function(caster, casterID, touch, touchID){
       };
   	}else{
   		this.raysPosition = caster.geometry.vertices;
-  		console.log("Rays Postion: Else was called ");
+  		console.log("Rays Postion: Else was called ", this.mesh.geometry.vertices);
   	}
 
       
