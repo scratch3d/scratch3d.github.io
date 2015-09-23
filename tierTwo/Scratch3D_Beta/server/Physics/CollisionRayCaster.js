@@ -103,9 +103,7 @@ CollisionDetection.RayCaster = function(caster, casterID, touch, touchID){
 		this.isTouching = [];
 		console.log("Rays Postion: Else was called ", this.mesh.name);
 		this.mesh.updateMatrixWorld();
-		if(this.mesh.position.y<5){
-		this.mesh.position.y = 6;
-	}
+		
 		for (var i = this.mesh.geometry.vertices.length - 1; i >= 0; i--) {
 			var vector = this.mesh.geometry.vertices[i].clone();
 			vector.applyMatrix4( this.mesh.matrixWorld );
