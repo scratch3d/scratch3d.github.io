@@ -87,14 +87,14 @@ CollisionDetection.RayCaster = function(caster, casterID, touch, touchID){
       ];
 
       this.raysPosition = [];
-      if(caster.geometry.vertices.length>100){
+      /*if(caster.geometry.vertices.length>100){
       for (var i = caster.geometry.vertices.length - 1; i-4 >= 0; i-=4) {
       	this.raysPosition.push(caster.geometry.vertices[i]);
       };
-  	}else{
+  	}else{*/
   		this.raysPosition = caster.geometry.vertices;
   		console.log("Rays Postion: Else was called ");
-  	}
+  	//}
 
       
 	//Sets the rays to the caster
