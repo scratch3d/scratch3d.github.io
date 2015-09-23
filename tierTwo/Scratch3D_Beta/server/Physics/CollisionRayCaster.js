@@ -104,7 +104,7 @@ CollisionDetection.RayCaster = function(caster, casterID, touch, touchID){
 		
 		for (var i = this.raysPosition.length - 1; i >= 0; i--) {
 			for(var g = this.rays.length - 1; g >= 0; g--){
-			this.caster.set(this.caster.geometry.vertices[i], this.rays[g]);
+			this.caster.set(this.mesh.geometry.vertices[i], this.rays[g]);
 
 			var touching = this.caster.intersectObjects(this.conntactObjects);
 
