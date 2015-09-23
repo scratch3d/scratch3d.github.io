@@ -36,6 +36,7 @@ window.addEventListener("message", receiveMessage, false);
       commandKey = event.data.split("_")[0];
       //the actual data to be procesed by the extention
       var data = event.data.split("_")[1];
+      console.log("collisions",event.data);
         if(commandKey=="KEYSTROKE"){
         lastKeyEvent = data;
         }else if(commandKey=="RAYCASTTOUCH"){
