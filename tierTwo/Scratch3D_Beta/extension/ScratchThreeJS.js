@@ -394,7 +394,7 @@ window.addEventListener("message", receiveMessage, false);
         var message = "APPENDRAYCASTER_"+objectIdOne+','+ObjectIdTwo;
         win.postMessage(message, liveURL);
         raycasters[objectIdOne] = [];
-        //raycasters[objectIdOne].push(ObjectIdTwo);
+        raycasters[objectIdOne].push(ObjectIdTwo);
         return false;
       }
   }else{
