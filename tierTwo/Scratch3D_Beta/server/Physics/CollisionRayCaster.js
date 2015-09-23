@@ -75,7 +75,7 @@ CollisionDetection.RayCaster = function(caster, casterID, touch, touchID){
 	this.name = casterID;
 	//The actual ray caster for this object
 	this.caster = new THREE.Raycaster();
-	this.caster.far = 20;
+	this.caster.far = 1;
 	//The rays that will be projected from the origin point when we test for colisions
 	this.rays = [
 	  new THREE.Vector3(1, 0, 0),
