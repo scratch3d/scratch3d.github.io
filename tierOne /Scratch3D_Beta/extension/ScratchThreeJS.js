@@ -227,6 +227,13 @@
 		}
 	}
 
+  ext.goto = function(shape_id, x, y, z){
+      if(shapes.indexOf(shape_id)>-1){
+      var message = "GOTO_"+shape_id+','+x+','+y+','+z;
+      win.postMessage(message, liveURL);
+    }
+  }
+
   ext.rotateShape = function(shape_id, direction, steps){
     //Makes sure that the shape we are trying to move has been created
     if(shapes.indexOf(shape_id)>-1){
@@ -732,6 +739,7 @@
       //__TEIR THREE__  ['', 'Set %s Image %m.Images', 'setImage', 'Material', 'Crate'],
 
       ['', "Move %s %m.Move %n Steps" , 'moveShape', "Variable", "Left", 1],
+      ['', " %s Go To: X: %n Y: %n Z: %n" , 'goto', "Variable", 0, 0,0],
 
       ['', "Rotate %s %m.Axis3 Degrees: %n " , 'rotateShape', "Variable", "Y", 1],
       

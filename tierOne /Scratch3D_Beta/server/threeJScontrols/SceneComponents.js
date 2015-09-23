@@ -686,6 +686,14 @@ SCENECOMPONENTS.move = function(shape_ID, direction, steps){
 		}
 	}
 }
+SCENECOMPONENTS.goto = function(shape_ID, x,y,z){
+var shape = null;
+	shape = SHAPES[shape_ID];
+	if(shape!=null){
+		shape.position = new new THREE.Vector3( x, y, z );
+		shape.__dirtyPosition = true;
+	}
+}
 
 SCENECOMPONENTS.rotate = function(shape_ID, direction, degrees){
 	var shape = null;

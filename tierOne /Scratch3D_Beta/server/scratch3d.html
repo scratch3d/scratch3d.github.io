@@ -241,6 +241,12 @@
 				}
 			}
 
+			if(commandKey == "GOTO"){
+				if(SCENE!=null){
+					SCENECOMPONENTS.goto(paramsArray[0],paramsArray[1], paramsArray[2], paramsArray[3]);
+				}
+			}
+
 			//
 			if(commandKey == "ADDCHARECTER"){
 				SCENECOMPONENTS.addCharecter(paramsArray[0],paramsArray[1],paramsArray[2],paramsArray[3],paramsArray[4],SCENE);
