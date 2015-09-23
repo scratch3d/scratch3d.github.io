@@ -102,7 +102,7 @@ CollisionDetection.RayCaster = function(caster, casterID, touch, touchID){
 	this.CollisionCheck = function(){
 		this.isTouching = [];
 		console.log("Rays Postion: Else was called ", this.mesh.name);
-		object.updateMatrixWorld();
+		this.mesh.updateMatrixWorld();
 		if(this.mesh.position.y<5){
 		this.mesh.position.y = 6;
 	}
