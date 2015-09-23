@@ -21,10 +21,10 @@ CollisionDetection.appendCasterTo = function(casterObject, touchObject, casterID
 //Add a new object to a existering Ray Caster
 //Takes in the id of the caster object and the actual object to be added to it
 CollisionDetection.addObjectToCaster = function(casterObject, addObject, addObjectID){
-	console.log("Ray Caster Added new ", addObject);
 	addObject.name = addObjectID;
 	if(raycasters[casterObject]!=null){
 		raycasters[casterObject].conntactObjects.push(addObject);
+		console.log("Ray Caster Added new ", raycasters[casterObject].conntactObjects);
 	}
 }
 //The update function checks to see if there has been a change in the touch state of any of
@@ -42,7 +42,6 @@ CollisionDetection.update = function(){
 	};
 
 	if(CollisionDetection.lastTouching != touchReturn){
-		console.log("colisions Detected");
 		CollisionDetection.lastTouching = touchReturn;
 		//If the we have had a change in the current touch state 
 		//A messgae will be passed to the extention with the new touching state data
