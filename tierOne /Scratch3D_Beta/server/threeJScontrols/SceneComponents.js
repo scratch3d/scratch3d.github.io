@@ -12,7 +12,11 @@ SCENECOMPONENTS.addShape = function(shape, length, width, height, LocationX, Loc
 	//Adds a new cube to our scene based off of the user supplied params
 	if(shape=="Cube"){
 	var cube = null;
-    cube = new THREE.Mesh(new THREE.CubeGeometry(length, width ,height), new THREE.MeshNormalMaterial());
+	if(Physics=="On"){
+		cube = new Physijs.BoxMesh(new THREE.CubeGeometry(length, width ,height), Physijs.createMaterial(new THREE.MeshNormalMaterial(),.4,.8),2);
+	}else{
+	cube = new THREE.Mesh(new THREE.CubeGeometry(length, width ,height), new THREE.MeshNormalMaterial());
+	}
 	cube.position.set(LocationX,LocationY,LocationZ);
 	//If the shape is created succesfully then it is added to the scene and to to the hash table with its key pointing to that specific object.
 		if(cube!=null){
@@ -27,7 +31,11 @@ SCENECOMPONENTS.addShape = function(shape, length, width, height, LocationX, Loc
 	//Adds a new Shpere to our scene based off of the supplied params
 	if(shape=="Sphere"){
 	var sphere = null;	
+	if(Physics=="On"){
+		sphere = new Physijs.SphereMesh(new THREE.SphereGeometry(length, 50,50), Physijs.createMaterial(new THREE.MeshNormalMaterial(),.4,.8),2);
+	}else{
 	sphere = new THREE.Mesh(new THREE.SphereGeometry(length, 50,50), new THREE.MeshNormalMaterial());
+	}
 	sphere.position.set(LocationX,LocationY,LocationZ);
 	//If the shape is created succesfully then it is added to the scene and to to the hash table with its key pointing to that specific object.
 		if(sphere!=null){
@@ -56,7 +64,11 @@ SCENECOMPONENTS.addShape = function(shape, length, width, height, LocationX, Loc
 	//Adds a new Cylinder to our scene based off of the supplied params
 	if(shape=="Cylinder"){
 	var cylinder = null; 
-	cylinder = new THREE.Mesh( new THREE.CylinderGeometry( length, width, height, 50 ), new THREE.MeshNormalMaterial() );
+	if(Physics=="On"){
+		cylinder = new Physijs.CylinderMesh( new THREE.CylinderGeometry( length, width, height, 50 ), Physijs.createMaterial(new THREE.MeshNormalMaterial(),.4,.8),2);
+	}else{
+		cylinder = new THREE.Mesh( new THREE.CylinderGeometry( length, width, height, 50 ), new THREE.MeshNormalMaterial() );
+	}
 	cylinder.position.set(LocationX,LocationY,LocationZ);
 	//If the shape is created succesfully then it is added to the scene and to to the hash table with its key pointing to that specific object.
 		if(cylinder!=null){
@@ -70,7 +82,11 @@ SCENECOMPONENTS.addShape = function(shape, length, width, height, LocationX, Loc
 //Adds a new Dodecahedron to our scene based off of the supplied params
 	if(shape=="Dodecahedron"){
 	var dodecahedron = null;
-	dodecahedron = new THREE.Mesh( new THREE.DodecahedronGeometry(length, 0), new THREE.MeshNormalMaterial());
+	if(Physics=="On"){
+		dodecahedron = new Physijs.ConvexMesh( new THREE.DodecahedronGeometry(length, 0), Physijs.createMaterial(new THREE.MeshNormalMaterial(),.4,.8),2);
+	}else{
+		dodecahedron = new THREE.Mesh( new THREE.DodecahedronGeometry(length, 0), new THREE.MeshNormalMaterial());
+	}
     
 	dodecahedron.position.set(LocationX,LocationY,LocationZ);
 	//If the shape is created succesfully then it is added to the scene and to to the hash table with its key pointing to that specific object.
@@ -85,8 +101,12 @@ SCENECOMPONENTS.addShape = function(shape, length, width, height, LocationX, Loc
 	//Adds a new Icosahedron to our scene based off of the supplied params
 	if(shape=="Icosahedron"){
 	var icosahedron = null;
-	icosahedron = new THREE.Mesh( new THREE.IcosahedronGeometry(length, 0), new THREE.MeshNormalMaterial());
-	icosahedron.position.set(LocationX,LocationY,LocationZ);
+	if(Physics=="On"){
+		icosahedron = new Physijs.ConvexMesh( new THREE.IcosahedronGeometry(length, 0), Physijs.createMaterial(new THREE.MeshNormalMaterial(),.4,.8),2);
+	}else{
+		icosahedron = new THREE.Mesh( new THREE.IcosahedronGeometry(length, 0), new THREE.MeshNormalMaterial());
+		}
+		icosahedron.position.set(LocationX,LocationY,LocationZ);
 	//If the shape is created succesfully then it is added to the scene and to to the hash table with its key pointing to that specific object.
 		if(icosahedron!=null){
 			Scene.add(icosahedron);
@@ -100,8 +120,12 @@ SCENECOMPONENTS.addShape = function(shape, length, width, height, LocationX, Loc
 //Adds a new Plane to our scene based off of the supplied params
 	if(shape=="Plane"){
 	var plane = null;
-	plane = new THREE.Mesh( new THREE.PlaneGeometry( length, width, 32 ), new THREE.MeshNormalMaterial());
-	plane.position.set(LocationX,LocationY,LocationZ);
+	if(Physics=="On"){
+		plane = new Physijs.ConvexMesh( new THREE.PlaneGeometry( length, width, 32 ), Physijs.createMaterial(new THREE.MeshNormalMaterial(),.4,.8),2);
+	}else{
+	 plane = new THREE.Mesh( new THREE.PlaneGeometry( length, width, 32 ), new THREE.MeshNormalMaterial());
+	 }
+	 plane.position.set(LocationX,LocationY,LocationZ);
 	//If the shape is created succesfully then it is added to the scene and to to the hash table with its key pointing to that specific object.
 		if(plane!=null){
 			Scene.add(plane);
@@ -114,8 +138,11 @@ SCENECOMPONENTS.addShape = function(shape, length, width, height, LocationX, Loc
 //Adds a new Ring to our scene based off of the supplied params
 	if(shape=="Ring"){
 		var ring = null;
-		ring = new THREE.Mesh( new THREE.RingGeometry( parseFloat(length), parseFloat(width)+1, 32 ), new THREE.MeshNormalMaterial());
-
+		if(Physics=="On"){
+			ring = new Physijs.ConvexMesh( new THREE.RingGeometry( parseFloat(length), parseFloat(width)+1, 32 ), Physijs.createMaterial(new THREE.MeshNormalMaterial(),.4,.8),2);
+	}else{
+			ring = new THREE.Mesh( new THREE.RingGeometry( parseFloat(length), parseFloat(width)+1, 32 ), new THREE.MeshNormalMaterial());
+		}
 			ring.position.set(LocationX,LocationY,LocationZ);
 	//If the shape is created succesfully then it is added to the scene and to to the hash table with its key pointing to that specific object.
 		if(ring!=null){
@@ -129,7 +156,11 @@ SCENECOMPONENTS.addShape = function(shape, length, width, height, LocationX, Loc
 //Adds a new Torus to our scene based off of the supplied params
 	if(shape=="Torus"){
 		var torus;
- 		torus = new THREE.Mesh( new THREE.TorusGeometry( parseFloat(width), parseFloat(length), 32, 100 ), new THREE.MeshNormalMaterial() );
+		if(Physics=="On"){
+			torus = new Physijs.ConvexMesh( new THREE.TorusGeometry( parseFloat(width), parseFloat(length), 32, 100 ), Physijs.createMaterial(new THREE.MeshNormalMaterial(),.4,.8),2);
+	}else{
+ 			torus = new THREE.Mesh( new THREE.TorusGeometry( parseFloat(width), parseFloat(length), 32, 100 ), new THREE.MeshNormalMaterial() );
+	}
 		torus.position.set(LocationX,LocationY,LocationZ);
 	//If the shape is created succesfully then it is added to the scene and to to the hash table with its key pointing to that specific object.
 		if(torus!=null){
@@ -142,6 +173,7 @@ SCENECOMPONENTS.addShape = function(shape, length, width, height, LocationX, Loc
 
 
 }
+
 
 
 SCENECOMPONENTS.addText = function(text,size,x,y,z,textID, SCENE){
@@ -176,7 +208,6 @@ SCENECOMPONENTS.addText = function(text,size,x,y,z,textID, SCENE){
 
 
 }
-
 /*
 **Adds a new object to the scene loaded from an outside source
 */
@@ -230,18 +261,20 @@ SCENECOMPONENTS.addCharecter = function(Charecter, LocationX, LocationY, Locatio
 		}
 		if(Charecter=="Cat"){
 
-			 var  blendMesh = new THREE.BlendCharacter();
-				blendMesh.load( 'threeJScontrols/sceneCharecters/cat/Cat.js', function ( geometry, materials ) {
+			// var  blendMesh = new THREE.BlendCharacter();
+				//blendMesh.load( 'threeJScontrols/sceneCharecters/cat/Cat.js', function ( geometry, materials ) {
+				var loader = new THREE.JSONLoader();
+    			loader.load('threeJScontrols/sceneCharecters/cat/Cat.js', function modelLoadedCallback(geometry,materials) {
+ 				//material = new THREE.MeshBasicMaterial({color: 'blue'});
+        		blendMesh = new THREE.Mesh( geometry, materials[0] );
 
 				blendMesh.position.x = LocationX;
 				blendMesh.position.y = LocationY;
-				blendMesh.position.z = LocationZ;
+				blendMesh.position.z = LocationX;
 				Scene.add( blendMesh );
 				blendMesh.name = charecterID;
 				SHAPES[charecterID] = blendMesh;
 				SCENECOMPONENTS.OBJECTS.push(blendMesh);
-				var aspect = window.innerWidth / window.innerHeight;
-				var radius = blendMesh.geometry.boundingSphere.radius;
 
 				} );
 		}
@@ -252,7 +285,7 @@ SCENECOMPONENTS.addCharecter = function(Charecter, LocationX, LocationY, Locatio
  				//material = new THREE.MeshBasicMaterial({color: 'blue'});
         		blendMesh = new THREE.Mesh( geometry, materials[0] );
         		blendMesh.rotation.y = Math.PI * -135 / 180;
-        		blendMesh.position.y = 1;
+        		blendMesh.position.set(LocationX,LocationY,LocationZ);
 				Scene.add( blendMesh );
 				blendMesh.name = charecterID;
 				SHAPES[charecterID] = blendMesh;
@@ -266,7 +299,7 @@ SCENECOMPONENTS.addCharecter = function(Charecter, LocationX, LocationY, Locatio
  				//material = new THREE.MeshBasicMaterial({color: 'blue'});
         		blendMesh = new THREE.Mesh( geometry, materials[0] );
         		blendMesh.rotation.y = Math.PI * -135 / 180;
-        		blendMesh.position.y = 0;
+        		blendMesh.position.set(LocationX,LocationY,LocationZ);
 				Scene.add( blendMesh );
 				blendMesh.name = charecterID;
 				SHAPES[charecterID] = blendMesh;
@@ -280,7 +313,7 @@ SCENECOMPONENTS.addCharecter = function(Charecter, LocationX, LocationY, Locatio
  				//material = new THREE.MeshBasicMaterial({color: 'blue'});
         		blendMesh = new THREE.Mesh( geometry, materials[0] );
         		blendMesh.rotation.y = Math.PI * -135 / 180;
-        		blendMesh.position.y = 0;
+        		blendMesh.position.set(LocationX,LocationY,LocationZ);
         		blendMesh.name = charecterID;
 				Scene.add( blendMesh );
 				SHAPES[charecterID] = blendMesh;
@@ -294,7 +327,7 @@ SCENECOMPONENTS.addCharecter = function(Charecter, LocationX, LocationY, Locatio
  				//material = new THREE.MeshBasicMaterial({color: 'blue'});
         		blendMesh = new THREE.Mesh( geometry, materials[0] );
         		blendMesh.rotation.y = Math.PI * 180 / 180;
-        		blendMesh.position.y = 1.5;
+        		blendMesh.position.set(LocationX,LocationY,LocationZ);
         		blendMesh.name = charecterID;
 				Scene.add( blendMesh );
 				SHAPES[charecterID] = blendMesh;
@@ -311,7 +344,7 @@ SCENECOMPONENTS.addPlanet = function(Planet, LocationX, LocationY, LocationZ, di
 				mesh.position.x = LocationX;
 				mesh.position.y = LocationY;
 				mesh.position.z = LocationZ;
-				var cloud	= THREEx.Planets.createEarthCloud();
+				var cloud	= THREEx.Planets.createEarthCloud(diameter);
 				mesh.add(cloud);
 				Scene.add( mesh );
 				mesh.name = planetID;
@@ -720,18 +753,18 @@ SCENECOMPONENTS.move = function(shape_ID, direction, steps){
 		}
 	}
 }
+
 SCENECOMPONENTS.goto = function(shape_ID, x,y,z){
 var shape = null;
 	shape = SHAPES[shape_ID];
 	if(shape!=null){
-		shape.position.x = x;
-		shape.position.y = y;
-		shape.position.z = z;
+		shape.position.x = parseFloat(x);
+		shape.position.y = parseFloat(y);
+		shape.position.z = parseFloat(z);
 		console.log(shape);
 		shape.__dirtyPosition = true;
 	}
 }
-
 SCENECOMPONENTS.rotate = function(shape_ID, direction, degrees){
 	var shape = null;
 	shape = SHAPES[shape_ID];

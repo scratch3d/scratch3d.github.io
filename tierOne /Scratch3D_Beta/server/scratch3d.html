@@ -19,23 +19,39 @@
 	</head>
 	<body>
 		
-		<script src="http://scratch3d.github.io/tierOne%20/Scratch3D_Beta/server/threeJScontrols/three.js"></script>
-		<script src="http://scratch3d.github.io/tierOne%20/Scratch3D_Beta/server/threeJScontrols/CameraControls.js"></script>
-		<script src="http://scratch3d.github.io/tierOne%20/Scratch3D_Beta/server/threeJScontrols/SceneComponents.js"></script>
-		<script src="http://scratch3d.github.io/tierOne%20/Scratch3D_Beta/server/threeJScontrols/CompleteCameraControls.js"></script>
-		<script src="http://scratch3d.github.io/tierOne%20/Scratch3D_Beta/server/threeJScontrols/SceneStyles.js"></script>
-		<script src="http://scratch3d.github.io/tierOne%20/Scratch3D_Beta/server/threeJScontrols/OBJLoader.js"></script>
-		<script src="http://scratch3d.github.io/tierOne%20/Scratch3D_Beta/server/threeJScontrols/threex.grassground.js"></script>
-		<script src="http://scratch3d.github.io/tierOne%20/Scratch3D_Beta/server/threeJScontrols/BlendCharacter.js"></script>
-		<script src="http://scratch3d.github.io/tierOne%20/Scratch3D_Beta/server/threeJScontrols/CharecterControles.js"></script>
-		<script src="http://scratch3d.github.io/tierOne%20/Scratch3D_Beta/server/threeJScontrols/tween.min.js"></script>
-		<script src="http://scratch3d.github.io/tierOne%20/Scratch3D_Beta/server/threeJScontrols/FirstPersonControls.js"></script>
-		<script src="http://scratch3d.github.io/tierOne%20/Scratch3D_Beta/server/threeJScontrols/lookAtControls.js"></script>
-		<script src="http://scratch3d.github.io/tierOne%20/Scratch3D_Beta/server/threeJScontrols/fpvObjectControles.js"></script>
-		<script src="http://scratch3d.github.io/tierOne%20/Scratch3D_Beta/server/threeJScontrols/threex.planets-master/threex.planets.js"></script>
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/three.js"></script>
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/CameraControls.js"></script>
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/SceneComponents.js"></script>
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/TrackballControls.js"></script>
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/SceneStyles.js"></script>
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/OBJLoader.js"></script>
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/threex.grassground.js"></script>
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/BlendCharacter.js"></script>
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/CharecterControles.js"></script>
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/tween.min.js"></script>
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/FirstPersonControls.js"></script>
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/lookAtControls.js"></script>
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/fpvObjectControles.js"></script>
+		<script src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/threex.planets-master/threex.planets.js"></script>
+		<script type="text/javascript" src="http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/Physics/CollisionRayCaster.js"></script>
+
+
+		<!-- load the font files -->
+
+		<script src="fonts/gentilis_bold.typeface.js"></script>
+		<script src="fonts/gentilis_regular.typeface.js"></script>
+		<script src="fonts/optimer_bold.typeface.js"></script>
+		<script src="fonts/optimer_regular.typeface.js"></script>
+		<script src="fonts/helvetiker_bold.typeface.js"></script>
+		<script src="fonts/helvetiker_regular.typeface.js"></script>
+		<script src="fonts/droid/droid_sans_regular.typeface.js"></script>
+		<script src="fonts/droid/droid_sans_bold.typeface.js"></script>
+		<script src="fonts/droid/droid_serif_regular.typeface.js"></script>
+		<script src="fonts/droid/droid_serif_bold.typeface.js"></script>
+
+		<!-- todo async loader for fonts -->
+		<!--<script>
 		
-		
-		<!--
 		<script src="http://goodwinj14.github.io/Scratch3D_Beta/server/threeJScontrols/three.min.js"></script>
 		<script src="http://goodwinj14.github.io/Scratch3D_Beta/server/threeJScontrols/CameraControls.js"></script>
 		<script src="http://goodwinj14.github.io/Scratch3D_Beta/server/threeJScontrols/SceneComponents.js"></script>
@@ -51,14 +67,12 @@
 		<script src="http://goodwinj14.github.io/Scratch3D_Beta/server/threeJScontrols/fpvObjectControles.js"></script>
 		<script src="http://goodwinj14.github.io/Scratch3D_Beta/server/threeJScontrols/threex.planets-master/threex.planets.js"></script>
 
-	NEWLY ADDED
+	
 		<script type="text/javascript" src="http://goodwinj14.github.io/Scratch3D_Beta/server/Physics/Physijs/physi.js"></script>
 		<script type="text/javascript" src="http://goodwinj14.github.io/Scratch3D_Beta/server/Physics/CollisionRayCaster.js"></script>
-		<script type="text/javascript" src="http://goodwinj14.github.io/Scratch3D_Beta/server/threeJScontrols/Projector.js"></script>
-		-->
-
+		<script type="text/javascript" src="http://goodwinj14.github.io/Scratch3D_Beta/server/threeJScontrols/Projector.js"></script>-->
 		<script>
-
+			
 		//Physics Add In
 		//Physijs.scripts.worker = 'Physics/Physijs/physijs_worker.js';
     	//Physijs.scripts.ammo = 'ammo.js';
@@ -168,19 +182,7 @@
 			//CAMERAMOVE command tag is associated with Move Camera Block 
 			if(commandKey == "CAMERAMOVE"){
 				if(CAMERA!=null){
-					if(paramsArray[0]=="Left"){
-					controls.move_X_Distance = -parseFloat(paramsArray[1]);
-					} else if(paramsArray[0]=="Right"){
-					controls.move_X_Distance = parseFloat(paramsArray[1]);
-					} else if(paramsArray[0]=="Up"){
-					controls.move_Y_Distance = parseFloat(paramsArray[1]);
-					} else if(paramsArray[0]=="Down"){
-					controls.move_Y_Distance = -parseFloat(paramsArray[1]);
-					} else if(paramsArray[0]=="Forward"){
-					controls.move_Z_Distance = -parseFloat(paramsArray[1]);
-					} else if(paramsArray[0]=="Back"){
-					controls.move_Z_Distance = parseFloat(paramsArray[1]);
-					}
+					CAMERACONTROLS.move(paramsArray[0], parseFloat(paramsArray[1]),CAMERA);
 			}
 			}
 			//CAMERAFOLLOW command tag is associated with Move Camera Block 
@@ -200,9 +202,7 @@
 				if(controls==null){
 					if(paramsArray[0]=='Mouse/Trackball'){
 						TrackBallControls = true;
-						controls = new THREE.CompleteCameraControls(CAMERA);
-						controls.TrackballControls = true;
-						controls.FirstPersonControls = false;
+						controls = new THREE.TrackballControls(CAMERA);
 						controls.rotateSpeed = 1.0;
 						controls.zoomSpeed = 1.2;
 						controls.panSpeed = 0.8;
@@ -231,13 +231,13 @@
 
 			if(commandKey == "MOVESHAPE"){
 				if(SCENE!=null){
-					SCENECOMPONENTS.move(paramsArray[0],paramsArray[1], paramsArray[2]);
+					SCENECOMPONENTS.move(parseFloat(paramsArray[0]),parseFloat(paramsArray[1]), parseFloat(paramsArray[2]));
 				}
 			}
 
 			if(commandKey == "ROTATESHAPE"){
 				if(SCENE!=null){
-					SCENECOMPONENTS.rotate(paramsArray[0],paramsArray[1], paramsArray[2]);
+					SCENECOMPONENTS.rotate(parseFloat(paramsArray[0]),parseFloat(paramsArray[1]), parseFloat(paramsArray[2]));
 				}
 			}
 
@@ -249,7 +249,7 @@
 
 			//
 			if(commandKey == "ADDCHARECTER"){
-				SCENECOMPONENTS.addCharecter(paramsArray[0],paramsArray[1],paramsArray[2],paramsArray[3],paramsArray[4],SCENE);
+				SCENECOMPONENTS.addCharecter(paramsArray[0],parseFloat(paramsArray[1]),parseFloat(paramsArray[2]),parseFloat(paramsArray[3]),paramsArray[4],SCENE);
 			}
 			if(commandKey == "ADDLIGHT"){
 				SCENECOMPONENTS.addLight(paramsArray[0],paramsArray[1],paramsArray[2],paramsArray[3],paramsArray[4],paramsArray[5],paramsArray[6],SCENE);
@@ -260,9 +260,10 @@
 			//CREATESHAPE command tag is associated with the Move block
 			if(commandKey == "CREATESHAPE"){
 				if(SCENE!=null){
-					SCENECOMPONENTS.addShape(paramsArray[0],paramsArray[1],paramsArray[2],paramsArray[3],paramsArray[4],paramsArray[5],paramsArray[6], 					paramsArray[7], paramsArray[8], SCENE);					
+					SCENECOMPONENTS.addShape(paramsArray[0],paramsArray[1],paramsArray[2],paramsArray[3],parseFloat(paramsArray[4]),parseFloat(paramsArray[5]),parseFloat(paramsArray[6]),paramsArray[7], paramsArray[8], SCENE);					
 					}
 				}
+
 			if(commandKey == "CREATETEXT"){
 			if(SCENE!=null){
 				SCENECOMPONENTS.addText(paramsArray[0],paramsArray[1],paramsArray[2],paramsArray[3],paramsArray[4], paramsArray[5], SCENE);					
@@ -368,15 +369,20 @@
 					}
 					var objOne = SCENECOMPONENTS.getShape(paramsArray[0]); //The object that will have a ray caster attached to it
 					var objTwo = SCENECOMPONENTS.getShape(paramsArray[1]); //The object that will
+					if(objOne!=null && objTwo!=null){
 					CollisionDetection.appendCasterTo(objOne, objTwo, paramsArray[0], paramsArray[1]);
+					}
 				}
 			}
 			if(commandKey == "ADDOBJECTTOCASTER"){
 				//If the object already has a caster attached to it 
 				//We add the object we wish to check for collisons with to that 
 				//Objects list in its collison object
-				console.log("ADDOBJECTTOCASTER CALLED");
-				CollisionDetection.addObjectToCaster(paramsArray[0], SCENECOMPONENTS.getShape(paramsArray[1]), paramsArray[1]);
+				console.log("--ADDOBJECTTOCASTER--", paramsArray[1]);
+				var objOne = SCENECOMPONENTS.getShape(paramsArray[1]); //The object that will be adding to a already existing ray caster touch list
+				if(objOne!=null){
+				CollisionDetection.addObjectToCaster(paramsArray[0], objOne, paramsArray[1]);
+				}
 			}
 			if(commandKey == "BEGINCLICKRAYCASTIN"){
 			console.log("BEGINCLICKRAYCASTIN");
@@ -460,7 +466,7 @@
 
 			init_Scene(sceneStyle);
 			init_Render();
-			init_Camera(1,0,0);
+			init_Camera(6,8,5.6);
 			
 			if(RENDERER==null || SCENE==null || CAMERA==null){
 				return false;
@@ -480,31 +486,29 @@
 		function init_Camera(posY, posZ, rotaX){
 			console.log("init_Camera");
 			CAMERA = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 1000);
-			CAMERA.position.y = 1; 
-			CAMERA.position.x = 1;
+			CAMERA.position.x = 1; 
+			CAMERA.position.y = 1;
 			CAMERA.position.z = 1;
 			CAMERA.rotation.x = 0;
 			CAMERA.rotation.y = 0;
 			CAMERA.rotation.z = 0;
-			console.log("Camera Postion: ", CAMERA.position);
-			console.log("CAMERA.rotation: ", CAMERA.rotation);
 		}
 		//INITIALIZES THE SCENE OBJECT
 
 		function init_Scene(sceneStyle){
 			
 
-			SCENE = new THREE.Scene();
+			SCENE = new THREE.Scene;
 			//Turns the gravity of the scene on to a defualt of -50 along the y axis
-			if(sceneStyle[1]=="On"){
+			/*if(sceneStyle[1]=="On"){
 				console.log("gravity: ", sceneStyle[1]);
 				SCENE.setGravity(new THREE.Vector3( 0, -50, 0 ));
-			}
+			}*/
 			//Creates a basic grid scene
 			if(sceneStyle[0]=="Grid"){
 			var light	= new THREE.AmbientLight( 0x020202 );
 			SCENE.add( light );
-			SCENESTYLES.gridSize = parseInt(sceneStyle[2])*parseInt(sceneStyle[3]);
+			SCENESTYLES.gridSize = parseInt(sceneStyle[1])*parseInt(sceneStyle[2]);
 			var plane = SCENESTYLES.GRID();
 			SCENE.add(plane);
 			}
@@ -513,7 +517,19 @@
 			var light	= new THREE.AmbientLight( 0x020202 );
 			SCENE.add( light );
 
-			var starFeild = THREEx.Planets.createStarfield(parseInt(sceneStyle[2]));
+			var light	= new THREE.AmbientLight( 0x020202 );
+			SCENE.add( light );
+			// add a light in front
+			var light	= new THREE.DirectionalLight('white', 1);
+			light.angle = (Math.PI/5);
+			light.position.set(0.5, 0.5, 2);
+			SCENE.add( light );
+			// add a light behind
+			var light	= new THREE.DirectionalLight('white', 1);
+			light.angle = (Math.PI/5);
+			light.position.set(-0.5, 2.5, -2);
+			SCENE.add( light );
+			var starFeild = THREEx.Planets.createStarfield(parseInt(sceneStyle[1]));
 			SCENE.add(starFeild);
 			}
 
@@ -521,7 +537,7 @@
 			//Creates a Flat grass scene
 			///////////////////////////
 			else if(sceneStyle[0]=="Grass"){
-
+				console.log(sceneStyle);
 			alpha = true;
 			//Straight from https://github.com/jeromeetienne/threex.grassground
 			//Thanks jeromeetienne for all the amazing game extentions!!!
@@ -534,7 +550,7 @@
 			light.position.set(0.5, 0.5, 2);
 			SCENE.add( light );
 			// add a light behind
-			var light	= new THREE.DirectionalLight('white', 0.75);
+			var light	= new THREE.DirectionalLight('white', 1);
 			light.position.set(-0.5, 2.5, -2);
 			SCENE.add( light );
 
@@ -563,11 +579,11 @@
 			var groundMesh  = new THREEx.GrassGround({
 			width       : 10,    // the width of the mesh, default to 1
     		height      : 10,    // the height of the mesh, default to 1
-    		repeatX     : sceneStyle[2],    // the number of time the texture is repeated in X, default to 1
-    		repeatY     : sceneStyle[3],    // the number of time the texture is repeated in Y, default to 1
+    		repeatX     : sceneStyle[1],    // the number of time the texture is repeated in X, default to 1
+    		repeatY     : sceneStyle[2],    // the number of time the texture is repeated in Y, default to 1
 			});
 			//Scales Mesh resulting in a smother grass look gets the average between width and height (((parseInt(sceneStyle[1])+(parseInt(sceneStyle[1]))/2)
-			groundMesh.scale.multiplyScalar((parseInt(sceneStyle[2])+parseInt(sceneStyle[2]))/2);
+			groundMesh.scale.multiplyScalar((parseInt(sceneStyle[1])+parseInt(sceneStyle[2]))/2);
 			SCENE.add(groundMesh);
 			}
 			
@@ -589,7 +605,7 @@
 		} 
 		function render(){
 			var delta = 0.75*clock.getDelta();
-			//CollisionDetection.update();
+			CollisionDetection.update();
 			if(TrackBallControls){
 				RENDERER.render(SCENE, CAMERA);
 
