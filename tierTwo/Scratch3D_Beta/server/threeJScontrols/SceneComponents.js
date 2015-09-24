@@ -285,7 +285,7 @@ SCENECOMPONENTS.addCharecter = function(Charecter, LocationX, LocationY, Locatio
  				//material = new THREE.MeshBasicMaterial({color: 'blue'});
         		blendMesh = new THREE.Mesh( geometry, materials[0] );
         		blendMesh.rotation.y = Math.PI * -135 / 180;
-        		blendMesh.position.y = 1;
+        		blendMesh.position.set(LocationX,LocationY,LocationZ);
 				Scene.add( blendMesh );
 				blendMesh.name = charecterID;
 				SHAPES[charecterID] = blendMesh;
@@ -299,7 +299,7 @@ SCENECOMPONENTS.addCharecter = function(Charecter, LocationX, LocationY, Locatio
  				//material = new THREE.MeshBasicMaterial({color: 'blue'});
         		blendMesh = new THREE.Mesh( geometry, materials[0] );
         		blendMesh.rotation.y = Math.PI * -135 / 180;
-        		blendMesh.position.y = 0;
+        		blendMesh.position.set(LocationX,LocationY,LocationZ);
 				Scene.add( blendMesh );
 				blendMesh.name = charecterID;
 				SHAPES[charecterID] = blendMesh;
@@ -313,7 +313,7 @@ SCENECOMPONENTS.addCharecter = function(Charecter, LocationX, LocationY, Locatio
  				//material = new THREE.MeshBasicMaterial({color: 'blue'});
         		blendMesh = new THREE.Mesh( geometry, materials[0] );
         		blendMesh.rotation.y = Math.PI * -135 / 180;
-        		blendMesh.position.y = 0;
+        		blendMesh.position.set(LocationX,LocationY,LocationZ);
         		blendMesh.name = charecterID;
 				Scene.add( blendMesh );
 				SHAPES[charecterID] = blendMesh;
@@ -327,7 +327,7 @@ SCENECOMPONENTS.addCharecter = function(Charecter, LocationX, LocationY, Locatio
  				//material = new THREE.MeshBasicMaterial({color: 'blue'});
         		blendMesh = new THREE.Mesh( geometry, materials[0] );
         		blendMesh.rotation.y = Math.PI * 180 / 180;
-        		blendMesh.position.y = 1.5;
+        		blendMesh.position.set(LocationX,LocationY,LocationZ);
         		blendMesh.name = charecterID;
 				Scene.add( blendMesh );
 				SHAPES[charecterID] = blendMesh;
