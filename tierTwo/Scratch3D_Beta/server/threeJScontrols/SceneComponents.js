@@ -267,7 +267,9 @@ SCENECOMPONENTS.addCharecter = function(Charecter, LocationX, LocationY, Locatio
     			loader.load('threeJScontrols/sceneCharecters/cat/Cat.js', function modelLoadedCallback(geometry,materials) {
  				//material = new THREE.MeshBasicMaterial({color: 'blue'});
         		blendMesh = new THREE.Mesh( geometry, materials[0] );
-
+        		console.log("x: ", LocationX);
+        		console.log("y: ", LocationX);
+        		console.log("z: ", LocationX);
 				blendMesh.position.x = 1;
 				blendMesh.position.y = 1;
 				blendMesh.position.z = 1;
