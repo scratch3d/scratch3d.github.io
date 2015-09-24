@@ -764,7 +764,7 @@ var shape = null;
 		console.log(shape);
 		shape.__dirtyPosition = true;
 	}
-
+}
 SCENECOMPONENTS.rotate = function(shape_ID, direction, degrees){
 	var shape = null;
 	shape = SHAPES[shape_ID];
