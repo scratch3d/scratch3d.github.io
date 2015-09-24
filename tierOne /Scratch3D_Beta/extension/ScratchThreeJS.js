@@ -174,6 +174,14 @@
 		return shapeID;
 	}
 	
+    ext.createText = function(text, size, x, y, z){
+    var textID = generatID("text");
+    shapes.push(textID);
+    var message = "CREATETEXT_"+text+','+size+','+x+','+y+','+z+','+textID;
+    win.postMessage(message, liveURL);
+    return textID;
+  }
+
 	//Applies a given material to a given mesh and map a inage if supplied
 	ext.applyMaterial = function(Material, shape_id, color, imageURL){
 		var message = "APPLYMATERIAL_"+Material+','+shape_id +','+color+','+imageURL;
@@ -730,6 +738,8 @@
 
 
 			['r', 'New Shape %m.Shapes Size: %n %n %n Location: X: %n Y: %n Z: %n', 'createShape', 'Cube', '1','1','1','0','0','0'],
+      ['r', '3D Text: %s Size: %n Location: X: %n Y: %n Z: %n', 'createText', 'Hello World', '.5','0','0','0'],
+
       //__TEIR THREE__ ['r', 'New Light %m.Lights  Color: %s Intensity: %n X: %s Y: %s Z: %s','addLight','Ambient','white','0.7','0','0','0'],
       ['r', "New %m.Charecters Location: X: %n Y: %n Z: %n" , "add_Charecter", "Marine", '0','0','0'],
       //__TEIR TWO__  ['r', 'New Planet %m.Planets X: %n Y: %n Z: %n Diameter: %n' ,'addPlanet','Earth','0','0','0','1'],

@@ -143,6 +143,40 @@ SCENECOMPONENTS.addShape = function(shape, length, width, height, LocationX, Loc
 
 }
 
+
+SCENECOMPONENTS.addText = function(text,size,x,y,z,textID, SCENE){
+	    var material = new THREE.MeshPhongMaterial({
+        color: 0xdddddd
+    });
+    var textGeom = new THREE.TextGeometry( text, {
+    	size: size,
+		height: 0,
+        font: 'droid serif', // Must be lowercase!
+        weight: 'bold',
+        bevelThickness: 0.05,
+        bevelSize: 0.01,
+        bevelEnabled: true,
+        curveSegments: 10,
+        style: 'normal',
+        material: 0,
+        extrudeMaterial: 1
+
+    });
+    var textMesh = new THREE.Mesh( textGeom, material );
+    textMesh.position.x = parseFloat(x);
+    textMesh.position.y = parseFloat(y);
+    textMesh.position.z = parseFloat(z);
+    SCENE.add( textMesh );
+    //textMesh.name = "textID";
+    SHAPES[textID] = textMesh;
+    // Do some optional calculations. This is only if you need to get the
+    // width of the generated text
+    textGeom.computeBoundingBox();
+    textGeom.textWidth = textGeom.boundingBox.max.x - textGeom.boundingBox.min.x;
+
+
+}
+
 /*
 **Adds a new object to the scene loaded from an outside source
 */
