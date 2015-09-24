@@ -266,6 +266,13 @@ window.addEventListener("message", receiveMessage, false);
 		}
 	}
 
+    ext.goto = function(shape_id, x, y, z){
+      if(shapes.indexOf(shape_id)>-1){
+      var message = "GOTO_"+shape_id+','+x+','+y+','+z;
+      win.postMessage(message, liveURL);
+    }
+  }
+
   ext.rotateShape = function(shape_id, direction, steps){
     //Makes sure that the shape we are trying to move has been created
     if(shapes.indexOf(shape_id)>-1){

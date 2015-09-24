@@ -754,6 +754,17 @@ SCENECOMPONENTS.move = function(shape_ID, direction, steps){
 	}
 }
 
+SCENECOMPONENTS.goto = function(shape_ID, x,y,z){
+var shape = null;
+	shape = SHAPES[shape_ID];
+	if(shape!=null){
+		shape.position.x = parseFloat(x);
+		shape.position.y = parseFloat(y);
+		shape.position.z = parseFloat(z);
+		console.log(shape);
+		shape.__dirtyPosition = true;
+	}
+
 SCENECOMPONENTS.rotate = function(shape_ID, direction, degrees){
 	var shape = null;
 	shape = SHAPES[shape_ID];
