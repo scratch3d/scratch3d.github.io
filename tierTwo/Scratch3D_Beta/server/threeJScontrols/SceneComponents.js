@@ -261,9 +261,12 @@ SCENECOMPONENTS.addCharecter = function(Charecter, LocationX, LocationY, Locatio
 		}
 		if(Charecter=="Cat"){
 
-			 var  blendMesh = new THREE.BlendCharacter();
-				blendMesh.load( 'threeJScontrols/sceneCharecters/cat/Cat.js', function ( geometry, materials ) {
-
+			// var  blendMesh = new THREE.BlendCharacter();
+				//blendMesh.load( 'threeJScontrols/sceneCharecters/cat/Cat.js', function ( geometry, materials ) {
+				var loader = new THREE.JSONLoader();
+    			loader.load('threeJScontrols/sceneCharecters/cat/Cat.js', function modelLoadedCallback(geometry,materials) {
+ 				//material = new THREE.MeshBasicMaterial({color: 'blue'});
+        		blendMesh = new THREE.Mesh( geometry, materials[0] );
 				blendMesh.position.x = LocationX;
 				blendMesh.position.y = LocationY;
 				blendMesh.position.z = LocationZ;
