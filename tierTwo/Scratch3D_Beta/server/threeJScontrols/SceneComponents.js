@@ -195,9 +195,9 @@ SCENECOMPONENTS.addText = function(text,size,x,y,z,textID, SCENE){
 
     });
     var textMesh = new THREE.Mesh( textGeom, material );
-    textMesh.position.x = x;
-    textMesh.position.y = y;
-    textMesh.position.z = z;
+    textMesh.position.x = parseFloat(x);
+    textMesh.position.y = parseFloat(y);
+    textMesh.position.z = parseFloat(z);
     SCENE.add( textMesh );
     //textMesh.name = "textID";
     SHAPES[textID] = textMesh;
@@ -268,12 +268,9 @@ SCENECOMPONENTS.addCharecter = function(Charecter, LocationX, LocationY, Locatio
  				//material = new THREE.MeshBasicMaterial({color: 'blue'});
         		blendMesh = new THREE.Mesh( geometry, materials[0] );
 
-        		console.log("x: ", LocationX);
-        		console.log("y: ", LocationX);
-        		console.log("z: ", LocationX);
-				blendMesh.position.x = parseFloat(LocationX);
-				blendMesh.position.y = parseFloat(LocationY);
-				blendMesh.position.z = parseFloat(LocationX);
+				blendMesh.position.x = LocationX;
+				blendMesh.position.y = LocationY;
+				blendMesh.position.z = LocationX;
 				Scene.add( blendMesh );
 				blendMesh.name = charecterID;
 				SHAPES[charecterID] = blendMesh;
