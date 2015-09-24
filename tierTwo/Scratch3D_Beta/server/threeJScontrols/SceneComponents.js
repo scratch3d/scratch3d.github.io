@@ -267,15 +267,13 @@ SCENECOMPONENTS.addCharecter = function(Charecter, LocationX, LocationY, Locatio
     			loader.load('threeJScontrols/sceneCharecters/cat/Cat.js', function modelLoadedCallback(geometry,materials) {
  				//material = new THREE.MeshBasicMaterial({color: 'blue'});
         		blendMesh = new THREE.Mesh( geometry, materials[0] );
-				blendMesh.position.x = LocationX;
-				blendMesh.position.y = LocationY;
-				blendMesh.position.z = LocationZ;
+				//blendMesh.position.x = LocationX;
+				//blendMesh.position.y = LocationY;
+				//blendMesh.position.z = LocationZ;
 				Scene.add( blendMesh );
 				blendMesh.name = charecterID;
 				SHAPES[charecterID] = blendMesh;
 				SCENECOMPONENTS.OBJECTS.push(blendMesh);
-				var aspect = window.innerWidth / window.innerHeight;
-				var radius = blendMesh.geometry.boundingSphere.radius;
 
 				} );
 		}
