@@ -12,7 +12,6 @@ CollisionDetection.lastTouching = "";
 
 CollisionDetection.appendCasterTo = function(casterObject, touchObject, casterID, touchID){
 	var casterObj = new CollisionDetection.RayCaster(casterObject, casterID, touchObject, touchID);
-	console.log("Add item to: ", raycasters);
 	raycasters[casterID] = casterObj;
 	raycastersIDS.push(casterID);
 
@@ -24,7 +23,6 @@ CollisionDetection.addObjectToCaster = function(casterObject, addObject, addObje
 	addObject.name = addObjectID;
 	if(raycasters[casterObject]!=null){
 		raycasters[casterObject].conntactObjects.push(addObject);
-		console.log("Ray Caster Added new ", raycasters[casterObject].conntactObjects);
 	}
 }
 //The update function checks to see if there has been a change in the touch state of any of
@@ -56,7 +54,6 @@ CollisionDetection.touchingObject = {};
 CollisionDetection.RayCaster = function(caster, casterID, touch, touchID){
 	//sets the name of the object to the touchID name 
 	touch.name = touchID;
-	console.log("Caster Name: ", caster);
 	caster.name = casterID;
 
 	//NewlyAdded
@@ -101,7 +98,6 @@ CollisionDetection.RayCaster = function(caster, casterID, touch, touchID){
 
 	this.CollisionCheck = function(){
 		this.isTouching = [];
-		console.log("Rays Postion: Else was called ", this.mesh.name);
 		this.mesh.updateMatrixWorld();
 		
 		for (var i = this.mesh.geometry.vertices.length - 1; i >= 0; i--) {
