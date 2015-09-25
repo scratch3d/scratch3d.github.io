@@ -36,19 +36,16 @@ window.addEventListener("message", receiveMessage, false);
       commandKey = event.data.split("_")[0];
       //the actual data to be procesed by the extention
       var data = event.data.split("_")[1];
-      console.log("collisions",event.data);
         if(commandKey=="KEYSTROKE"){
         lastKeyEvent = data;
         }else if(commandKey=="RAYCASTTOUCH"){
           var collisionData = [];
           var objSpilt = data.split(";");
-          console.log("objSpilt ;", objSpilt);
           for (var i = objSpilt.length - 2; i >= 0; i--) {
             temp = objSpilt[i].split(":");
             collisionData[temp[0]] = temp[1].split(",");
           };
           collisions = new Object({data: collisionData});
-          console.log("collisions",collisions);
         }else if(commandKey=="LOGGEDIN"){
           loggedIN = true;
           if(descriptor!=null&&extention!=null){
@@ -61,7 +58,6 @@ window.addEventListener("message", receiveMessage, false);
 
 
           }
-          console.log("Logged In");
         }
         }
       }
@@ -152,7 +148,6 @@ window.addEventListener("message", receiveMessage, false);
 		
         setTimeout(function (){
 			var message = "INIT_"+scene+","+width+","+height;
-      console.log("message init: ", message);
 			win.postMessage(message,liveURL);
 			callback(); //Calls back to Scaratch proggram to allow exicution flow to reStart once the page has been loaded
         }, 1000);
@@ -173,7 +168,6 @@ window.addEventListener("message", receiveMessage, false);
 		var message = "CAMERAROTATE_"+direction + "," + degrees;
 		//Sends Message to the main.htlm event listener with the rotate tags along with user supplied params 
 		win.postMessage(message, liveURL);
-		console.log("Direction: ", direction, "Degrees: ", degrees);
 		}
 	} 
 	
@@ -181,13 +175,11 @@ window.addEventListener("message", receiveMessage, false);
 	ext.orbitCamera = function(direction){
 		var message = "CAMERAORBIT_" + direction;
 		win.postMessage(message, liveURL);
-		console.log("orbit Camera Called", message);
 	}
 	
 	ext.moveCamera = function(direction, steps){
 		var message = "CAMERAMOVE_"+direction+","+steps;
 		win.postMessage(message, liveURL);
-		console.log("Move Camera Called", message);
 	}
 
 	ext.cameraFallow = function(objectID, direction){
@@ -196,8 +188,6 @@ window.addEventListener("message", receiveMessage, false);
 	}
 	
 	ext.createShape = function(shape, l,w,h, locX,locY, locZ, PhysicBool){
-		console.log("desc", descriptor);
-		console.log("ext", ext);
 		var shapeID = generatID(shape);
 		shapes.push(shapeID);
 		var message = "CREATESHAPE_"+shape+','+l+','+w+','+h+','+locX+','+locY+','+locZ+','+PhysicBool+','+shapeID;
@@ -244,7 +234,6 @@ window.addEventListener("message", receiveMessage, false);
 
 	ext.setImage = function(materialID, url){
 		path = 'images/'+url+'.jpg';
-    console.log(path);
 		if(materials.indexOf(materialID)>-1){
 		var message = "SETMATERIALIMAGE_"+materialID+','+path;
 		win.postMessage(message, liveURL);	
@@ -252,7 +241,6 @@ window.addEventListener("message", receiveMessage, false);
 	}
 	ext.applyObjControls = function(shape_id, moveSpeed, lookSpeed){
 		//Makes sure that the shape we are trying to move has been created
-		console.log("Passed if Statment");
 		if(shapes.indexOf(shape_id)>-1){
 		var message = "APPLYOBJCONTRLS_"+shape_id+','+moveSpeed+','+lookSpeed;
 		win.postMessage(message, liveURL);
@@ -287,7 +275,6 @@ window.addEventListener("message", receiveMessage, false);
 	}
 
 	ext.lookAt = function(object){
-		console.log("Look At: ", object);
 		var message = "SETCAMERALOOKAT_"+object;
 		win.postMessage(message, liveURL);
 	}
@@ -307,13 +294,10 @@ window.addEventListener("message", receiveMessage, false);
     }
   }
 	ext.add_Charecter = function(Charecter, locX, locY, locZ){
-		console.log("ext.add_Charecter called ");
 		var charecterID = generatID("CHARECTER");
 		charecters.push(charecterID);
 		shapes.push(charecterID);
-		console.log("Charecter ID: ", charecterID);
 		var message = "ADDCHARECTER_"+Charecter+','+locX+','+locY+','+locZ+','+charecterID;
-		console.log("Charecter Message: ", message);
 		win.postMessage(message, liveURL);
 		return charecterID;
 	}
@@ -382,7 +366,6 @@ window.addEventListener("message", receiveMessage, false);
         if(raycasters[objectIdOne].indexOf(ObjectIdTwo)>=0){
           
           if(collisions.data[objectIdOne].indexOf(ObjectIdTwo)>=0){
-            console.log("Colided!!!");
            return true;
           }else{
             return false;
@@ -396,7 +379,6 @@ window.addEventListener("message", receiveMessage, false);
           return false;
         }
       }else{
-        console.log("info inner else Full");
         //create ObjectIdOne raycaster and add ObjectIdTwo to its checking list
         var message = "APPENDRAYCASTER_"+objectIdOne+','+ObjectIdTwo;
         win.postMessage(message, liveURL);
@@ -704,7 +686,6 @@ window.addEventListener("message", receiveMessage, false);
       if(event == "Click"){
         if(mouseData!=null){
         if(mouseData.click){
-         console.log("Click",mouseData.click);
          mouseData.click = false;
          return true;
           }
@@ -712,14 +693,12 @@ window.addEventListener("message", receiveMessage, false);
       }else if(event == "Down"){
         if(mouseData!=null){
           if(mouseData.down){
-          console.log("Down",mouseData.down);
           return true;
           }
         }
       }else if(event == "Up"){
         if(mouseData!=null){
           if(mouseData.up){
-            console.log("Up",mouseData.up);
             mouseData.up = true;
             return true;
           }
@@ -727,7 +706,6 @@ window.addEventListener("message", receiveMessage, false);
       }else if(event == "Double Click"){
         if(mouseData!=null){
           if(mouseData.dblclick){
-            console.log("Douple Click",mouseData.dblclick);
             mouseData.dblclick = false;
             return true;
           }
@@ -747,7 +725,6 @@ window.addEventListener("message", receiveMessage, false);
     ext.getObjectOnClick = function(){
       
         var message = "BEGINCLICKRAYCASTIN_";
-        console.log("BEGINCLICKRAYCASTIN_");
         win.postMessage(message, liveURL);
       
       if(mouseData.clickObjectID!=null){
