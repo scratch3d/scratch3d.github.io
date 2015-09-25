@@ -164,6 +164,7 @@
 			*/
 			//CAMERAROTATE command tag is associated with Rotate Camera Block
 			if(commandKey == "CAMERAROTATE"){
+				console.log("CAMERA ROTATE KEY CALLED");
 				if(CAMERA!=null){
 				console.log("CAMERA ROTATE KEY CALLED");
 				CAMERACONTROLS.rotate(paramsArray[0], parseFloat(paramsArray[1]), CAMERA);
