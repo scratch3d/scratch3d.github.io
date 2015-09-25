@@ -165,7 +165,7 @@ window.addEventListener("message", receiveMessage, false);
 
 	//Rotates the camera in a user supplied direction by a user supplied number of degrees
 	ext.rotateCamera = function(direction, degrees){
-		        logginWindow.postMessage("message", "http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html");
+		        //logginWindow.postMessage("message", "http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html");
 		//Checks to make sure the user has supplied a Direction 
 		if(direction != "Direction" && degrees != 0){
 		//Creates the message to be sent to the main.html 
