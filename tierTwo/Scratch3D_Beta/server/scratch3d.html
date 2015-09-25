@@ -237,7 +237,7 @@
 
 			if(commandKey == "ROTATESHAPE"){
 				if(SCENE!=null){
-				SCENECOMPONENTS.rotate(paramsArray[0],paramsArray[1], parseFloat(paramsArray[2]));
+				 SCENECOMPONENTS.rotate(paramsArray[0],paramsArray[1], parseFloat(paramsArray[2]));
 				}
 			}
 
@@ -313,7 +313,6 @@
 					var obj = SCENECOMPONENTS.getShape(paramsArray[0]);
 					if(obj!=null){
 						objControls = new THREE.fpvObjectControles(obj);
-						console.log("main Speed", paramsArray[1]);
 						objControls.moveSpeed = parseFloat(paramsArray[1]*100);
  						objControls.lookSpeed = parseFloat(paramsArray[2]*100);
 					}
