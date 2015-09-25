@@ -8,7 +8,6 @@ SCENECOMPONENTS.OBJECTS = [];
 *Adds a new 
 */
 SCENECOMPONENTS.addShape = function(shape, length, width, height, LocationX, LocationY, LocationZ, Physics, shapeID, Scene){
-	console.log("Called SCENECOMPONENTS.addShape", shape);
 	//Adds a new cube to our scene based off of the user supplied params
 	if(shape=="Cube"){
 	var cube = null;
@@ -22,7 +21,6 @@ SCENECOMPONENTS.addShape = function(shape, length, width, height, LocationX, Loc
 		if(cube!=null){
 			Scene.add(cube);
 			cube.name = shapeID;
-			console.log("THE NEW NAME OF ", cube.name);
 			SHAPES[shapeID] = cube;
 			SCENECOMPONENTS.OBJECTS.push(cube);
 		}
@@ -224,7 +222,6 @@ SCENECOMPONENTS.addOBJ = function(url, objID, Scene){
             }
 
        	 });
-       	console.log("LOADed Object: ", obj);
        obj.scale.set(.7,.7,.7);
        Scene.add(obj);
        obj.name = objID;
@@ -235,7 +232,6 @@ SCENECOMPONENTS.addOBJ = function(url, objID, Scene){
 }
 
 SCENECOMPONENTS.addCharecter = function(Charecter, LocationX, LocationY, LocationZ, charecterID, Scene){
-		console.log("SCENECOMPONENTS.addCharecter Called");
 		if(Charecter=="Marine"){
 		   var  blendMesh = new THREE.BlendCharacter();
 				blendMesh.load( 'threeJScontrols/sceneCharecters/marine_anims.js', function ( geometry, materials ) {
@@ -464,7 +460,6 @@ SCENECOMPONENTS.addLight = function(lightType,color,intensity,locX,locY,locZ,lig
 		light.position.z = locZ;
 		scene.add( light );
 		SHAPES[lightID] = light;
-		console.log("Ambient Light");
 	}else if(lightType=="Area"){
 	    var light = new THREE.AreaLight( color.getHex(), intensity );
 		light.position.set( locX, locY, locZ );
@@ -472,7 +467,6 @@ SCENECOMPONENTS.addLight = function(lightType,color,intensity,locX,locY,locZ,lig
 		light.height = 1;
 		scene.add(light);
 		SHAPES[lightID] = light;
-		console.log("Area Light");
 	}else if(lightType=="Directional"){
 		var light	= new THREE.DirectionalLight( color.getHex(), intensity )
 		light.position.set( locX, locY, locZ );
@@ -483,7 +477,6 @@ SCENECOMPONENTS.addLight = function(lightType,color,intensity,locX,locY,locZ,lig
 		light.position.set( locX, locY, locZ );
 		scene.add( light );
 		SHAPES[lightID] = light;
-		console.log("Point Light");
 	}
 }
 
@@ -528,7 +521,6 @@ SCENECOMPONENTS.setFriction = function(materialID, friction){
 	var material = MATERIALS[materialID];
 		if(material!=null){
 			material._physijs.friction = friction;
-			//console.log(material.friction);
 		}
 	}
 }
@@ -538,7 +530,6 @@ SCENECOMPONENTS.setRestitution = function(materialID, restitution){
 	var material = MATERIALS[materialID];
 		if(material!=null){
 			material._physijs.restitution = restitution;
-			//console.log(material.restitution);
 		}
 	}
 }
@@ -548,7 +539,6 @@ SCENECOMPONENTS.setWeight = function(objectID, weight){
 	if(shape._physijs != null){
 			if(shape!=null){
 				shape.mass = weight;
-				console.log(shape);
 				SHAPES[objectID] = shape;
 		}
 	}
@@ -597,7 +587,6 @@ SCENECOMPONENTS.setMaterialTo = function(materialID, objectID, scene){
 			scene.add(temp);
 			//scene.add(temp);
 			//scene.getObjectById(object.id) = temp;
-			console.log("Physics Material: ", temp);
 			//object = 
 			SHAPES[objectID] = temp;
 			MATERIALS[materialID] = material;
@@ -617,7 +606,6 @@ SCENECOMPONENTS.setMaterialColor = function(materialID, color){
 			material.color =  new THREE.Color(color);
 		}else if(color.toUpperCase()=="RANDOM"){
 			material.color =  new THREE.Color( (Math.random() * 0xffffff));
-			console.log(".setMaterialColor: ", material);
 		}
 	}
 	
@@ -626,7 +614,6 @@ SCENECOMPONENTS.setMaterialColor = function(materialID, color){
 
 SCENECOMPONENTS.setMaterialImage = function(materialID, urlPath){
 var material = MATERIALS[materialID];
-console.log("SCENECOMPONENTS.", urlPath);
 	if(material!=null){
 			material.map = THREE.ImageUtils.loadTexture(urlPath);
 			material.wrapAround = true;
@@ -667,7 +654,6 @@ SCENECOMPONENTS.applyMaterial = function(material, shape_ID, _color, imageURL){
 			material.map = THREE.ImageUtils.loadTexture(imageURL);
 			material.wrapAround = true;
 		}
-		console.log("SCENECOMPONENTS: ", shape);
 	}
 
 SCENECOMPONENTS.move = function(shape_ID, direction, steps){
@@ -761,7 +747,6 @@ var shape = null;
 		shape.position.x = parseFloat(x);
 		shape.position.y = parseFloat(y);
 		shape.position.z = parseFloat(z);
-		console.log(shape);
 		shape.__dirtyPosition = true;
 	}
 }
@@ -779,7 +764,6 @@ SCENECOMPONENTS.rotate = function(shape_ID, direction, degrees){
 }
 SCENECOMPONENTS.getCharecter = function(charecterID){
 	var charecter = CHARECTERS[charecterID];
-	console.log(charecterID, charecter);
 	return charecter;
 }
 
