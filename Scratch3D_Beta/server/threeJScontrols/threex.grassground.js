@@ -12,7 +12,7 @@ THREEx.GrassGround	= function(opts){
 	var anisotropy	= opts.anisotropy !== undefined ? opts.anisotropy : 16
 
 	// create the textureDiffuse	http://scratch3d.github.io/Scratch3D_Beta/extension/ScratchThreeJS.js
-	var textureDiffuseUrl	= 'http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/sceneImages/grasslight-small.jpg'
+	var textureDiffuseUrl	= 'http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/sceneImages/grasslight-small.jpg'
 	var textureDiffuse	= THREE.ImageUtils.loadTexture(textureDiffuseUrl);
 	textureDiffuse.wrapS	= THREE.RepeatWrapping;
 	textureDiffuse.wrapT	= THREE.RepeatWrapping;
@@ -21,7 +21,7 @@ THREEx.GrassGround	= function(opts){
 	textureDiffuse.anisotropy = anisotropy;
 
 	// create the textureNormal	
-	var textureNormalUrl	='http://scratch3d.github.io/Scratch3D_Beta/server/threeJScontrols/sceneImages/grasslight-small-nm.jpg'
+	var textureNormalUrl	='http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/sceneImages/grasslight-small-nm.jpg'
 	var textureNormal	= THREE.ImageUtils.loadTexture(textureNormalUrl);
 	textureNormal.wrapS	= THREE.RepeatWrapping;
 	textureNormal.wrapT	= THREE.RepeatWrapping;
@@ -31,13 +31,21 @@ THREEx.GrassGround	= function(opts){
 
 	// build object3d
 	var geometry	= new THREE.PlaneGeometry(width, height, segmentsW, segmentsH)
-	var material	= new THREE.MeshPhongMaterial({
+	/*var material	= new THREE.MeshPhongMaterial({
 		map		: textureDiffuse,
 		normalMap	: textureNormal,
                 normalScale	: new THREE.Vector2(1,1).multiplyScalar(0.5),
 		color		: 0x44FF44,
 	})
-	var object3D	= new THREE.Mesh(geometry, material)
+	var object3D	= new THREE.Mesh(geometry, material)*/
+	var object3D = new THREE.Mesh(
+           		geometry,
+      			new THREE.MeshPhongMaterial({ // Three.js material
+      			map		: textureDiffuse,
+      			normalMap	: textureNormal,
+      			normalScale	: new THREE.Vector2(1,1).multiplyScalar(0.5),
+        		color		: 0x44FF44,
+      			}));
 	object3D.rotateX(-Math.PI/2)
 	// return the just-built object3d
 	return object3D;

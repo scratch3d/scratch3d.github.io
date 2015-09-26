@@ -4,20 +4,103 @@
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-66361143-1', 'auto');
-  ga('send', 'pageview');
+  //ga('create', 'UA-66361143-1', 'auto');
+  //ga('send', 'pageview');
+
+window.addEventListener("message", receiveMessage, false);
+      //Tells if the user has succesfully logged in yetor not
+  var loggedIN = false;
+  var mouseData = null;
+  var lastKeyEvent = null;
+  var descriptor = null;
+  var extention = null;
+  //This obect will hold all of the collisons data returned from the raycaster
+  //it holds objects that where previously touch on the last update of the raycaster
+  //Every time the raycaster updates it will send a new object holding the information
+  //of which objects our touching. If the scene elements are not in this object then 
+  //they are not touching.
+  var collisions = null;
+
+    function receiveMessage()
+    {
+      //The command key is experes by KEYNAME_ the key name allows use to know what the message 
+      //Type is.
+      //Retrevies the command Key of the message denoting which function to call
+      var commandKey = null;
+
+      if(event.data.eventType!=null){
+     if(event.data.eventType=="MOUSEEVENT"){
+         mouseData = event.data;
+        }
+      }else{
+      commandKey = event.data.split("_")[0];
+      //the actual data to be procesed by the extention
+      var data = event.data.split("_")[1];
+        if(commandKey=="KEYSTROKE"){
+        lastKeyEvent = data;
+        }else if(commandKey=="RAYCASTTOUCH"){
+          var collisionData = [];
+          var objSpilt = data.split(";");
+          for (var i = objSpilt.length - 2; i >= 0; i--) {
+            temp = objSpilt[i].split(":");
+            collisionData[temp[0]] = temp[1].split(",");
+          };
+          collisions = new Object({data: collisionData});
+        }else if(commandKey=="LOGGEDIN"){
+          loggedIN = true;
+          if(descriptor!=null&&extention!=null){
+
+
+
+
+          ///ADD REGISTRATION BACK IN HER
+
+
+
+          }
+        }
+        }
+      }
 
 (function(ext) {
 	var win = null;
 	var canvas = null;
 	var ctx = null;
-	var lastKeyEvent = null;
+
+  // Lets us know if we are opening a new window and a new sesion has begon
+  var newSession = true;
+
+
+  //A list of all the objects that currently have raycasters connected to them
+  //and all the objects that raycaster is checking
+  var raycasters = [];
+
+
+
+  /*
+  **Mouse Controles
+  */
+
+  var getMouseData = false;
+  var getMousePostion = false;
+  var getMouseClicked = false;
+  var getMouseUp = false;
+  var getMouseDown = false;
+  var getMouseDoubleClicked = false;
+  var mouseX =null;
+  var mouseY =null;
+  var mouseClick = false;
+  var mousedbClick = false;
+  var mouseDown = false;
+  var mouseUp = false;
+
 	//var liveURL = "http://localhost:8888/main.html";
 	var shapes = [];
 	var materials = [];
 	var charecters = [];
 	//var liveURL = "http://033ae09.netsolhost.com//gsd2014team5/Localhost/main.html";
-	var liveURL = "http://scratch3d.github.io/Scratch3D_Beta/server/scratch3d.html";
+	var liveURL = "http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/scratch3d.html";
+  //var liveURL = "http://scratch3d.github.io/Scratch3D_Beta/server/scratch3d.html";
     // Cleanup function when the extension is unloaded
     ext._shutdown = function() {};
 
@@ -31,29 +114,36 @@
 	//Opens the window and 
 	//A wait block is required for this function do to the fact that we must wait for the entire 
 	//three.js file to load befor we can countinue exicuting our program.
-	ext.initWorld = function(scene, width, height, cameraType, callback) {
+	ext.initWorld = function(scene, width, height, callback) {
 		//Opens the three.js window
 		//win = window.open (liveURL, "", "width=window.width, height=window.height");
 		//Test URLS
-		window.addEventListener("message", receiveMessage, false);
-		
-		function receiveMessage()
-		{
-			console.log(event.data);
-			lastKeyEvent = event.data;
-    	}
-		win = window.open (liveURL, "", "width=window.width, height=window.height");
 
+    
+    //Clear data from past runs
+    var logginWindow = null;
+    collisions = null;
+    charecters = new Array();
+    materials = new Array();
+    shapes = new Array();
+    raycaster = new Array();
+    //--------------------------
+    
+		
+  
+		win = window.open (liveURL, "", "width=window.width, height=window.height");
+    if(win==null){
+      var browserData = navigator.userAgent;
+      if(browserData.indexOf("Safari")>-1){
+      alert("This extension must open in a separate window. \rTo run please enable pop-ups from this site. \rTo enable PopUps: \rClick Safari, \rClick Preferences, \rClick security, \rUncheck Block pop-up windows, \rThen refresh page. ");
+      }
+  }
+    //newSession = false;
 		/*
 		**Checks Browser Version in win returns null
 		**
 		*/
-		if(win==null){
-			var browserData = navigator.userAgent;
-			if(browserData.indexOf("Safari")>-1){
-			alert("This extension must open in a separate window. \rTo run please enable pop-ups from this site. \rTo enable PopUps: \rClick Safari, \rClick Preferences, \rClick security, \rUncheck Block pop-up windows, \rThen refresh page. ");
-			}
-		}
+		
 		//**//
 		
         setTimeout(function (){
@@ -61,6 +151,7 @@
 			win.postMessage(message,liveURL);
 			callback(); //Calls back to Scaratch proggram to allow exicution flow to reStart once the page has been loaded
         }, 1000);
+
 	};
 
 	
@@ -69,7 +160,7 @@
 
 	//Rotates the camera in a user supplied direction by a user supplied number of degrees
 	ext.rotateCamera = function(direction, degrees){
-		
+		        //logginWindow.postMessage("message", "http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html");
 		//Checks to make sure the user has supplied a Direction 
 		if(direction != "Direction" && degrees != 0){
 		//Creates the message to be sent to the main.html 
@@ -77,7 +168,6 @@
 		var message = "CAMERAROTATE_"+direction + "," + degrees;
 		//Sends Message to the main.htlm event listener with the rotate tags along with user supplied params 
 		win.postMessage(message, liveURL);
-		console.log("Direction: ", direction, "Degrees: ", degrees);
 		}
 	} 
 	
@@ -85,13 +175,11 @@
 	ext.orbitCamera = function(direction){
 		var message = "CAMERAORBIT_" + direction;
 		win.postMessage(message, liveURL);
-		console.log("orbit Camera Called", message);
 	}
 	
 	ext.moveCamera = function(direction, steps){
 		var message = "CAMERAMOVE_"+direction+","+steps;
 		win.postMessage(message, liveURL);
-		console.log("Move Camera Called", message);
 	}
 
 	ext.cameraFallow = function(objectID, direction){
@@ -99,15 +187,21 @@
 		win.postMessage(message, liveURL);
 	}
 	
-	ext.createShape = function(shape, l,w,h, locX,locY, locZ){
-		console.log("desc", descriptor);
-		console.log("ext", ext);
+	ext.createShape = function(shape, l,w,h, locX,locY, locZ, PhysicBool){
 		var shapeID = generatID(shape);
 		shapes.push(shapeID);
-		var message = "CREATESHAPE_"+shape+','+l+','+w+','+h+','+locX+','+locY+','+locZ+','+shapeID;
+		var message = "CREATESHAPE_"+shape+','+l+','+w+','+h+','+locX+','+locY+','+locZ+','+PhysicBool+','+shapeID;
 		win.postMessage(message, liveURL);
 		return shapeID;
 	}
+
+  ext.createText = function(text, size, x, y, z){
+    var textID = generatID("text");
+    shapes.push(textID);
+    var message = "CREATETEXT_"+text+','+size+','+x+','+y+','+z+','+textID;
+    win.postMessage(message, liveURL);
+    return textID;
+  }
 	
 	//Applies a given material to a given mesh and map a inage if supplied
 	ext.applyMaterial = function(Material, shape_id, color, imageURL){
@@ -140,7 +234,6 @@
 
 	ext.setImage = function(materialID, url){
 		path = 'images/'+url+'.jpg';
-    console.log(path);
 		if(materials.indexOf(materialID)>-1){
 		var message = "SETMATERIALIMAGE_"+materialID+','+path;
 		win.postMessage(message, liveURL);	
@@ -148,7 +241,6 @@
 	}
 	ext.applyObjControls = function(shape_id, moveSpeed, lookSpeed){
 		//Makes sure that the shape we are trying to move has been created
-		console.log("Passed if Statment");
 		if(shapes.indexOf(shape_id)>-1){
 		var message = "APPLYOBJCONTRLS_"+shape_id+','+moveSpeed+','+lookSpeed;
 		win.postMessage(message, liveURL);
@@ -161,6 +253,13 @@
 		win.postMessage(message, liveURL);
 		}
 	}
+
+    ext.goto = function(shape_id, x, y, z){
+      if(shapes.indexOf(shape_id)>-1){
+      var message = "GOTO_"+shape_id+','+x+','+y+','+z;
+      win.postMessage(message, liveURL);
+    }
+  }
 
   ext.rotateShape = function(shape_id, direction, steps){
     //Makes sure that the shape we are trying to move has been created
@@ -176,7 +275,6 @@
 	}
 
 	ext.lookAt = function(object){
-		console.log("Look At: ", object);
 		var message = "SETCAMERALOOKAT_"+object;
 		win.postMessage(message, liveURL);
 	}
@@ -196,13 +294,10 @@
     }
   }
 	ext.add_Charecter = function(Charecter, locX, locY, locZ){
-		console.log("ext.add_Charecter called ");
 		var charecterID = generatID("CHARECTER");
 		charecters.push(charecterID);
 		shapes.push(charecterID);
-		console.log("Charecter ID: ", charecterID);
 		var message = "ADDCHARECTER_"+Charecter+','+locX+','+locY+','+locZ+','+charecterID;
-		console.log("Charecter Message: ", message);
 		win.postMessage(message, liveURL);
 		return charecterID;
 	}
@@ -224,6 +319,80 @@
 
       return lightID;
   }
+
+  ext.setGravity = function(x, y, z){
+    var message = "SETGRAVITY_"+x+','+y+','+z;
+      win.postMessage(message, liveURL);
+  }
+
+  ext.createPhysicsMaterial = function(materialType, friction, restitution){
+    var physmaterialID = generatID("Physics"+materialType);
+    materials.push(physmaterialID);
+    var message = "CREATEPHYSMATERIAL_"+materialType+','+friction+','+restitution+','+physmaterialID;
+      win.postMessage(message, liveURL);
+      return physmaterialID;
+  }
+
+  ext.setFriction = function(variable, friction){
+    var message = "SETFRICTION_"+variable+','+friction;
+      win.postMessage(message, liveURL);
+  }
+
+  ext.setRestitution = function(variable, restitution){
+    var message = "SETRESTITUTION_"+variable+','+restitution;
+      win.postMessage(message, liveURL);
+  }
+
+  ext.setWeight = function(materialID, weight){
+    var message = "SETWEIGHT_"+materialID+','+weight;
+      win.postMessage(message, liveURL);
+  }
+
+  ext.setLinearVelocity = function(objID, x, y, z){
+    var message = "SETLINEARVELOCITY_"+objID+','+x+','+y+','+z;
+      win.postMessage(message, liveURL);
+  }
+
+  ext.setAngularVelocity = function(objID, x, y, z){
+    var message = "SETANGULARVELOCITY_"+objID+','+x+','+y+','+z;
+      win.postMessage(message, liveURL);
+  }
+
+  ext.isTouching = function(objectIdOne, ObjectIdTwo){
+     
+    //Checks to see if the object has been created yet
+    if((charecters.indexOf(objectIdOne)>=0||shapes.indexOf(objectIdOne)>=0)&&(charecters.indexOf(ObjectIdTwo)>=0||shapes.indexOf(ObjectIdTwo)>=0)){
+      if(raycasters[objectIdOne]!=null){
+        if(raycasters[objectIdOne].indexOf(ObjectIdTwo)>=0){
+          
+          if(collisions.data[objectIdOne].indexOf(ObjectIdTwo)>=0){
+           return true;
+          }else{
+            return false;
+          }
+
+        }else{
+          //add ObjectIdTwo to ObjectIdOne's raycaster checking
+          raycasters[objectIdOne].push(ObjectIdTwo);
+          var message = "ADDOBJECTTOCASTER_"+objectIdOne+','+ObjectIdTwo;
+          win.postMessage(message, liveURL);
+          return false;
+        }
+      }else{
+        //create ObjectIdOne raycaster and add ObjectIdTwo to its checking list
+        var message = "APPENDRAYCASTER_"+objectIdOne+','+ObjectIdTwo;
+        win.postMessage(message, liveURL);
+        raycasters[objectIdOne] = [];
+        raycasters[objectIdOne].push(ObjectIdTwo);
+        return false;
+      }
+  }else{
+    //returns false with if the object hasnt been created
+    return false;
+  }
+}
+
+
 
 	ext.key_Pressed = function(key) {
        // Reset alarm_went_off if it is true, and return true
@@ -513,13 +682,64 @@
        return false;
     };
 
+    ext.mouseEvent = function(event){
+      if(event == "Click"){
+        if(mouseData!=null){
+        if(mouseData.click){
+         mouseData.click = false;
+         return true;
+          }
+        }
+      }else if(event == "Down"){
+        if(mouseData!=null){
+          if(mouseData.down){
+          return true;
+          }
+        }
+      }else if(event == "Up"){
+        if(mouseData!=null){
+          if(mouseData.up){
+            mouseData.up = true;
+            return true;
+          }
+        }
+      }else if(event == "Double Click"){
+        if(mouseData!=null){
+          if(mouseData.dblclick){
+            mouseData.dblclick = false;
+            return true;
+          }
+        }
+      }
+    }
+
+    ext.mousePostion = function(axis){
+        if(axis=="X"){
+            return mouseData.clientX;
+        }else{
+            return mouseData.clientY;
+        }
+
+    }
+
+    ext.getObjectOnClick = function(){
+      
+        var message = "BEGINCLICKRAYCASTIN_";
+        win.postMessage(message, liveURL);
+      
+      if(mouseData.clickObjectID!=null){
+      var objID = mouseData.clickObjectID;
+      mouseData.clickObjectID = null;
+      return objID;
+      }
+    }
 	// Block and block menu descriptions
-    var descriptor = {
+    descriptor = {
         blocks: [
       // Block type, block name, function name, param1 default value, param2 default value
-      ['w', 'New 3D World %m.Scenes Width: %n Height: %n %m.Camera', 'initWorld', "Grass", 10, 10 , "Camera Type",ext],
+      ['w', 'New 3D World %m.Scenes Width: %n Height: %n', 'initWorld', "Grass", 10, 10,ext],
       //['', 'Set Camera Controls  Up: %m.Keys Down: %m.Keys Left: %m.Keys Right: %m.Keys ', 'camControlsMove', 'w', 's','a','d'],
-      ['', 'Add Camera Controls %m.CameraControls Move Speed: %n Look Speed: %n ', 'camControls','First Person', '200', '50'],
+      ['', 'Add Camera Controls %m.CameraControls Move Speed: %n Look Speed: %n ', 'camControls','First Person', '10', '2'],
 			//The camera orbit block to allow users to orbit the camera around a given point
 			['', " Camera Look At: %s  %m.Sides","cameraFallow", "Variable", "Back"],
 			     //The camera move block allows a user to move the camera in both the positive and negative direction of the X,Y, and Z axis.
@@ -533,31 +753,50 @@
 
 
 			['r', 'New Shape %m.Shapes Size: %n %n %n Location: X: %n Y: %n Z: %n', 'createShape', 'Cube', '1','1','1','0','0','0'],
-      ['r', 'New Light %m.Lights  Color: %s Intensity: %n X: %s Y: %s Z: %s','addLight','Ambient','white','0.7','0','0','0'],
-      ['r', "New %m.Charecters Location: X: %n Y: %n Z: %n" , "add_Charecter", "Marine", '1','1','1'],
+      
+      ['r', '3D Text: %s Size: %n Location: X: %n Y: %n Z: %n', 'createText', 'Hello World', '.5','0','0','0'],
+      //__TIER_THREE__  ['r', 'New Light %m.Lights  Color: %s Intensity: %n X: %s Y: %s Z: %s','addLight','Ambient','white','0.7','0','0','0'],
+      ['r', "New %m.Charecters Location: X: %n Y: %n Z: %n" , "add_Charecter", "Marine", '0','0','0'],
       ['r', 'New Planet %m.Planets X: %n Y: %n Z: %n Diameter: %n' ,'addPlanet','Earth','0','0','0','1'],
 		        //Creates a new empty matrial and returns its object ID
-      ['r', 'New Material %m.Materials', 'createMaterial','MeshBasicMaterial'],
-      ['', 'Change Material %s to Color %s', 'materialColor', 'Variable','Random'],
-      ['', 'Set %s Image %m.Images', 'setImage', 'Material', 'Crate'],
+      //__TIER_THREE__  ['r', 'New Material %m.Materials', 'createMaterial','MeshBasicMaterial'],
+      //__TIER_THREE__  ['', 'Change Material %s to Color %s', 'materialColor', 'Variable','Random'],
+      //__TIER_THREE__  ['', 'Set %s Image %m.Images', 'setImage', 'Material', 'Crate'],
 
       ['', "Move %s %m.Move %n Steps" , 'moveShape', "Variable", "Left", 1],
 
-      ['', "Rotate %s %m.Axis Degrees: %n " , 'rotateShape', "Variable", "Y", 1],
+      ['', "Object: %s Go To X: %n Y: %n Z: %n" , 'goto', "Variable", 0, 0, 0],
+
+      ['', "Rotate %s %m.Axis3 Degrees: %n " , 'rotateShape', "Variable", "Y", 1],
       
 			//Adds a smothe movment control to any given object
 			['', "Apply FPV Controls to Object: %s Move Speed: %n Turn Speed: %n" , 'applyObjControls', "Variable", "1", "2"],
 			
 			//Sets a given material to a given object
-			['', 'Apply %s to %s', 'setObjectMaterial', 'Material', 'Shape'],
+			//__TIER_THREE__  ['', 'Apply %s to %s', 'setObjectMaterial', 'Material', 'Shape'],
 
-			['', 'Scale %s X: %n Y: %n Z: %n', 'scaleObj',"Variable", "1.0", "1.0", "1.0"],
+			//__TIER_THREE__  ['', 'Scale %s X: %n Y: %n Z: %n', 'scaleObj',"Variable", "1.0", "1.0", "1.0"],
 			['h', "When %m.Keys  Pressed" , 'key_Pressed', "space"],
-			['r', "Load Object URL: %s", "loadOBJ","http://goodwinj14.github.io/ThreeJS/server/threeJScontrols/shiptriangle.obj"],
+      //__TIER_THREE__  ['h', "When Mouse %m.MouseOptions", 'mouseEvent', 'Click'],
+      //__TIER_THREE__  ['r', "Mouse %m.Axis2", "mousePostion","X"], 
+      //__TIER_THREE__  ['r', "On Clicked Get Object", "getObjectOnClick"], 
+
+			//__TIER_THREE__  ['r', "Load Object URL: %s", "loadOBJ","http://goodwinj14.github.io/ThreeJS/server/threeJScontrols/shiptriangle.obj"],
+      //__TIER_THREE__  ['', "Set Scene Gravity X: %n Y: %n Z: %n", "setGravity","0","-50","0"],
+      //__TIER_THREE__  ['r', "New Physics Material %m.Materials Friction: %n Restitution %n", 'createPhysicsMaterial','MeshBasicMaterial','0.8','0.3'],
+      //__TIER_THREE__  ['', "Physics, Set Friction Of: %s To: %n", "setFriction","Variable","0.8"],
+      //__TIER_THREE__  ['', "Physics, Set Restitution Of: %s To: %n", "setRestitution","Variable","0.8"],
+      //__TIER_THREE__  ['', "Physics, Set Weight Of: %s To: %n", "setWeight","Variable","2"],
+      //__TIER_THREE__  ['', "Physics, Set Linear Velocity Of: %s To X: %n Y: %n Z: %n", "setLinearVelocity","Variable","0","0","0"],
+      //__TIER_THREE__  ['', "Physics, Set Angular Velocity Of: %s To X: %n Y: %n Z: %n", "setAngularVelocity","Variable","0","0","0"],
+      ['b', "%s Touching %s", "isTouching","Variable","Variable"],
+       
         ],
 		
 		menus: {
-		        Scenes: ['Grid','Grass','Space','Blank'],
+		    Scenes: ['Grid','Grass','Space','Blank'],
+        Fonts:['helvetiker'],
+        Toggle: ['Off'],
 				Camera: ['Perspective'],
 				CameraRotation: ['Left', 'Right', 'Up', 'Down', 'Roll Left', 'Roll Right'],
 				CameraOrbit: ['Orbit Left', 'Orbit Right', 'Orbit Up', 'Orbit Down'],
@@ -565,18 +804,35 @@
         Sides: ["Back", "Front"],
 				Move: ['Left', 'Right', 'Up', 'Down','Forward','Back'],
 				Shapes: ['Cube', 'Sphere', 'Circle','Cylinder', 'Dodecahedron', 'Icosahedron', 'Plane', 'Ring', 'Torus'],
-		    Planets: ['Earth', 'Sun','Moon', 'Mercury','Venus','Mars','Jupiter','Saturn','Uranus','Neptune','Pluto! #savepluto'],	
+		    Planets: ['Earth', 'Sun','Moon', 'Mercury','Venus','Mars','Jupiter','Saturn','Uranus','Neptune','Pluto'],	
         Materials:['MeshBasicMaterial', 'MeshNormalMaterial','MeshDepthMaterial', 'MeshLambertMaterial','MeshPhongMaterial'],
 		    Images:['Crate', 'Brick', 'Earth', 'Moon'],
 		    Keys: ['space', 'up arrow', 'down arrow', 'right arrow', 'left arrow', 'a',  'b',  'c',  'd',  'e',  'f',  'g',  'h', 'i',  'j',  'k',  'l',  'm',  'n',  'o',  'p',  'q',  'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',], 
 		    Charecters: ['Marine','Car', 'Cat', 'Cat1', 'Lego Vader', 'Pirate Ship'],
 		    Lights: ['Ambient','Directional','Point'],
-        Axis: ['X','Y','Z'],
+        Axis3: ['X','Y','Z'],
+        Axis2: ['X','Y'],
+        MouseOptions: ['Click', 'Down', 'Up', 'Double Click'],
         }
     };
 
     // Register the extension
-   ScratchExtensions.register('Scratch Three JS', descriptor, ext);
+   // logginWindow = window.open ("http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html", "", "width=window.width, height=window.height");  
+    ScratchExtensions.register('Scratch Three JS', descriptor, ext);
+    /*if(logginWindow==null){
+      var browserData = navigator.userAgent;
+      if(browserData.indexOf("Safari")>-1){
+      alert("This extension must open in a separate window. \rTo run please enable pop-ups from this site. \rTo enable PopUps: \rClick Safari, \rClick Preferences, \rClick security, \rUncheck Block pop-up windows, \rThen refresh page. ");
+      }else{*/
+    var timeoutVariable = window.setTimeout(endTimer, 1000);
+    function endTimer() {
+
+    //logginWindow.postMessage("message", "http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html");
+    window.clearTimeout(timeoutVariable);
+  }
+
+
+  extention = ext; 
 })({});
 
 //Generates A random id key to go with a newly created object

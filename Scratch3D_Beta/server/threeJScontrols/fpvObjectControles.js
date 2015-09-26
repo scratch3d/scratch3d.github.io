@@ -116,9 +116,9 @@
 
 		var actualMoveSpeed = delta * this.moveSpeed;
 		
-		if ( this.moveForward ) { this.object.translateZ( actualMoveSpeed);}
+		if ( this.moveForward ) { this.object.translateZ( actualMoveSpeed);this.object.__dirtyPosition = true;}
 		//if ( this.moveForward ) {this.object.translateZ( -actualMoveSpeed);}
-		if ( this.moveBackward ){ this.object.translateZ( -actualMoveSpeed);}
+		if ( this.moveBackward ){ this.object.translateZ( -actualMoveSpeed);this.object.__dirtyPosition}
 
 		if ( this.moveUp ) this.object.translateY( actualMoveSpeed );
 		if ( this.moveDown ) this.object.translateY( - actualMoveSpeed );
@@ -126,8 +126,8 @@
 		//Rotation and look Direction
 		var actualLookSpeed = this.lookSpeed*delta;
 		lon = THREE.Math.degToRad( actualLookSpeed );
-		if ( this.rotateLeft ) this.object.rotation.y = this.object.rotation.y + (lon);
-		if ( this.rotateRight ) this.object.rotation.y = this.object.rotation.y - (lon);
+		if ( this.rotateLeft ){ this.object.rotation.y = this.object.rotation.y + (lon); this.object.__dirtyRotation = true;}
+		if ( this.rotateRight ){ this.object.rotation.y = this.object.rotation.y - (lon); this.object.__dirtyRotation = true;}
 	}
 
 
