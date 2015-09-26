@@ -673,7 +673,7 @@ SCENECOMPONENTS.move = function(shape_ID, direction, steps){
 
 				CHARECTERCONTROLS.moveLeft(shape, steps);
 			}else{*/
-			shape.translateX(steps);
+			shape.translateX(-steps);
 			shape.__dirtyPosition = true;
 		//}
 		}
@@ -688,7 +688,7 @@ SCENECOMPONENTS.move = function(shape_ID, direction, steps){
 
 				CHARECTERCONTROLS.moveRight(shape, steps);
 			}else{*/
-			shape.translateX(-steps);
+			shape.translateX(steps);
 			//shape.position.x = (shape.position.x-0) + (steps-0);
 			shape.__dirtyPosition = true;
 			//}
