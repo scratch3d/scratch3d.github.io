@@ -744,9 +744,10 @@ SCENECOMPONENTS.goto = function(shape_ID, x,y,z){
 var shape = null;
 	shape = SHAPES[shape_ID];
 	if(shape!=null){
-		shape.position.x = parseFloat(x);
-		shape.position.y = parseFloat(y);
-		shape.position.z = parseFloat(z);
+		shape.translate((shape.position.x - parseFloat(x)), (shape.position.y - parseFloat(y)),  (shape.position.z - parseFloat(z)));
+		//shape.position.x = ;
+		//shape.position.y = parseFloat(y);
+		//shape.position.z = parseFloat(z);
 		shape.__dirtyPosition = true;
 	}
 }
