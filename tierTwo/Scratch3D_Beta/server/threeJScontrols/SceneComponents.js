@@ -688,7 +688,7 @@ SCENECOMPONENTS.move = function(shape_ID, direction, steps){
 
 				CHARECTERCONTROLS.moveRight(shape, steps);
 			}else{*/
-			shape.translateX(steps);
+			shape.translateX(-steps);
 			//shape.position.x = (shape.position.x-0) + (steps-0);
 			shape.__dirtyPosition = true;
 			//}
@@ -698,14 +698,16 @@ SCENECOMPONENTS.move = function(shape_ID, direction, steps){
 		shape = SHAPES[shape_ID];
 		if(shape!=null){
 			//!!!!!!-----The -0 Helps javascript to recognize the following + opperator as an additon operator and not as a string concatination------!!!!!!
-			shape.position.y = (shape.position.y-0) + (steps-0);
+			shape.translateY(steps);
+			//shape.position.y = (shape.position.y-0) + (steps-0);
 			shape.__dirtyPosition = true;
 		}
 	}if(direction=="Down"){
 		var shape = null;
 		shape = SHAPES[shape_ID];
 		if(shape!=null){
-			shape.position.y =  (shape.position.y - steps);
+			shape.translateY(-steps);
+			//shape.position.y =  (shape.position.y - steps);
 			shape.__dirtyPosition = true;
 		}
 	}if(direction=="Forward"){
@@ -719,7 +721,8 @@ SCENECOMPONENTS.move = function(shape_ID, direction, steps){
 
 				CHARECTERCONTROLS.moveForward(shape, steps);
 			}else{*/
-			shape.position.z = (shape.position.z - steps);
+			shape.translateZ(-steps);
+			//shape.position.z = (shape.position.z - steps);
 			shape.__dirtyPosition = true;
 			//}
 		}
@@ -734,7 +737,8 @@ SCENECOMPONENTS.move = function(shape_ID, direction, steps){
 
 				CHARECTERCONTROLS.moveBack(shape, steps);
 			}else{*/
-			shape.position.z = (shape.position.z-0) + (steps-0);
+			shape.translateZ(steps);
+			//shape.position.z = (shape.position.z-0) + (steps-0);
 			shape.__dirtyPosition = true;
 			//}
 		}
