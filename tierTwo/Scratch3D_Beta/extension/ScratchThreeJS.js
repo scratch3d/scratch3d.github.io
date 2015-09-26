@@ -150,7 +150,7 @@ window.addEventListener("message", receiveMessage, false);
 			var message = "INIT_"+scene+","+width+","+height;
 			win.postMessage(message,liveURL);
 			callback(); //Calls back to Scaratch proggram to allow exicution flow to reStart once the page has been loaded
-        }, 1000);
+        }, 3000);
 
 	};
 
