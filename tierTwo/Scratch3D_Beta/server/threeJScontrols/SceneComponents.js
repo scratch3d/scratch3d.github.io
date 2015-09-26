@@ -673,7 +673,7 @@ SCENECOMPONENTS.move = function(shape_ID, direction, steps){
 
 				CHARECTERCONTROLS.moveLeft(shape, steps);
 			}else{*/
-			shape.position.x = (shape.position.x - steps);
+			shape.translateX(steps);
 			shape.__dirtyPosition = true;
 		//}
 		}
@@ -688,7 +688,8 @@ SCENECOMPONENTS.move = function(shape_ID, direction, steps){
 
 				CHARECTERCONTROLS.moveRight(shape, steps);
 			}else{*/
-			shape.position.x = (shape.position.x-0) + (steps-0);
+			shape.translateX(steps);
+			//shape.position.x = (shape.position.x-0) + (steps-0);
 			shape.__dirtyPosition = true;
 			//}
 		}
@@ -744,10 +745,9 @@ SCENECOMPONENTS.goto = function(shape_ID, x,y,z){
 var shape = null;
 	shape = SHAPES[shape_ID];
 	if(shape!=null){
-		shape.translate((shape.position.x - parseFloat(x)), (shape.position.y - parseFloat(y)),  (shape.position.z - parseFloat(z)));
-		//shape.position.x = ;
-		//shape.position.y = parseFloat(y);
-		//shape.position.z = parseFloat(z);
+		shape.position.x = parseFloat(x);
+		shape.position.y = parseFloat(y);
+		shape.position.z = parseFloat(z);
 		shape.__dirtyPosition = true;
 	}
 }
