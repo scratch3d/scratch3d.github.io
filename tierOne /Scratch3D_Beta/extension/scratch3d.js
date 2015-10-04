@@ -62,8 +62,7 @@ var htmlCode = "<html><head><title>Scratch3d</title><style>body { margin: 0; }ca
         
     };
     ext.uploadFile = function(){
-        console.log("Space2", sceneWindow.document);
-        var sceneParams = ["Space", "10", "10"];
+        console.log("Space3", sceneWindow.document);
         console.log("Hello",sceneWindow.connectionTest("World"));
     };
 
