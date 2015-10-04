@@ -566,7 +566,7 @@ SCENECOMPONENTS.setAngularVelocity = function(objectID, x, y, z){
 SCENECOMPONENTS.setMaterialTo = function(materialID, objectID, scene){
 	var material = MATERIALS[materialID];
 	var object = SHAPES[objectID];
-
+	console.log("Material Called");
 	if(material!=null && object!=null){
 		if(materialID.indexOf("Physics") > -1){
 			

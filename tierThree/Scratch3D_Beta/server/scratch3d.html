@@ -94,6 +94,7 @@
 		var controls = null;
 		var TrackBallControls = false;
 		var objControls = null;
+		var PhysicsOn = false;
 		//Info needed to send data back to the parent window
 		var origin = null;
 		var messageSource = null;
@@ -502,6 +503,7 @@
 			//Turns the gravity of the scene on to a defualt of -50 along the y axis
 			if(sceneStyle[1]=="On"){
 				console.log("gravity: ", sceneStyle[1]);
+				PhysicsOn = true;
 				SCENE = new Physijs.Scene;
 				SCENE.setGravity(new THREE.Vector3( 0, -50, 0 ));
 			}
@@ -630,8 +632,9 @@
 			//THREE.AnimationHandler.update( delta );
 			//TWEEN.update();
 		
-			
-			//SCENE.simulate(); // run physics
+			if(PhysicsOn){
+			SCENE.simulate(); // run physics
+			}
 			if(objControls!=null){
 				objControls.update(clock.getDelta());
 			}
