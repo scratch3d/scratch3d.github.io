@@ -60,9 +60,6 @@ var htmlCode = "<html> <head> <title>My first Three.js app</title> <style> body 
         sceneWindow.document.write(htmlCode);
     };
 
-    ext.runScratch3d = function(){
-
-    };
 
 
     ext.uploadFile = function(){
@@ -197,7 +194,7 @@ function CreateFromTemplate(elementId, templateId, elementType, appendTo, wrappe
     }
 
     // Block and block menu descriptions
-        descriptor.blocks.push(['', 'New 3D World %m.Scenes Width: %n Height: %n', 'initWorld', "Grass", 10, 10],);
+        descriptor.blocks.push(['', 'New 3D World %m.Scenes Width: %n Height: %n', 'initWorld', "Grass", 10, 10);
         descriptor.blocks.push(['r', 'New Shape', 'newShape']);
         descriptor.blocks.push(['null', 'Upload', 'uploadFile']);
     //
