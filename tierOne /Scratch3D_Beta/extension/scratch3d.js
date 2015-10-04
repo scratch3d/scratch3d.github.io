@@ -5,6 +5,10 @@ var sceneWindow = null;
 var $3dmodal = null;
 var loadingDocument = false;
 var htmlCode = "<html><head><title>Scratch3d</title><style>body { margin: 0; }canvas { width: 100%; height: 100% }</style></head><body><div id='container' style='width:1425px; height:720px;'></div><script src='http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/three.js'></script><script src='http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/CameraControls.js'></script><script src='http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/SceneComponents.js'></script><script src='http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/TrackballControls.js'></script><script src='http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/SceneStyles.js'></script><script src='http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/OBJLoader.js'></script><script src='http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/threex.grassground.js'></script><script src='http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/BlendCharacter.js'></script><script src='http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/CharecterControles.js'></script><script src='http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/tween.min.js'></script><script src='http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/FirstPersonControls.js'></script><script src='http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/lookAtControls.js'></script><script src='http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/fpvObjectControles.js'></script><script src='http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/threeJScontrols/threex.planets-master/threex.planets.js'></script><script type='text/javascript' src='http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/Physics/CollisionRayCaster.js'></script><script>function init_window(sceneStyle){console.log('Init Window');init_Scene(sceneStyle);init_Render();init_Camera(6,8,5.6);if(RENDERER==null || SCENE==null || CAMERA==null){return false;}else {firstRender(SCENE, CAMERA); animate(); console.log('RUNN CALLED'); return true;}}function connectionTest(message){console.log(message);return message;} </script></body></html>";
+
+var SCENETYPE = null;
+var SCENEWIDTH = null;
+var SCENEHEIGHT = null;
 /*****************Html Three Js Code ***********************/
 /***********************************************************/
 /***********************************************************/
@@ -55,12 +59,14 @@ var htmlCode = "<html><head><title>Scratch3d</title><style>body { margin: 0; }ca
     };
 
     ext.initWorld = function(sceneType, width, height){
-        sceneWindow =  window.open();
-        sceneWindow.document.write(htmlCode);
-        var sceneParams = ["sceneType", "width", "height"];
-        sceneWindow.init_window(sceneParams);
+        SCENETYPE = "Grass";
+        SCENEWIDTH = "10";
+        SCENEHEIGHT = "10";
+        sceneWindow =  window.open(htmlCode);
+        //sceneWindow.document.write();
+        
     };
-    ext.uploadFile = function(){
+    ext.uploadFile = function(){ 
         console.log("Space3", sceneWindow.document);
         console.log("Hello",sceneWindow.connectionTest("World"));
         var sceneParams = ["sceneType", "width", "height"];
