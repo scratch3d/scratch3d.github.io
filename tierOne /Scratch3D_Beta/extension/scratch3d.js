@@ -62,8 +62,12 @@ var SCENEHEIGHT = null;
         SCENETYPE = "Grass";
         SCENEWIDTH = "10";
         SCENEHEIGHT = "10";
-        sceneWindow =  window.open(htmlCode);
-        //sceneWindow.document.write();
+        sceneWindow =  window.open();
+        var script = document.createElement('script');
+        script.onload = function() {
+          alert("Script loaded and ready");
+        };
+        script.src = "http://whatever.com/the/script.js";
         
     };
     ext.uploadFile = function(){ 
