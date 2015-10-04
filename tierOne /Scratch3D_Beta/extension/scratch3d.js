@@ -60,7 +60,8 @@ var htmlCode = "<html><head><title>Scratch3d</title><style>body { margin: 0; }ca
         
     };
     ext.uploadFile = function(){
-        sceneWindow.document.init_window(sceneType);
+        consol.log("Space");
+        sceneWindow.document.init_window("Space");
     }
 
 
