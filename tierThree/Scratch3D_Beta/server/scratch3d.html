@@ -408,7 +408,7 @@
 		 });
 
 		window.addEventListener("mousedown", function(e){  
-				if(beginClickRayCatsing){
+				//if(beginClickRayCatsing){
 				mouse.x = ( event.clientX / RENDERER.domElement.width ) * 2 - 1;
 				mouse.y = - ( event.clientY / RENDERER.domElement.height ) * 2 + 1;
 				console.log(caster);
@@ -422,7 +422,7 @@
 				}else{
 					mouseData.clickObjectID = null;
 				}
-				}
+				//}
 				console.log("Mouse Down");
 				mouseData.down = true;
 				mouseData.click = false;
