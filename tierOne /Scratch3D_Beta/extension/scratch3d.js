@@ -60,9 +60,9 @@ var htmlCode = "<html><head><title>Scratch3d</title><style>body { margin: 0; }ca
         
     };
     ext.uploadFile = function(){
-        consol.log("Space");
+        console.log("Space");
         sceneWindow.document.init_window("Space");
-    }
+    };
 
 
 
