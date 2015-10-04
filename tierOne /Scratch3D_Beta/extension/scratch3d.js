@@ -58,12 +58,13 @@ var htmlCode = "<html><head><title>Scratch3d</title><style>body { margin: 0; }ca
         sceneWindow =  window.open();
         sceneWindow.document.write(htmlCode);
         var sceneParams = [sceneType, width, height];
-        sceneWindow.init_window(sceneParams);
+        //sceneWindow.init_window(sceneParams);
         
     };
     ext.uploadFile = function(){
         console.log("Space2", sceneWindow.document);
-        sceneWindow.init_window("Space");
+        var sceneParams = ["Space", "10", "10"];
+        sceneWindow.init_window(sceneParams);
     };
 
 
