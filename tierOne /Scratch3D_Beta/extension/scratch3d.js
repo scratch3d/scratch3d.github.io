@@ -57,7 +57,7 @@ var htmlCode = "<html> <head> <title>My first Three.js app</title> <style> body 
 
     ext.init = function(){
         sceneWindow = window.open();
-        sceneWindow.innerHTML = htmlCode;
+        sceneWindow.document.innerHTML = htmlCode;
     };
 
     ext.runScratch3d = function(){
