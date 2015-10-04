@@ -38,14 +38,18 @@ THREEx.GrassGround	= function(opts){
 		color		: 0x44FF44,
 	})
 	var object3D	= new THREE.Mesh(geometry, material)*/
-	var object3D = new THREE.Mesh(
+	var object3D = new Physijs.PlaneMesh(
            		geometry,
+            	Physijs.createMaterial( // Physijs material
       			new THREE.MeshPhongMaterial({ // Three.js material
       			map		: textureDiffuse,
       			normalMap	: textureNormal,
       			normalScale	: new THREE.Vector2(1,1).multiplyScalar(0.5),
         		color		: 0x44FF44,
-      			}));
+      			}),
+      			.6, // friction
+      			.1 // restitution
+    			), 0);
 	object3D.rotateX(-Math.PI/2)
 	// return the just-built object3d
 	return object3D;
