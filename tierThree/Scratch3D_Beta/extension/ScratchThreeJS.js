@@ -777,9 +777,9 @@ window.addEventListener("message", receiveMessage, false);
 
 			//__TIER_THREE__  ['', 'Scale %s X: %n Y: %n Z: %n', 'scaleObj',"Variable", "1.0", "1.0", "1.0"],
 			['h', "When %m.Keys  Pressed" , 'key_Pressed', "space"],
-      ['h', "When Mouse %m.MouseOptions", 'mouseEvent', 'Click'],
+      //['h', "When Mouse %m.MouseOptions", 'mouseEvent', 'Click'],
       //__TIER_THREE__  ['r', "Mouse %m.Axis2", "mousePostion","X"], 
-      ['r', "On Clicked Get Object", "getObjectOnClick"], 
+      //['r', "On Clicked Get Object", "getObjectOnClick"], 
 
 			//__TIER_THREE__  ['r', "Load Object URL: %s", "loadOBJ","http://goodwinj14.github.io/ThreeJS/server/threeJScontrols/shiptriangle.obj"],
       ['', "Set Scene Gravity X: %n Y: %n Z: %n", "setGravity","0","-50","0"],
