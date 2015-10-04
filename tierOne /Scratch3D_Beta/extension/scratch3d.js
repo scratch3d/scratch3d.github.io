@@ -194,7 +194,7 @@ function CreateFromTemplate(elementId, templateId, elementType, appendTo, wrappe
     }
 
     // Block and block menu descriptions
-        descriptor.blocks.push(['', 'New 3D World %m.Scenes Width: %n Height: %n', 'initWorld', "Grass", 10, 10);
+        descriptor.blocks.push(['', 'New 3D World %m.Scenes Width: %n Height: %n', 'initWorld', "Grass", 10, 10]);
         descriptor.blocks.push(['r', 'New Shape', 'newShape']);
         descriptor.blocks.push(['null', 'Upload', 'uploadFile']);
     //
