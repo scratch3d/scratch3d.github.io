@@ -99,7 +99,7 @@ window.addEventListener("message", receiveMessage, false);
 	var materials = [];
 	var charecters = [];
 	//var liveURL = "http://033ae09.netsolhost.com//gsd2014team5/Localhost/main.html";
-	var liveURL = "http://scratch3d.github.io/tierTwo/Scratch3D_Beta/server/scratch3d.html";
+	var liveURL = "http://scratch3d.github.io/tierThree/Scratch3D_Beta/server/scratch3d.html";
   //var liveURL = "http://scratch3d.github.io/Scratch3D_Beta/server/scratch3d.html";
     // Cleanup function when the extension is unloaded
     ext._shutdown = function() {};
