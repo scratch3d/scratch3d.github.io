@@ -63,7 +63,7 @@ var htmlCode = "<html><head><title>Scratch3d</title><style>body { margin: 0; }ca
     ext.uploadFile = function(){
         console.log("Space3", sceneWindow.document);
         console.log("Hello",sceneWindow.connectionTest("World"));
-        var sceneParams = [sceneType, width, height];
+        var sceneParams = ["sceneType", "width", "height"];
         sceneWindow.init_window(sceneParams);
     };
 
