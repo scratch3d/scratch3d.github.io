@@ -748,20 +748,20 @@ window.addEventListener("message", receiveMessage, false);
 			['', "Rotate Camera %m.CameraRotation %n Degrees" , 'rotateCamera', "Direction", "1"],
 			//The camera orbit block to allow users to orbit the camera around a given point
 			//NEEDS TO BE FIXED LEAVE OUT FOR NOW!!!!
-      //['', " Camera Orbit  %m.CameraOrbit ","orbitCamera", "Direction"],
+    //['', " Camera Orbit  %m.CameraOrbit ","orbitCamera", "Direction"],
 //
 
 
 			['r', 'New Shape %m.Shapes Size: %n %n %n Location: X: %n Y: %n Z: %n', 'createShape', 'Cube', '1','1','1','0','0','0'],
       
       ['r', '3D Text: %s Size: %n Location: X: %n Y: %n Z: %n', 'createText', 'Hello World', '.5','0','0','0'],
-      //__TIER_THREE__  ['r', 'New Light %m.Lights  Color: %s Intensity: %n X: %s Y: %s Z: %s','addLight','Ambient','white','0.7','0','0','0'],
+      ['r', 'New Light %m.Lights  Color: %s Intensity: %n X: %s Y: %s Z: %s','addLight','Ambient','white','0.7','0','0','0'],
       ['r', "New %m.Charecters Location: X: %n Y: %n Z: %n" , "add_Charecter", "Marine", '0','0','0'],
       ['r', 'New Planet %m.Planets X: %n Y: %n Z: %n Diameter: %n' ,'addPlanet','Earth','0','0','0','1'],
 		        //Creates a new empty matrial and returns its object ID
-      //__TIER_THREE__  ['r', 'New Material %m.Materials', 'createMaterial','MeshBasicMaterial'],
-      //__TIER_THREE__  ['', 'Change Material %s to Color %s', 'materialColor', 'Variable','Random'],
-      //__TIER_THREE__  ['', 'Set %s Image %m.Images', 'setImage', 'Material', 'Crate'],
+      ['r', 'New Material %m.Materials', 'createMaterial','MeshBasicMaterial'],
+      ['', 'Change Material %s to Color %s', 'materialColor', 'Variable','Random'],
+      ['', 'Set %s Image %m.Images', 'setImage', 'Material', 'Crate'],
 
       ['', "Move %s %m.Move %n Steps" , 'moveShape', "Variable", "Left", 1],
 
@@ -773,22 +773,22 @@ window.addEventListener("message", receiveMessage, false);
 			['', "Apply FPV Controls to Object: %s Move Speed: %n Turn Speed: %n" , 'applyObjControls', "Variable", "1", "2"],
 			
 			//Sets a given material to a given object
-			//__TIER_THREE__  ['', 'Apply %s to %s', 'setObjectMaterial', 'Material', 'Shape'],
+			['', 'Apply %s to %s', 'setObjectMaterial', 'Material', 'Shape'],
 
 			//__TIER_THREE__  ['', 'Scale %s X: %n Y: %n Z: %n', 'scaleObj',"Variable", "1.0", "1.0", "1.0"],
 			['h', "When %m.Keys  Pressed" , 'key_Pressed', "space"],
-      //__TIER_THREE__  ['h', "When Mouse %m.MouseOptions", 'mouseEvent', 'Click'],
+      ['h', "When Mouse %m.MouseOptions", 'mouseEvent', 'Click'],
       //__TIER_THREE__  ['r', "Mouse %m.Axis2", "mousePostion","X"], 
-      //__TIER_THREE__  ['r', "On Clicked Get Object", "getObjectOnClick"], 
+      ['r', "On Clicked Get Object", "getObjectOnClick"], 
 
 			//__TIER_THREE__  ['r', "Load Object URL: %s", "loadOBJ","http://goodwinj14.github.io/ThreeJS/server/threeJScontrols/shiptriangle.obj"],
-      //__TIER_THREE__  ['', "Set Scene Gravity X: %n Y: %n Z: %n", "setGravity","0","-50","0"],
-      //__TIER_THREE__  ['r', "New Physics Material %m.Materials Friction: %n Restitution %n", 'createPhysicsMaterial','MeshBasicMaterial','0.8','0.3'],
-      //__TIER_THREE__  ['', "Physics, Set Friction Of: %s To: %n", "setFriction","Variable","0.8"],
-      //__TIER_THREE__  ['', "Physics, Set Restitution Of: %s To: %n", "setRestitution","Variable","0.8"],
-      //__TIER_THREE__  ['', "Physics, Set Weight Of: %s To: %n", "setWeight","Variable","2"],
-      //__TIER_THREE__  ['', "Physics, Set Linear Velocity Of: %s To X: %n Y: %n Z: %n", "setLinearVelocity","Variable","0","0","0"],
-      //__TIER_THREE__  ['', "Physics, Set Angular Velocity Of: %s To X: %n Y: %n Z: %n", "setAngularVelocity","Variable","0","0","0"],
+      ['', "Set Scene Gravity X: %n Y: %n Z: %n", "setGravity","0","-50","0"],
+      ['r', "New Physics Material %m.Materials Friction: %n Restitution %n", 'createPhysicsMaterial','MeshBasicMaterial','0.8','0.3'],
+      ['', "Physics, Set Friction Of: %s To: %n", "setFriction","Variable","0.8"],
+      ['', "Physics, Set Restitution Of: %s To: %n", "setRestitution","Variable","0.8"],
+      ['', "Physics, Set Weight Of: %s To: %n", "setWeight","Variable","2"],
+      ['', "Physics, Set Linear Velocity Of: %s To X: %n Y: %n Z: %n", "setLinearVelocity","Variable","0","0","0"],
+      ['', "Physics, Set Angular Velocity Of: %s To X: %n Y: %n Z: %n", "setAngularVelocity","Variable","0","0","0"],
       ['b', "%s Touching %s", "isTouching","Variable","Variable"],
        
         ],
