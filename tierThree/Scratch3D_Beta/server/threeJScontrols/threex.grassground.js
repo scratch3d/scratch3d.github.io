@@ -50,6 +50,7 @@ THREEx.GrassGround	= function(opts){
       			.6, // friction
       			.1 // restitution
     			), 0);
+	console.log("object3D",object3D);
 	object3D.rotateX(-Math.PI/2)
 	// return the just-built object3d
 	return object3D;
