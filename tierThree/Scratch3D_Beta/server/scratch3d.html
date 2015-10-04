@@ -500,10 +500,11 @@
 
 			SCENE = new THREE.Scene;
 			//Turns the gravity of the scene on to a defualt of -50 along the y axis
-			/*if(sceneStyle[1]=="On"){
+			if(sceneStyle[1]=="On"){
 				console.log("gravity: ", sceneStyle[1]);
+				SCENE = new Physijs.Scene;
 				SCENE.setGravity(new THREE.Vector3( 0, -50, 0 ));
-			}*/
+			}
 			//Creates a basic grid scene
 			if(sceneStyle[0]=="Grid"){
 			var light	= new THREE.AmbientLight( 0x020202 );

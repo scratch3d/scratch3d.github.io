@@ -114,7 +114,7 @@ window.addEventListener("message", receiveMessage, false);
 	//Opens the window and 
 	//A wait block is required for this function do to the fact that we must wait for the entire 
 	//three.js file to load befor we can countinue exicuting our program.
-	ext.initWorld = function(scene, width, height, callback) {
+	ext.initWorld = function(scene, gravity, width, height, callback) {
 		//Opens the three.js window
 		//win = window.open (liveURL, "", "width=window.width, height=window.height");
 		//Test URLS
@@ -147,7 +147,7 @@ window.addEventListener("message", receiveMessage, false);
 		//**//
 		
         setTimeout(function (){
-			var message = "INIT_"+scene+","+width+","+height;
+			var message = "INIT_"+scene+","+gravity+","+width+","+height;
 			win.postMessage(message,liveURL);
 			callback(); //Calls back to Scaratch proggram to allow exicution flow to reStart once the page has been loaded
         }, 3000);
@@ -737,7 +737,7 @@ window.addEventListener("message", receiveMessage, false);
     descriptor = {
         blocks: [
       // Block type, block name, function name, param1 default value, param2 default value
-      ['w', 'New 3D World %m.Scenes Width: %n Height: %n', 'initWorld', "Grass", 10, 10,ext],
+      ['w', 'New 3D World %m.Scenes Width: %n Height: %n Gravity: %m.Toggle', 'initWorld', "Grass", "Off", 10, 10,ext],
       //['', 'Set Camera Controls  Up: %m.Keys Down: %m.Keys Left: %m.Keys Right: %m.Keys ', 'camControlsMove', 'w', 's','a','d'],
       ['', 'Add Camera Controls %m.CameraControls Move Speed: %n Look Speed: %n ', 'camControls','First Person', '10', '2'],
 			//The camera orbit block to allow users to orbit the camera around a given point
@@ -796,7 +796,7 @@ window.addEventListener("message", receiveMessage, false);
 		menus: {
 		    Scenes: ['Grid','Grass','Space','Blank'],
         Fonts:['helvetiker'],
-        Toggle: ['Off'],
+        Toggle: ['Off','On'],
 				Camera: ['Perspective'],
 				CameraRotation: ['Left', 'Right', 'Up', 'Down', 'Roll Left', 'Roll Right'],
 				CameraOrbit: ['Orbit Left', 'Orbit Right', 'Orbit Up', 'Orbit Down'],
