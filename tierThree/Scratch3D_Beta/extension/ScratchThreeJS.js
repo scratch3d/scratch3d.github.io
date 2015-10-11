@@ -63,7 +63,7 @@ window.addEventListener("message", receiveMessage, false);
       }
 
 (function(ext) {
-	var win = null;
+	var win;
 	var canvas = null;
 	var ctx = null;
 
