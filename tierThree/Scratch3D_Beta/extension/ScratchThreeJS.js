@@ -824,12 +824,7 @@ window.addEventListener("message", receiveMessage, false);
       if(browserData.indexOf("Safari")>-1){
       alert("This extension must open in a separate window. \rTo run please enable pop-ups from this site. \rTo enable PopUps: \rClick Safari, \rClick Preferences, \rClick security, \rUncheck Block pop-up windows, \rThen refresh page. ");
       }else{*/
-    var timeoutVariable = window.setTimeout(endTimer, 1000);
-    function endTimer() {
-
-    //logginWindow.postMessage("message", "http://03c3573.netsolhost.com/Scratch3d/Scratch3d%20Login%20Window/index.html");
-    window.clearTimeout(timeoutVariable);
-  }
+    
 
 
   extention = ext; 
