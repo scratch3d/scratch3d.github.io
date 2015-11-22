@@ -8,13 +8,13 @@
   ga('send', 'pageview');
 
 window.addEventListener("message", receiveMessage, false);
-      //Tells if the user has succesfully logged in yetor not
+      //Tells if the user has successfully logged in yet or not
   var loggedIN = false;
   var mouseData = null;
   var lastKeyEvent = null;
   var descriptor = null;
   var extention = null;
-  //This obect will hold all of the collisons data returned from the raycaster
+  //This object will hold all of the collisions data returned from the raycaster
   //it holds objects that where previously touch on the last update of the raycaster
   //Every time the raycaster updates it will send a new object holding the information
   //of which objects our touching. If the scene elements are not in this object then 
@@ -25,7 +25,7 @@ window.addEventListener("message", receiveMessage, false);
     {
       //The command key is experes by KEYNAME_ the key name allows use to know what the message 
       //Type is.
-      //Retrevies the command Key of the message denoting which function to call
+      //Retrieves the command Key of the message denoting which function to call
       var commandKey = null;
 
       if(event.data.eventType!=null){
@@ -34,7 +34,7 @@ window.addEventListener("message", receiveMessage, false);
         }
       }else{
       commandKey = event.data.split("_")[0];
-      //the actual data to be procesed by the extention
+      //the actual data to be processed by the extention
       var data = event.data.split("_")[1];
         if(commandKey=="KEYSTROKE"){
         lastKeyEvent = data;
@@ -67,7 +67,7 @@ window.addEventListener("message", receiveMessage, false);
 	var canvas = null;
 	var ctx = null;
 
-  // Lets us know if we are opening a new window and a new sesion has begon
+  // Lets us know if we are opening a new window and a new session has begun
   var newSession = true;
 
 
@@ -78,7 +78,7 @@ window.addEventListener("message", receiveMessage, false);
 
 
   /*
-  **Mouse Controles
+  **Mouse Controls
   */
 
   var getMouseData = false;
@@ -113,7 +113,7 @@ window.addEventListener("message", receiveMessage, false);
 	//Sets up the connection to the Three.js server 
 	//Opens the window and 
 	//A wait block is required for this function do to the fact that we must wait for the entire 
-	//three.js file to load befor we can countinue exicuting our program.
+	//three.js file to load before we can countiue executing our program.
 	ext.initWorld = function(scene, width, height, callback) {
 		//Opens the three.js window
 		//win = window.open (liveURL, "", "width=window.width, height=window.height");
@@ -149,7 +149,7 @@ window.addEventListener("message", receiveMessage, false);
         setTimeout(function (){
 			var message = "INIT_"+scene+","+width+","+height;
 			win.postMessage(message,liveURL);
-			callback(); //Calls back to Scaratch proggram to allow exicution flow to reStart once the page has been loaded
+			callback(); //Calls back to Scratch program to allow execution flow to restart once the page has been loaded
         }, 3000);
 
 	};
@@ -164,7 +164,7 @@ window.addEventListener("message", receiveMessage, false);
 		//Checks to make sure the user has supplied a Direction 
 		if(direction != "Direction" && degrees != 0){
 		//Creates the message to be sent to the main.html 
-		//Messge will be formated as tag, turn direction, number of degrees to rotate. exp.  "CAMERAROTATE_Left,15"	
+		//Message will be formatted as tag, turn direction, number of degrees to rotate. exp.  "CAMERAROTATE_Left,15"	
 		var message = "CAMERAROTATE_"+direction + "," + degrees;
 		//Sends Message to the main.htlm event listener with the rotate tags along with user supplied params 
 		win.postMessage(message, liveURL);
@@ -203,7 +203,7 @@ window.addEventListener("message", receiveMessage, false);
     return textID;
   }
 	
-	//Applies a given material to a given mesh and map a inage if supplied
+	//Applies a given material to a given mesh and map a image if supplied
 	ext.applyMaterial = function(Material, shape_id, color, imageURL){
 		var message = "APPLYMATERIAL_"+Material+','+shape_id +','+color+','+imageURL;
 		win.postMessage(message, liveURL);
@@ -387,7 +387,7 @@ window.addEventListener("message", receiveMessage, false);
         return false;
       }
   }else{
-    //returns false with if the object hasnt been created
+    //returns false with if the object hasn't been created
     return false;
   }
 }
@@ -400,7 +400,7 @@ window.addEventListener("message", receiveMessage, false);
 
        //Checks to see if we are looking for a key command exp. "left arrow"
        //If so we the check to see if that key has been pressed 
-       //If it has been pressed we then return true exectuing the code stack below the when pressed block
+       //If it has been pressed we then return true executing the code stack below the when pressed block
        if(key=='up arrow'){
        	if (lastKeyEvent == 38) {
            lastKeyEvent = null;
@@ -427,7 +427,7 @@ window.addEventListener("message", receiveMessage, false);
            return true;
            }
        }
-       //If a letter was entered insted of a command key
+       //If a letter was entered instead of a command key
        else if(key=='a'){
        if (lastKeyEvent == 65) {
            lastKeyEvent = null;
@@ -758,7 +758,7 @@ window.addEventListener("message", receiveMessage, false);
       //__TIER_THREE__  ['r', 'New Light %m.Lights  Color: %s Intensity: %n X: %s Y: %s Z: %s','addLight','Ambient','white','0.7','0','0','0'],
       ['r', "New %m.Charecters Location: X: %n Y: %n Z: %n" , "add_Charecter", "Marine", '0','0','0'],
       ['r', 'New Planet %m.Planets X: %n Y: %n Z: %n Diameter: %n' ,'addPlanet','Earth','0','0','0','1'],
-		        //Creates a new empty matrial and returns its object ID
+		        //Creates a new empty material and returns its object ID
       //__TIER_THREE__  ['r', 'New Material %m.Materials', 'createMaterial','MeshBasicMaterial'],
       //__TIER_THREE__  ['', 'Change Material %s to Color %s', 'materialColor', 'Variable','Random'],
       //__TIER_THREE__  ['', 'Set %s Image %m.Images', 'setImage', 'Material', 'Crate'],
@@ -769,7 +769,7 @@ window.addEventListener("message", receiveMessage, false);
 
       ['', "Rotate %s %m.Axis3 Degrees: %n " , 'rotateShape', "Variable", "Y", 1],
       
-			//Adds a smothe movment control to any given object
+			//Adds a smooth movement control to any given object
 			['', "Apply FPV Controls to Object: %s Move Speed: %n Turn Speed: %n" , 'applyObjControls', "Variable", "1", "2"],
 			
 			//Sets a given material to a given object
