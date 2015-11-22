@@ -743,8 +743,8 @@ window.addEventListener("message", receiveMessage, false);
 			//The camera orbit block to allow users to orbit the camera around a given point
 			['', " Camera Look At: %s  %m.Sides","cameraFallow", "Variable", "Back"],
 			     //The camera move block allows a user to move the camera in both the positive and negative direction of the X,Y, and Z axis.
-      ['', " Move Camera  %m.Move  %n steeps ","moveCamera", "Direction", "1"],
-      //The camera rotate block to allow users to rotate the view of the camra "Left", "Right", "Up" and "Down"
+      ['', " Move Camera  %m.Move  %n steps ","moveCamera", "Direction", "1"],
+      //The camera rotate block to allow users to rotate the view of the camera "Left", "Right", "Up" and "Down"
 			['', "Rotate Camera %m.CameraRotation %n Degrees" , 'rotateCamera', "Direction", "1"],
 			//The camera orbit block to allow users to orbit the camera around a given point
 			//NEEDS TO BE FIXED LEAVE OUT FOR NOW!!!!
